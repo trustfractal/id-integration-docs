@@ -37,11 +37,11 @@ This endpoint has the following parameters:
 
 Once redirected, the user might have to log into Fractal ID. If so, they'll be presented with the following screen.
 
-![](img/fid-login.png)
+![](img/login.png)
 
 Once they are logged in, they will be shown the authorization screen. They will then be redirected back to your application.
 
-![](img/fid-authorization.png)
+![](img/authorization.png)
 
 If the user refuses authorization, we'll let you know as such.
 
