@@ -22,7 +22,8 @@ If someone is not logged into your app, you should redirect them to our authenti
 
 ```
 GET https://DOMAIN/oauth/authorize
-  ?client_id={your-app-id}
+  ?response_type=code
+  &client_id={your-app-id}
   &redirect_uri={your-redirect-uri}
   &state={state-param}
   &scope={desired-scope}
@@ -63,7 +64,8 @@ You will then need to exchange the code for an access token. Be sure to do the f
 
 ```
 POST https://DOMAIN/oauth/token
-  ?client_id={your-app-id}
+  ?grant_type=authorization_code
+  &client_id={your-app-id}
   &redirect_uri={your-redirect-uri}
   &client_secret={your-app-secret}
   &code={code}
