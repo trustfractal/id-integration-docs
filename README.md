@@ -74,7 +74,7 @@ POST https://DOMAIN/oauth/token
 Once equipped with an access token, you can finally get information about this user through the `/api/me` endpoint.
 
 ```
-POST https://DOMAIN/api/me
+GET https://DOMAIN/api/me
 Authorization: Bearer {access-token}
 ```
 
