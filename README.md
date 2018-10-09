@@ -12,7 +12,7 @@ Please note that Fractal ID does not yet include a mechanism for the creation of
 
 We have the following scopes available:
   * `identity.basic`
-  * `idendity.name:read`
+  * `identity.name:read`
   * `identity.email:read`
   * `third_party.{third-party-name}.contribution:read`
 
