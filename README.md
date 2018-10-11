@@ -56,6 +56,7 @@ parameter | required? | description
 --------- | --------- | -----------
 `client_id` | yes | The ID of your app on our system.
 `redirect_uri` | yes | The URL that you want to redirect the person logging in back to. Must be HTTPS.
+`response_type` | yes | `code`
 `scope` | no |  A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.
 `state` | yes | A string value created by your app to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI.
 
