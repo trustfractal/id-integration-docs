@@ -3,10 +3,10 @@
 Fractal ID is an online service for identity provisioning and verification. This service implements the OAuth2 protocol for user authentication, authorization and resource retrieval.
 
 ## Setup
-
-Fractal needs to provide you with an API application ID and secret. This provisioning is currently available for select partners.
-
-We will also disclose `AUTH_DOMAIN` and `RESOURCE_DOMAIN` at a later stage.
+The integration of Fractal ID API is currently available for select partners. Setup involves:
+1. the partner providing Fractal with the target authentication redirection endpoint;
+1. Fractal providing the partner with an API application ID and secret;
+1. Fractal disclosing `AUTH_DOMAIN` and `RESOURCE_DOMAIN` at a later stage.
 
 ## User authentication and authorization
 
@@ -33,7 +33,7 @@ scope | type | description
 member | type | description
 ------ | ---- | -----------
 amount | string | Currency amount in its smallest subunit (e.g. satoshi, wei, eurocent).
-currency | string | The currency all contributions are converted to (contributions may occur in multiple fiat and/or crypto currencies, and all calculations are performed after converting it to a pivot currency specific to each raise).
+currency | string | The currency all contributions are converted to (contributions may occur in multiple fiat and/or crypto currencies, and all calculations are performed after converting it to a pivot currency specific to each raise, e.g. BTC, ETH, EUR).
 
 ### Auth flow
 
@@ -92,7 +92,7 @@ GET https://{your-redirect-uri}
 
 ##### Other errors
 
-The request might fail for reasons other than authorization refusal. Please refer to [RFC §4.1.2.1. (Error Response)](https://tools.ietf.org/html/rfc6749#section-4.1.2.1) for details.
+The request might fail for reasons other than authorization refusal. Please refer to [RFC 6749 §4.1.2.1. (Error Response)](https://tools.ietf.org/html/rfc6749#section-4.1.2.1) for details.
 
 #### Obtaining an access token
 
@@ -116,6 +116,20 @@ parameter | required? | description
 `redirect_uri` | yes | The URL that you want to redirect the person logging in back to. Must be HTTPS.
 
 This access token expires 2 hours later.
+
+This endpoint returns JSON. An example follows below.
+
+```
+{
+  "access_token": "dbaf9757982a9e738f05d249b7b5b4a266b3a139049317c4909f2f263572c781",
+  "token_type": "bearer",
+  "expires_in": 7200,
+  "refresh_token": "76ba4c5c75c96f6087f58a4de10be6c00b29ea1ddc3b2022ee2016d1363e3a7c",
+  "scope": "public"
+}
+```
+
+Please refer to [RFC 6749 §5.1 (Successful Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details on the fields.
 
 ## Resource retrieval
 
