@@ -137,7 +137,7 @@ Please refer to [RFC 6749 §5.1 (Successful Response)](https://tools.ietf.org/ht
 You can retrieve information of a user through the `/users/me` endpoint. This requires posession of a valid `access_token`, obtained as described above.
 
 ```
-GET https://RESOURCE_DOMAIN/api/me
+GET https://RESOURCE_DOMAIN/users/me
 Authorization: Bearer {access-token}
 ```
 
