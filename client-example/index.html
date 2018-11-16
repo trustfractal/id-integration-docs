@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Example Fractal ID client implementation</h1>
+    <button class="fractal-id-btn">
+      Log in with <span style="color: #EE7326">Fractal</span>
+    </button>
+
+    <script>
+fetch("/prefs").then(r => r.json()).then(({ uri }) => {
+  document
+    .querySelector(".fractal-id-btn")
+    .addEventListener("click", () => {
+      window.location.href = uri;
+    });
+});
+    </script>
+  </body>
+</html>
