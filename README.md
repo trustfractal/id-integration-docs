@@ -1,16 +1,23 @@
 # Fractal ID API Documentation
 
-Fractal ID is an online service for identity provisioning and verification. This service implements the OAuth2 protocol for user authentication, authorization and resource retrieval.
+Fractal ID is an online service for identity provisioning and verification.
+This service implements the OAuth2 protocol for user authentication,
+authorization and resource retrieval.
 
 ## Setup
-The integration of Fractal ID API is currently available for select partners. Setup involves:
-1. the partner providing Fractal with the target authentication redirection endpoint;
+The integration of Fractal ID API is currently available for select partners.
+Setup involves:
+1. the partner providing Fractal with the target authentication redirection
+   endpoint;
 1. Fractal providing the partner with an API application ID and secret;
-1. Fractal disclosing `AUTH_DOMAIN` and `RESOURCE_DOMAIN` at a later stage.
+1. Fractal disclosing `AUTH_DOMAIN`, `RESOURCE_DOMAIN`, and `FRONTEND_DOMAIN`
+   at a later stage.
 
 ## User authentication and authorization
 
-Fractal ID implements the [authorization code grant flow](https://tools.ietf.org/html/rfc6749#section-1.3.1) of the [OAuth2 standard](https://tools.ietf.org/html/rfc6749).
+Fractal ID implements the [authorization code grant
+flow](https://tools.ietf.org/html/rfc6749#section-1.3.1) of the [OAuth2
+standard](https://tools.ietf.org/html/rfc6749).
 
 ### Scopes
 
@@ -42,7 +49,7 @@ currency | string | The currency all contributions are converted to (contributio
 Redirect the user to our authentication endpoint as follows.
 
 ```
-GET https://AUTH_DOMAIN/oauth/authorize
+Location: https://FRONTEND_DOMAIN/oauth/authorize
   ?client_id={your-app-id}
   &redirect_uri={your-redirect-uri}
   &response_type=code
@@ -60,9 +67,13 @@ parameter | required? | description
 `scope` | no |  A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.
 `state` | yes | A string value created by your app to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI.
 
-Once redirected, the user might have to log into Fractal ID. If so, they'll be presented with a page to that effect.
+Once redirected, the user might have to log into Fractal ID. If so, they'll be
+presented with a page to that effect.
 
-Once they are logged in, they will be shown an authorization screen, where they're asked whether they're willing to grant the client application the requested permissions as requested through the scopes. They will then be redirected back to `{your-redirect-uri}`.
+Once they are logged in, they will be shown an authorization screen, where
+they're asked whether they're willing to grant the client application the
+requested permissions as requested through the scopes. They will then be
+redirected back to `{your-redirect-uri}`.
 
 ##### Authorization grant
 
@@ -93,11 +104,15 @@ GET https://{your-redirect-uri}
 
 ##### Other errors
 
-The request might fail for reasons other than authorization refusal. Please refer to [RFC 6749 §4.1.2.1. (Error Response)](https://tools.ietf.org/html/rfc6749#section-4.1.2.1) for details.
+The request might fail for reasons other than authorization refusal. Please
+refer to [RFC 6749 §4.1.2.1. (Error
+Response)](https://tools.ietf.org/html/rfc6749#section-4.1.2.1) for details.
 
 #### Obtaining an access token
 
-You will then need to exchange the code for an access token. Be sure to do the following on your server, as your `client_secret` shouldn't be exposed to the client.
+You will then need to exchange the code for an access token. Be sure to do the
+following on your server, as your `client_secret` shouldn't be exposed to the
+client.
 
 ```
 POST https://AUTH_DOMAIN/oauth/token
@@ -126,15 +141,21 @@ This endpoint returns JSON. An example follows below.
   "token_type": "bearer",
   "expires_in": 7200,
   "refresh_token": "76ba4c5c75c96f6087f58a4de10be6c00b29ea1ddc3b2022ee2016d1363e3a7c",
-  "scope": "public"
+  "scope": "uid:read emails:read"
 }
 ```
 
-Please refer to [RFC 6749 §5.1 (Successful Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details on the fields.
+Please refer to [RFC 6749 §5.1 (Successful
+Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
+on the fields.
+
+Note that the list of scopes may be different from the required ones. Default
+scopes may be added, and the user may deny access to some of them.
 
 ## Resource retrieval
 
-You can retrieve information of a user through the `/users/me` endpoint. This requires posession of a valid `access_token`, obtained as described above.
+You can retrieve information of a user through the `/users/me` endpoint. This
+requires posession of a valid `access_token`, obtained as described above.
 
 ```
 GET https://RESOURCE_DOMAIN/users/me
@@ -147,7 +168,7 @@ This endpoint returns JSON. An example follows below.
 {
   "uid": "d52bdee2-0543-4b60-8c46-5956a37db8af",
   "emails": [
-    "stallman@muh-freedums.com"
+    { "address": "stallman@muh-freedums.com" }
   ],
   "person": {
     "full_name": "Richard Stallman",
@@ -158,5 +179,7 @@ This endpoint returns JSON. An example follows below.
     "v1": true
   }
 }
-
 ```
+
+Note that some of the keys may be missing if access to them was not requested
+and granted.
