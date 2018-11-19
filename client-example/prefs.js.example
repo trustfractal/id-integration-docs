@@ -1,0 +1,11 @@
+module.exports = {
+  frontendServer: "https://next-id.frctls.com",
+  authServer: "https://auth.next-id.frctls.com",
+  resourceServer: "https://resource.next-id.frctls.com",
+
+  client_id: "CLIENT_ID",
+  client_secret: "CLIENT_SECRET",
+
+  scope: "uid:read emails:read person.full_name:read",
+  redirect_uri: "http://localhost:8080/oauth/callback",
+};
