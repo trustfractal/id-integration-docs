@@ -26,7 +26,7 @@ We have the following scopes available. All are read-only.
 scope | type | description
 ----- | ---- | -----------
 `contribution.{beneficiary}:read` | `[Contribution*]` | List of contributions made to `{beneficiary}`.
-`email:read` | `[string]` | Email addresses of the user.
+`email:read` | `[Email*]` | Emails of the user.
 `person.full_name:read` | `string` | Full name of the user.
 `person.residential_address_country:read` | `string` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.
 `person.accredited_investor:read` | `boolean` | Accredited investor status for the user's residential country.
@@ -41,6 +41,12 @@ member | type | description
 ------ | ---- | -----------
 amount | string | Currency amount in its smallest subunit (e.g. satoshi, wei, eurocent).
 currency | string | The currency all contributions are converted to (contributions may occur in multiple fiat and/or crypto currencies, and all calculations are performed after converting it to a pivot currency specific to each raise, e.g. BTC, ETH, EUR).
+
+##### Email
+
+member | type | description
+------ | ---- | -----------
+address | string | Email address
 
 ### Auth flow
 
