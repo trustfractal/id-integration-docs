@@ -55,7 +55,7 @@ address | string | Email address
 Redirect the user to our authentication endpoint as follows.
 
 ```
-Location: https://FRONTEND_DOMAIN/oauth/authorize
+Location: https://FRONTEND_DOMAIN/authorize
   ?client_id={your-app-id}
   &redirect_uri={your-redirect-uri}
   &response_type=code
