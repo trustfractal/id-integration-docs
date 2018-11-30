@@ -147,7 +147,8 @@ This endpoint returns JSON. An example follows below.
   "token_type": "bearer",
   "expires_in": 7200,
   "refresh_token": "76ba4c5c75c96f6087f58a4de10be6c00b29ea1ddc3b2022ee2016d1363e3a7c",
-  "scope": "uid:read emails:read"
+  "scope": "uid:read email:read",
+  "created_at": 1543585106
 }
 ```
 
@@ -157,6 +158,44 @@ on the fields.
 
 Note that the list of scopes may be different from the required ones. Default
 scopes may be added, and the user may deny access to some of them.
+
+#### Refreshing access token
+
+Fractal ID OAuth authorization server implements refresh token rotation, which means that every access token refresh request will issue a new refresh token. Previous tokens are invalidated (revoked) only once the access token is used. For refreshed access tokens, the scopes are identical from the previous access token.
+
+```
+POST https://AUTH_DOMAIN/oauth/token
+  ?client_id={your-app-id}
+  &client_secret={your-app-secret}
+  &refresh_token={refresh-token}
+  &grant_type=refresh_token
+```
+
+This request has the following parameters:
+
+parameter | required? | description
+--------- | --------- | -----------
+`client_id` | yes | Your API application ID.
+`client_secret` | yes | Your API application secret.
+`refresh_token` | yes | Refresh token to be exchanged for an access token for access retrieval.
+`grant_type` | yes | `refresh_token`
+
+Example response:
+
+```
+{
+  "access_token": "20f6c2a5318b84421077fca8c9863359f78857b5b3a5c53d29f07b9e285231e7",
+  "token_type": "bearer",
+  "expires_in": 7200,
+  "refresh_token": "72abdf1b4c284232a18b3116bc161b09235cdeb06147b2a5f5c3367f8997c094",
+  "scope": "uid:read email:read",
+  "created_at": 1543586706
+}
+```
+
+Please refer to [RFC 6749 §5.1 (Successful
+Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
+on the fields.
 
 ## Resource retrieval
 
