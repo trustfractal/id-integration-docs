@@ -27,6 +27,9 @@ scope | type | description
 ----- | ---- | -----------
 `contribution.{beneficiary}:read` | `[Contribution*]` | List of contributions made to `{beneficiary}`.
 `email:read` | `[EmailAddress*]` | Email addresses of the user.
+`institution.company_name:read` | `string` | Full name of the company.
+`institution.residential_address_country:read` | `string` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the company's residential address.
+`institution.accredited_investor:read` | `boolean` | Accredited investor status for the company's residential country.
 `person.full_name:read` | `string` | Full name of the user.
 `person.residential_address_country:read` | `string` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.
 `person.accredited_investor:read` | `boolean` | Accredited investor status for the user's residential country.
@@ -139,7 +142,7 @@ parameter | required? | description
 
 This access token expires 2 hours later.
 
-This endpoint returns JSON. An example follows below.
+This endpoint returns JSON. An example follows.
 
 ```
 {
@@ -156,12 +159,18 @@ Please refer to [RFC 6749 §5.1 (Successful
 Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
 on the fields.
 
-Note that the list of scopes may be different from the required ones. Default
-scopes may be added, and the user may deny access to some of them.
+The list of authorized scopes may be different from the required ones. Default
+scopes may be added, and the user may deny access to some of them. If you
+request both institution and person scopes, you will only be granted the ones
+that match the user type.
 
 #### Refreshing access token
 
-Fractal ID OAuth authorization server implements refresh token rotation, which means that every access token refresh request will issue a new refresh token. Previous tokens are invalidated (revoked) only once the access token is used. For refreshed access tokens, the scopes are identical from the previous access token.
+Fractal ID OAuth authorization server implements refresh token rotation, which
+means that every access token refresh request will issue a new refresh token.
+Previous tokens are invalidated (revoked) only once the access token is used.
+For refreshed access tokens, the scopes are identical from the previous access
+token.
 
 ```
 POST https://AUTH_DOMAIN/oauth/token
@@ -207,7 +216,9 @@ GET https://RESOURCE_DOMAIN/users/me
 Authorization: Bearer {access-token}
 ```
 
-This endpoint returns JSON. An example follows below.
+This endpoint returns JSON. A few examples follow.
+
+When the user is a natural person:
 
 ```
 {
@@ -220,11 +231,34 @@ This endpoint returns JSON. An example follows below.
     "accredited_investor": true,
     "residential_address_country": "US"
   },
+  "institution": null,
   "verifications": [
     { level: "v1" }
   ]
 }
 ```
+
+
+When the user is an institution:
+
+```
+{
+  "uid": "d52bdee2-0543-4b60-8c46-5956a37db8af",
+  "emails": [
+    { "address": "support@fractal.id" }
+  ],
+  "person": null,
+  "institution": {
+    "company_name": "Fractal Blockchain GmbH",
+    "accredited_investor": true,
+    "residential_address_country": "DE"
+  },
+  "verifications": [
+    { level: "v1" }
+  ]
+}
+```
+
 
 Note that some of the keys may be missing if access to them was not requested
 and granted.
