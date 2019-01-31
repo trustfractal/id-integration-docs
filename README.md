@@ -75,6 +75,7 @@ parameter | required? | description
 `response_type` | yes | `code`
 `scope` | no |  A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.
 `state` | yes | A string value created by your app to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI.
+`theme` | no | The preferred theme the user will see (accepts `"light"` or `"dark"`, default to `"light"`)
 
 Once redirected, the user might have to log into Fractal ID. If so, they'll be
 presented with a page to that effect.
