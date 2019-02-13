@@ -262,3 +262,121 @@ When the user is an institution:
 
 Note that some of the keys may be missing if access to them was not requested
 and granted.
+
+## Webhooks
+
+### Description
+
+Webhooks allow you to build or set up Applications which subscribe to certain events on Fractal ID. When one of those events is triggered, we'll send a HTTP `POST` payload to the webhook's configured URL.
+
+### Terminology
+
+- Callback URL - the URL of the server that will receive the webhook `POST` requests.
+- Secret token - token that allows you to ensure that `POST` requests sent to the callback URL are from Fractal.
+- Notification - webhooks `POST` request which is triggered by certain events on Fractal ID.
+
+### Setup
+
+The integration of Webhooks is currently available for select partners.
+
+Setup involves:
+1. Partner providing Fractal with callback URL and available notification types it wants to subscribe.
+1. Fractal providing the partner with a secret token.
+
+### Available notifications types
+
+#### Verification approved
+
+Once user is approved, the partner can get notified about user verification process being successfully completed. Upon getting `verification_approved` notification, partner can use specified user access token and retrieve latest information about the user and/or perform its business logic.
+
+Example payload:
+
+```
+{
+  type: "verification_approved",
+  data: {
+    user_id: "14ec6af0-12f8-4bce-a6ab-01ce87fa1812",
+  }
+}
+```
+
+### Securing webhooks
+
+#### Callback URL
+
+Fractal ID accepts only secure sites (HTTPS) as callback URLs.
+
+#### Validating payloads from Fractal ID
+
+When your secret token is set, Fractal ID uses it to create a hash signature with each payload. The hash signature is passed along with each request in the headers as `X-Fractal-Signature`.
+
+Fractal ID generates signatures using a hash-based message authentication code ([HMAC](https://en.wikipedia.org/wiki/HMAC)) with [SHA-1](https://en.wikipedia.org/wiki/SHA-1).
+
+Your endpoint should verify the signature to make sure it came from Fractal ID. Example implementation in Ruby:
+
+```
+def verify_signature
+  payload_body = request.body.read
+  signature = "sha1=" + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha1"), ENV["SECRET_TOKEN"], payload_body)
+
+  if Rack::Utils.secure_compare(signature, request.headers["X-Fractal-Signature"])
+    render json: {}, status: 200
+  else
+    render json: { error: "signature_mismatch" }, status: 400
+  end
+end
+```
+
+Your language and server implementations may differ than this code. There are a couple of very important things to point out, however:
+
+- No matter which implementation you use, the hash signature starts with `sha1=`, using the key of your secret token and your payload body.
+- Using a plain `==` operator is **not advised**. A method like `secure_compare` performs a "constant time" string comparison, which renders it safe from certain timing attacks against regular equality operators.
+
+### Delivery
+
+#### Content type
+
+Fractal ID uses `application/json` content type to deliver the JSON payload directly as the body of the `POST` request.
+
+#### Expected Response
+
+Fractal ID expects your server to reply with response code 200 to identify successful delivery.
+
+#### Retrying sending notifications
+
+Fractal ID will retry to send webhooks notification if:
+
+- Client server failed to respond in 10 seconds.
+- Client server is unavailable (network errors).
+- Client server returns other response code than 200.
+
+Fractal ID uses exponential backoff to retry events.
+
+**Example retry times table:**
+
+| Retries | Next retry in seconds |
+|---------|-----------------------|
+|    1    |           20          |
+|    2    |           40          |
+|    3    |           80          |
+|    5    |          320          |
+|    10   |          10240        |
+|    15   |          86400        |
+|    20   |          86400        |
+
+#### Example delivery
+
+Suppose for given example the secret token is `9d7e80c0f169ab94d34392d64617b7517fb07c40`.
+
+```
+POST /callback HTTP/1.1
+Host: localhost:3001
+X-Fractal-Signature: sha1=7ca3425d90879796f230a0ee9d3b3552a2903e18
+Content-Type: application/json
+{
+  type: "verification_approved",
+  data: {
+    user_id: "d6d782ef-568b-4355-8eb4-2d32ac97b44c",
+  }
+}
+```
