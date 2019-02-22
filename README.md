@@ -340,7 +340,7 @@ Fractal ID uses `application/json` content type to deliver the JSON payload dire
 
 #### Expected Response
 
-Fractal ID expects your server to reply with response code 200 to identify successful delivery.
+Fractal ID expects your server to reply with response code `2xx` to identify successful delivery. All response codes outside this range, including `3xx` codes, will indicate to Fractal ID that you did not receive the webhook.
 
 #### Retrying sending notifications
 
@@ -348,7 +348,7 @@ Fractal ID will retry to send webhooks notification if:
 
 - Client server failed to respond in 10 seconds.
 - Client server is unavailable (network errors).
-- Client server returns other response code than 200.
+- Client server returns other response code than `2xx`.
 
 Fractal ID uses exponential backoff to retry events.
 
