@@ -314,7 +314,7 @@ Fractal ID generates signatures using a hash-based message authentication code (
 
 Your endpoint should verify the signature to make sure it came from Fractal ID. Example implementation in Ruby:
 
-```
+```ruby
 def verify_signature
   payload_body = request.body.read
   signature = "sha1=" + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha1"), ENV["SECRET_TOKEN"], payload_body)
