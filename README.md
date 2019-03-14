@@ -7,11 +7,11 @@ authorization and resource retrieval.
 ## Setup
 The integration of Fractal ID API is currently available for select partners.
 Setup involves:
-1. the partner providing Fractal with the target authentication redirection
-   endpoint;
-1. Fractal providing the partner with an API application ID and secret;
-1. Fractal disclosing `AUTH_DOMAIN`, `RESOURCE_DOMAIN`, and `FRONTEND_DOMAIN`
-   at a later stage.
+1. the partner providing Fractal with:
+   1. the target authentication redirection endpoint (`redirect_uri`);
+   1. the application display name;
+   1. the application display logo (in square format);
+1. Fractal providing the partner with an API application ID and secret (`client_id` and `client_secret`).
 
 ## User authentication and authorization
 
@@ -44,6 +44,15 @@ member | type | description
 address | string | Email address
 
 ### Auth flow
+
+#### Domains
+
+domain | staging | production
+------ | ------- | ----------
+FRONTEND_DOMAIN | next-id.frctls.com | fractal.id
+AUTH_DOMAIN | auth.next-id.frctls.com | auth.fractal.id
+RESOURCE_DOMAIN | resource.next-id.frctls.com | resource.fractal.id
+
 
 #### Obtaining an authorization code
 
