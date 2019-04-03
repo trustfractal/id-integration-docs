@@ -294,9 +294,10 @@ Example payload:
 
 ```
 {
-  type: "verification_approved",
-  data: {
-    user_id: "14ec6af0-12f8-4bce-a6ab-01ce87fa1812",
+  "type": "verification_approved",
+  "data": {
+    "level": "v1",
+    "user_id": "14ec6af0-12f8-4bce-a6ab-01ce87fa1812"
   }
 }
 ```
@@ -372,12 +373,7 @@ Suppose for given example the secret token is `9d7e80c0f169ab94d34392d64617b7517
 ```
 POST /callback HTTP/1.1
 Host: localhost:3001
-X-Fractal-Signature: sha1=7ca3425d90879796f230a0ee9d3b3552a2903e18
+X-Fractal-Signature: sha1=2e7c4e307e25dd0ce4baad4d90dc7d4b63bdbab6
 Content-Type: application/json
-{
-  type: "verification_approved",
-  data: {
-    user_id: "d6d782ef-568b-4355-8eb4-2d32ac97b44c",
-  }
-}
+{"type": "verification_approved","data":{"level":"v1","user_id":"d6d782ef-568b-4355-8eb4-2d32ac97b44c"}}
 ```
