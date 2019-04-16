@@ -207,6 +207,41 @@ Please refer to [RFC 6749 §5.1 (Successful
 Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
 on the fields.
 
+#### Using a pop-up to drive the journey
+
+Clients may choose to drive the journey using a pop-up window. When loaded
+inside of a pop-up window, the following considerations apply to Fractal ID's
+flow.
+
+1. If the User is not logged in to Fractal ID, they'll see a login screen as
+   they normally would. After entering their email address, the pop-up window
+will close itself in 5 seconds.
+1. If the User is logged in to Fractal ID, they'll be presented with the normal
+   journey _inside the pop-up_ window.
+1. After authorizing the Client application, Fractal ID will send a message
+   (using
+[postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage))
+to the parent window (`opener`), with a payload of the form `{redirect_uri:
+uri}`.
+
+The original window can then choose how to react to this message. A possibility
+would be to let itself be redirected to the Client application's
+`redirect_uri`, as such. Here's an implementation example.
+
+```js
+let popup = window.open(
+  uri,
+  "fid",
+  "width=480,height=700,top=150,left=150",
+);
+
+window.addEventListener("message", (event) => {
+  if (event.data.redirect_uri) {
+    window.location=event.data.redirect_uri;
+  }
+}, false);
+```
+
 ## Resource retrieval
 
 You can retrieve information of a user through the `/users/me` endpoint. This
