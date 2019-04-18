@@ -5,8 +5,10 @@ This service implements the OAuth2 protocol for user authentication,
 authorization and resource retrieval.
 
 ## Setup
+
 The integration of Fractal ID API is currently available for select partners.
 Setup involves:
+
 1. the partner providing Fractal with:
    1. the target authentication redirection endpoint (`redirect_uri`);
    1. the application display name;
@@ -23,36 +25,36 @@ standard](https://tools.ietf.org/html/rfc6749).
 
 We have the following scopes available. All are read-only.
 
-scope | type | description
------ | ---- | -----------
-`email:read` | `[EmailAddress*]` | Email addresses of the user.
-`institution.company_name:read` | `string` | Full name of the company.
-`institution.residential_address_country:read` | `string` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the company's residential address.
-`institution.accredited_investor:read` | `boolean` | Accredited investor status for the company's residential country.
-`person.full_name:read` | `string` | Full name of the user.
-`person.residential_address_country:read` | `string` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.
-`person.accredited_investor:read` | `boolean` | Accredited investor status for the user's residential country.
-`uid:read` | `string` | **(default scope)** Anonymized unique user identifier.
-`verification.v1:read` | `boolean` | Fractal v1 type verification, attesting the truthfulness of all the data requested.
+| scope                                          | type              | description                                                                                                               |
+| ---------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `email:read`                                   | `[EmailAddress*]` | Email addresses of the user.                                                                                              |
+| `institution.company_name:read`                | `string`          | Full name of the company.                                                                                                 |
+| `institution.residential_address_country:read` | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the company's residential address. |
+| `institution.accredited_investor:read`         | `boolean`         | Accredited investor status for the company's residential country.                                                         |
+| `person.full_name:read`                        | `string`          | Full name of the user.                                                                                                    |
+| `person.residential_address_country:read`      | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.    |
+| `person.accredited_investor:read`              | `boolean`         | Accredited investor status for the user's residential country.                                                            |
+| `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                    |
+| `verification.v1:read`                         | `boolean`         | Fractal v1 type verification, attesting the truthfulness of all the data requested.                                       |
 
 #### Types
 
 ##### EmailAddress
 
-member | type | description
------- | ---- | -----------
-address | string | Email address
+| member  | type   | description   |
+| ------- | ------ | ------------- |
+| address | string | Email address |
 
 ### Auth flow
 
 #### Domains
 
-domain | staging | production
------- | ------- | ----------
-FRONTEND_DOMAIN | next-id.frctls.com | fractal.id
-AUTH_DOMAIN | auth.next-id.frctls.com | auth.fractal.id
-RESOURCE_DOMAIN | resource.next-id.frctls.com | resource.fractal.id
-
+| domain          | staging                     | production          |
+| --------------- | --------------------------- | ------------------- |
+| FRONTEND_DOMAIN | next-id.frctls.com          | fractal.id          |
+| AUTH_DOMAIN     | auth.next-id.frctls.com     | auth.fractal.id     |
+| RESOURCE_DOMAIN | resource.next-id.frctls.com | resource.fractal.id |
+| VERIFIER_DOMAIN | verifier.next-id.frctls.com | verifier.fractal.id |
 
 #### Obtaining an authorization code
 
@@ -69,13 +71,13 @@ Location: https://FRONTEND_DOMAIN/authorize
 
 This request has the following parameters:
 
-parameter | required? | description
---------- | --------- | -----------
-`client_id` | yes | The ID of your app on our system.
-`redirect_uri` | yes | The URL that you want to redirect the person logging in back to. Must be HTTPS.
-`response_type` | yes | `code`
-`scope` | no |  A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.
-`state` | yes | A string value created by your app to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI.
+| parameter       | required? | description                                                                                                                                                                                                                                                  |
+| --------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `client_id`     | yes       | The ID of your app on our system.                                                                                                                                                                                                                            |
+| `redirect_uri`  | yes       | The URL that you want to redirect the person logging in back to. Must be HTTPS.                                                                                                                                                                              |
+| `response_type` | yes       | `code`                                                                                                                                                                                                                                                       |
+| `scope`         | no        | A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.                                                                                                                                                      |
+| `state`         | yes       | A string value created by your app to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI. |
 
 Once redirected, the user might have to log into Fractal ID. If so, they'll be
 presented with a page to that effect.
@@ -97,10 +99,10 @@ GET https://{your-redirect-uri}
 
 This request has the following parameters:
 
-parameter | description
---------- | -----------
-`code` | Authorization code to be exchanged for an access token for access retrieval.
-`state` | Unchanged `state` parameter you provided during authorization request.
+| parameter | description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| `code`    | Authorization code to be exchanged for an access token for access retrieval. |
+| `state`   | Unchanged `state` parameter you provided during authorization request.       |
 
 ##### Authorization refusal
 
@@ -133,13 +135,13 @@ POST https://AUTH_DOMAIN/oauth/token
   &redirect_uri={your-redirect-uri}
 ```
 
-parameter | required? | description
---------- | --------- | -----------
-`client_id` | yes | Your API application ID.
-`client_secret` | yes | Your API application secret.
-`code` | yes | Authorization code to be exchanged for an access token for access retrieval.
-`grant_type` | yes | `authorization_code`
-`redirect_uri` | yes | The URL that you want to redirect the person logging in back to. Must be HTTPS.
+| parameter       | required? | description                                                                     |
+| --------------- | --------- | ------------------------------------------------------------------------------- |
+| `client_id`     | yes       | Your API application ID.                                                        |
+| `client_secret` | yes       | Your API application secret.                                                    |
+| `code`          | yes       | Authorization code to be exchanged for an access token for access retrieval.    |
+| `grant_type`    | yes       | `authorization_code`                                                            |
+| `redirect_uri`  | yes       | The URL that you want to redirect the person logging in back to. Must be HTTPS. |
 
 This access token expires 2 hours later.
 
@@ -183,12 +185,12 @@ POST https://AUTH_DOMAIN/oauth/token
 
 This request has the following parameters:
 
-parameter | required? | description
---------- | --------- | -----------
-`client_id` | yes | Your API application ID.
-`client_secret` | yes | Your API application secret.
-`refresh_token` | yes | Refresh token to be exchanged for an access token for access retrieval.
-`grant_type` | yes | `refresh_token`
+| parameter       | required? | description                                                             |
+| --------------- | --------- | ----------------------------------------------------------------------- |
+| `client_id`     | yes       | Your API application ID.                                                |
+| `client_secret` | yes       | Your API application secret.                                            |
+| `refresh_token` | yes       | Refresh token to be exchanged for an access token for access retrieval. |
+| `grant_type`    | yes       | `refresh_token`                                                         |
 
 Example response:
 
@@ -206,6 +208,40 @@ Example response:
 Please refer to [RFC 6749 §5.1 (Successful
 Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
 on the fields.
+
+#### Obtaining a token via a client credentials grant
+
+Some endpoints, like the stats endpoint, will require a token for authentication. You can get a token for those situations using the client credentials grant, which returns a token specific to your application, instead of any specific user, which avoids having to send a client_id and client_secret to services other than the authorization server.
+To obtain one, make a request similar to the following:
+
+```
+POST https://AUTH_DOMAIN/oauth/token
+  ?client_id={your-app-id}
+  &client_secret={your-app-secret}
+  &grant_type=client_credentials
+  &scope={your-wanted-scopes}
+```
+
+This request has the following parameters:
+
+| parameter       | required? | description                                                                                             |
+| --------------- | --------- | ------------------------------------------------------------------------------------------------------- |
+| `client_id`     | yes       | Your API application ID.                                                                                |
+| `client_secret` | yes       | Your API application secret.                                                                            |
+| `scope`         | no        | A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`. |
+| `grant_type`    | yes       | `client_credentials`                                                                                    |
+
+Example response:
+
+```
+{
+  "access_token":"19ae3a3b73e0323c48bcf610a842dc8963ef56e8b9b89b7135258631bec8fed9",
+  "token_type":"Bearer",
+  "expires_in":7200,
+  "scope":"uid:read",
+  "created_at":1554400723
+}
+```
 
 ## Resource retrieval
 
@@ -239,7 +275,6 @@ When the user is a natural person:
 }
 ```
 
-
 When the user is an institution:
 
 ```
@@ -260,9 +295,83 @@ When the user is an institution:
 }
 ```
 
-
 Note that some of the keys may be missing if access to them was not requested
 and granted.
+
+## Statistics
+
+You can retrieve information about how many users, and their individual KYC statuses, authorized your application. You'll need to provide a token with the `client.stats:read` scope, which can be aquired via a client credentials grant, explained in this document.
+
+### Total verifications
+
+Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` right now.
+
+```
+GET https://VERIFIER_DOMAIN/api/stats/total-verifications
+Content-Type: application/json
+Authorization: Bearer {access-token}
+```
+
+Example response:
+
+```
+{
+  "approved": 55,
+  "contacted": 4,
+  "rejected": 10,
+  "pending": 7
+}
+```
+
+### Verifications by countries
+
+Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` by countries.
+
+```
+GET https://VERIFIER_DOMAIN/api/stats/country-verifications
+Content-Type: application/json
+Authorization: Bearer {access-token}
+```
+
+Example response:
+
+```
+{
+  "US": {
+    "approved": 8,
+    "contacted": 1,
+    "rejected": 2,
+    "pending": 3
+  },
+  "DK": {
+    "approved": 12
+  },
+  "RO": {
+    "approved": 3
+  }
+}
+```
+
+### Verifications by user ids
+
+Returns user ids and their status, which can be `approved`, `pending` or `rejected`.
+
+```
+GET https://VERIFIER_DOMAIN/api/stats/user-verifications
+Content-Type: application/json
+Authorization: Bearer {access-token}
+```
+
+Example response:
+
+```
+{
+  "320bfdaa-213e-41fb-8d77-ed98c415f01e": "approved",
+  "87dd7fcb-c193-412e-8715-b13651fca2e4": "pending",
+  "53406d1d-f06b-4fc3-960f-c5e608751aa9": "rejected",
+  "63b35630-66b7-46ef-bce6-efbe31c7c366": "approved"
+}
+```
 
 ## Webhooks
 
@@ -281,6 +390,7 @@ Webhooks allow you to build or set up Applications which subscribe to certain ev
 The integration of Webhooks is currently available for select partners.
 
 Setup involves:
+
 1. Partner providing Fractal with callback URL and available notification types it wants to subscribe.
 1. Fractal providing the partner with a secret token.
 
@@ -357,14 +467,14 @@ Fractal ID uses exponential backoff to retry events.
 **Example retry times table:**
 
 | Retries | Next retry in seconds |
-|---------|-----------------------|
-|    1    |           20          |
-|    2    |           40          |
-|    3    |           80          |
-|    5    |          320          |
-|    10   |          10240        |
-|    15   |          86400        |
-|    20   |          86400        |
+| ------- | --------------------- |
+| 1       | 20                    |
+| 2       | 40                    |
+| 3       | 80                    |
+| 5       | 320                   |
+| 10      | 10240                 |
+| 15      | 86400                 |
+| 20      | 86400                 |
 
 #### Example delivery
 
