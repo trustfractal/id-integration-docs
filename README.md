@@ -308,7 +308,7 @@ You can retrieve information about how many users, and their individual KYC stat
 | ------ | ------- |
 | approved | User was issued a Credential for the requested KYC Level |
 | rejected | User was refused a Credential for the requested KYC Level |
-| pending | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting in the queue |
+| pending | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified |
 | contacted | User has been contacted by Fractal to provide further information, and has yet to do so |
 
 ### Total verifications
