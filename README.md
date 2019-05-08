@@ -302,6 +302,15 @@ and granted.
 
 You can retrieve information about how many users, and their individual KYC statuses, authorized your application. You'll need to provide a token with the `client.stats:read` scope, which can be aquired via a client credentials grant, explained in this document.
 
+### User statuses
+
+| Status | Meaning |
+| ------ | ------- |
+| approved | User was issued a Credential for the requested KYC Level |
+| rejected | User was refused a Credential for the requested KYC Level |
+| pending | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified |
+| contacted | User has been contacted by Fractal to provide further information, and has yet to do so |
+
 ### Total verifications
 
 Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` right now.
