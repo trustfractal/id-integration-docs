@@ -49,12 +49,12 @@ We have the following scopes available. All are read-only.
 
 #### Domains
 
-| domain          | staging                     | production          |
-| --------------- | --------------------------- | ------------------- |
-| FRONTEND_DOMAIN | next-id.frctls.com          | fractal.id          |
-| AUTH_DOMAIN     | auth.next-id.frctls.com     | auth.fractal.id     |
-| RESOURCE_DOMAIN | resource.next-id.frctls.com | resource.fractal.id |
-| VERIFIER_DOMAIN | verifier.next-id.frctls.com | verifier.fractal.id |
+| domain          | staging                  | production          |
+| --------------- | ------------------------ | ------------------- |
+| FRONTEND_DOMAIN | next.fractal.id          | fractal.id          |
+| AUTH_DOMAIN     | auth.next.fractal.id     | auth.fractal.id     |
+| RESOURCE_DOMAIN | resource.next.fractal.id | resource.fractal.id |
+| VERIFIER_DOMAIN | verifier.next.fractal.id | verifier.fractal.id |
 
 #### Obtaining an authorization code
 
@@ -304,12 +304,12 @@ You can retrieve information about how many users, and their individual KYC stat
 
 ### User statuses
 
-| Status | Meaning |
-| ------ | ------- |
-| approved | User was issued a Credential for the requested KYC Level |
-| rejected | User was refused a Credential for the requested KYC Level |
-| pending | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified |
-| contacted | User has been contacted by Fractal to provide further information, and has yet to do so |
+| Status    | Meaning                                                                                                                                             |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| approved  | User was issued a Credential for the requested KYC Level                                                                                            |
+| rejected  | User was refused a Credential for the requested KYC Level                                                                                           |
+| pending   | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified |
+| contacted | User has been contacted by Fractal to provide further information, and has yet to do so                                                             |
 
 ### Total verifications
 
