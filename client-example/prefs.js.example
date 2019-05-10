@@ -1,7 +1,7 @@
 module.exports = {
-  frontendServer: "https://next-id.frctls.com",
-  authServer: "https://auth.next-id.frctls.com",
-  resourceServer: "https://resource.next-id.frctls.com",
+  frontendServer: "https://next.fractal.id",
+  authServer: "https://auth.next.fractal.id",
+  resourceServer: "https://resource.next.fractal.id",
 
   client_id: "CLIENT_ID",
   client_secret: "CLIENT_SECRET",
