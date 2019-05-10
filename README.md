@@ -36,6 +36,7 @@ We have the following scopes available. All are read-only.
 | `person.accredited_investor:read`              | `boolean`         | Accredited investor status for the user's residential country.                                                            |
 | `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                    |
 | `verification.v1:read`                         | `[Verification*]` | Fractal v1 type verification, attesting the truthfulness of all the data requested.                                       |
+| `verification.video:read`                      | `[Verification*]` | Fractal video type verification. Usage of `verification.v1:read` is mandatory for it.                                     |
 | `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal v1 type verification.                                               |
 
 #### Types
