@@ -25,19 +25,19 @@ standard](https://tools.ietf.org/html/rfc6749).
 
 We have the following scopes available. All are read-only.
 
-| scope                                          | type              | description                                                                                                               |
-| ---------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `email:read`                                   | `[EmailAddress*]` | Email addresses of the user.                                                                                              |
-| `institution.company_name:read`                | `string`          | Full name of the company.                                                                                                 |
-| `institution.residential_address_country:read` | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the company's residential address. |
-| `institution.accredited_investor:read`         | `boolean`         | Accredited investor status for the company's residential country.                                                         |
-| `person.full_name:read`                        | `string`          | Full name of the user.                                                                                                    |
-| `person.residential_address_country:read`      | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.    |
-| `person.accredited_investor:read`              | `boolean`         | Accredited investor status for the user's residential country.                                                            |
-| `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                    |
-| `verification.v1:read`                         | `[Verification*]` | Fractal v1 type verification, attesting the truthfulness of all the data requested.                                       |
-| `verification.video:read`                      | `[Verification*]` | Fractal video type verification. Usage of `verification.v1:read` is mandatory for it.                                     |
-| `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal v1 type verification.                                               |
+| scope                                          | type              | description                                                                                                                                                                                                               |
+| ---------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `email:read`                                   | `[EmailAddress*]` | Email addresses of the user.                                                                                                                                                                                              |
+| `institution.company_name:read`                | `string`          | Full name of the company.                                                                                                                                                                                                 |
+| `institution.residential_address_country:read` | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the company's residential address.                                                                                                 |
+| `institution.accredited_investor:read`         | `boolean`         | Accredited investor status for the company's residential country.                                                                                                                                                         |
+| `person.full_name:read`                        | `string`          | Full name of the user.                                                                                                                                                                                                    |
+| `person.residential_address_country:read`      | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.                                                                                                    |
+| `person.accredited_investor:read`              | `boolean`         | Accredited investor status for the user's residential country.                                                                                                                                                            |
+| `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                                                                                                                    |
+| `verification.v1:read`                         | `[Verification*]` | Fractal `v1` type verification, attesting the truthfulness of all the data requested.                                                                                                                                     |
+| `verification.video:read`                      | `[Verification*]` | Fractal `video` type verification. Ensures the user went through an interview with an identity specialist that verified their documents and identity. Needs `verification.v1:read` to be present in the requested scopes. |
+| `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal v1 type verification.                                                                                                                                               |
 
 #### Types
 

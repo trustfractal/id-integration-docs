@@ -20,10 +20,12 @@ You can now access your client application by going to http://localhost:8080
 
 ## Testing video id flow
 
-In order to test video type verification flow, you need to modify created `prefs.js` file and add `verification.video:read` scope. Having `verification.v1:read` scope is mandatory in video type verification flow.
+In order to test `video` type verification flow, you need to add
+`verification.video:read` to the `scope` list in `prefs.js`. Usage of this
+scope requires `verification.v1:read` to be present.
 
 Example:
 
 ```
-  scope: "uid:read email:read person.full_name:read verification.v1:read verification.video:read"
+scope: "uid:read email:read person.full_name:read verification.v1:read verification.video:read"
 ```
