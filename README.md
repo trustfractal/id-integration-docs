@@ -35,7 +35,8 @@ We have the following scopes available. All are read-only.
 | `person.residential_address_country:read`      | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.    |
 | `person.accredited_investor:read`              | `boolean`         | Accredited investor status for the user's residential country.                                                            |
 | `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                    |
-| `verification.v1:read`                         | `boolean`         | Fractal v1 type verification, attesting the truthfulness of all the data requested.                                       |
+| `verification.v1:read`                         | `[Verification*]` | Fractal v1 type verification, attesting the truthfulness of all the data requested.                                       |
+| `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal v1 type verification.                                               |
 
 #### Types
 
@@ -44,6 +45,12 @@ We have the following scopes available. All are read-only.
 | member  | type   | description   |
 | ------- | ------ | ------------- |
 | address | string | Email address |
+
+##### Verification
+
+| member  | type   | description        |
+| ------- | ------ | ------------------ |
+| level   | string | Verification level |
 
 ### Auth flow
 
