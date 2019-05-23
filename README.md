@@ -37,7 +37,8 @@ We have the following scopes available. All are read-only.
 | `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                                                                                                                    |
 | `verification.v1:read`                         | `[Verification*]` | Fractal `v1` type verification, attesting the truthfulness of all the data requested.                                                                                                                                     |
 | `verification.video:read`                      | `[Verification*]` | Fractal `video` type verification. Ensures the user went through an interview with an identity specialist that verified their documents and identity. Needs `verification.v1:read` to be present in the requested scopes. |
-| `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal v1 type verification.                                                                                                                                               |
+| `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal `v1` type verification.                                                                                                                                             |
+| `verification.video.details:read`              | (several types)   | All user data collected in order to issue the Fractal `video` type verification.                                                                                                                                          |
 
 #### Types
 
