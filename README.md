@@ -156,10 +156,10 @@ This endpoint returns JSON. An example follows.
 
 ```
 {
-  "access_token": "dbaf9757982a9e738f05d249b7b5b4a266b3a139049317c4909f2f263572c781",
+  "access_token": "7rgojfemuk-aq8RcA7xWxJQKv6Ux0VWJ1DQtU6178B8",
   "token_type": "bearer",
   "expires_in": 7200,
-  "refresh_token": "76ba4c5c75c96f6087f58a4de10be6c00b29ea1ddc3b2022ee2016d1363e3a7c",
+  "refresh_token": "thPSSHGnk3NGU5vV4V_g-Qrs47RibO9KEEhfKYEgJOw",
   "scope": "uid:read email:read",
   "created_at": 1543585106
 }
@@ -203,10 +203,10 @@ Example response:
 
 ```
 {
-  "access_token": "20f6c2a5318b84421077fca8c9863359f78857b5b3a5c53d29f07b9e285231e7",
+  "access_token": "bftp_00bxmjiTyCqiptfR_hUDMMcPAZuGg9mylnNM3g",
   "token_type": "bearer",
   "expires_in": 7200,
-  "refresh_token": "72abdf1b4c284232a18b3116bc161b09235cdeb06147b2a5f5c3367f8997c094",
+  "refresh_token": "leZCHE_ZTggSB2wNiUM1Huy0X7ZgYpbLaJ9ZHk-rRas",
   "scope": "uid:read email:read",
   "created_at": 1543586706
 }
@@ -242,7 +242,7 @@ Example response:
 
 ```
 {
-  "access_token":"19ae3a3b73e0323c48bcf610a842dc8963ef56e8b9b89b7135258631bec8fed9",
+  "access_token":"OUuf_tJs-J2AAxjWr0JHvzFure5Eb7KMUQRO0jpqXWc",
   "token_type":"Bearer",
   "expires_in":7200,
   "scope":"uid:read",
