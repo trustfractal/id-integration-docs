@@ -1,76 +1,154 @@
 # Fractal ID API Documentation
 
 Fractal ID is an online service for identity provisioning and verification.
-This service implements the OAuth2 protocol for user authentication,
-authorization and resource retrieval.
+This service implements the [OAuth2](https://oauth.net/2/) protocol for user
+authentication, authorization and resource retrieval.
 
-## Setup
+## Getting started
 
-The integration of Fractal ID API is currently available for select partners.
-Setup involves:
+Integration of Fractal ID API is currently available upon request.
 
-1. the partner providing Fractal with:
-   1. the target authentication redirection endpoint (`redirect_uri`);
+To get started, we need you to provide us with:
+   1. the target authorization redirection endpoint, `redirect_uri`
+      (`https://example.com/oauth/callback`);
+   1. the application homepage URL;
    1. the application display name;
    1. the application display logo (in square format);
-1. Fractal providing the partner with an API application ID and secret (`client_id` and `client_secret`).
+   1. optionally, the webhook callback URL (`https://example.com/webhook`);
 
-## User authentication and authorization
+We will then provide you with an API application ID and secret (`CLIENT_ID` and
+`CLIENT_SECRET`). If you are using Webhooks, we will also send you the webhook
+secret token (`WEBHOOK_SECRET`).
 
-Fractal ID implements the [authorization code grant
-flow](https://tools.ietf.org/html/rfc6749#section-1.3.1) of the [OAuth2
+Note: As a security measure, all URLs [MUST be secured using
+HTTPS](https://tools.ietf.org/html/rfc6749#section-3.1.2.1), except when using
+`localhost` addresses.
+
+We have staging and production environments available. throughout this
+document, we will use the following placeholders. You should use the domains
+that match the environment you are using.
+
+| domain            | staging                  | production          |
+| ----------------- | ------------------------ | ------------------- |
+| `FRONTEND_DOMAIN` | next.fractal.id          | fractal.id          |
+| `AUTH_DOMAIN`     | auth.next.fractal.id     | auth.fractal.id     |
+| `RESOURCE_DOMAIN` | resource.next.fractal.id | resource.fractal.id |
+| `VERIFIER_DOMAIN` | verifier.next.fractal.id | verifier.fractal.id |
+
+
+## KYC levels
+
+Fractal ID supports different levels of verification. Additionally, each level
+may be extended by a number of addons.
+
+Available levels:
+
+* `v1`: Identity with selfie, residence, AML, accreditation, and SSN checks;
+* `light`: Identity and residence checks;
+* `plus`: Identity, residence, and AML checks;
+
+Available addons:
+
+* `selfie`: Identity check using selfie with document photo upload.
+* `video`: Identity check using real time video call (Video ID).
+* `accreditation`: Accreditated investor check; applicable to US and Canadian residents only.
+* `wallet`: Crypto currency wallet check; uses [Coinfirm](https://www.coinfirm.com/).
+* `ssn`: Social security number check; applicable to US residents only.
+
+Some addons are included automatically, while others may not be supported by
+all levels. Here is our current addon support matrix:
+
+| level   | selfie    | video       | accreditation | wallet    | ssn       |
+| ------- | --------- | ----------- | ------------- | --------- | --------- |
+| `v1`    | included  | available   | included      | available | included  |
+| `light` | available | unavailable | available     | available | available |
+| `plus`  | available | unavailable | available     | available | available |
+
+**Note**: For light and plus levels, you must specify the `selfie` addon.
+
+
+## API Authorization
+
+Every request sent to the Fractal ID API must be authorized by adding an
+`Authorization` header containing a valid access token (except the endpoint
+used to obtain access tokens: `/oauth/token`).
+
+Conceptually, access tokens are tied to an identity. There are two types of
+identities:
+
+* User identities; you obtain these tokens by following the User authorization
+  flow. You should use these when you want to access information of one of your
+  users.
+
+* Application identities; you obtain these tokens by following the Client
+  authorization flow. You should use these access tokens when you want to
+  interact with our statistics endpoints, for example.
+
+
+## OAuth2 scopes
+
+Fractal ID uses OAuth2 as its underlying protocol. This protocol relies on
+[scopes](https://oauth.net/2/scope/) to limit application's access to user
+information.
+
+We have the following scopes available.
+
+User basic scopes:
+
+| scope          | description                                            |
+| -------------- | ------------------------------------------------------ |
+| `email:read`   | Email addresses of the user.                           |
+| `uid:read`     | **(default scope)** Anonymized unique user identifier. |
+
+
+User KYC level scopes:
+
+There are two types of KYC level scopes. One type allows you to request the
+verification, while the second type allows you to access the
+information used.
+
+| kyc level / addon | verification scope                | information details scope                 |
+| ----------------- | --------------------------------- | ----------------------------------------- |
+| `v1`              | `verification.v1:read`            | `verification.v1.details:read`            |
+| `light`           | `verification.light:read`         | `verification.light.details:read`         |
+| `plus`            | `verification.plus:read`          | `verification.plus.details:read`          |
+| `accreditation`   | `verification.accreditation:read` | `verification.accreditation.details:read` |
+| `selfie`          | `verification.selfie:read`        | `verification.selfie.details:read`        |
+| `ssn`             | `verification.ssn:read`           | `verification.ssn.details:read`           |
+| `video`           | `verification.video:read`         | `verification.video.details:read`         |
+| `wallet`          | `verification.wallet:read`        | `verification.wallet.details:read`        |
+
+**Note**: If you wish to see the information details scope and request that the
+user goes through a given KYC level verification, you must specify both scopes.
+
+Client scopes:
+
+These scopes can be used during the client credentials flow.
+
+| scope               | description                         |
+| ------------------- | ----------------------------------- |
+| `client.stats:read` | Grants access to our statistics API |
+
+## User authorization
+
+Fractal ID implements the [authorization code
+grant](https://tools.ietf.org/html/rfc6749#section-1.3.1) of the [OAuth2
 standard](https://tools.ietf.org/html/rfc6749).
 
-### Scopes
+This flow can be summarized by the following steps:
 
-We have the following scopes available. All are read-only.
+- your application redirects your user to our authorization endpoint, with the KYC level described as a set of scopes;
+- the user fills in their information on Fractal ID;
+- the user gets redirected back to your application (`redirect_uri`), with a `code` in its URL parameters (that expires after 10 minutes);
+- your application's backend exchanges the `code` for an `access_token` and a `refresh_token`, using your client credentials;
+- when the access token expires (after 2 hours), you may obtain a new one using the `refresh_token` and your client credentials;
 
-| scope                                          | type              | description                                                                                                                                                                                                               |
-| ---------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `email:read`                                   | `[EmailAddress*]` | Email addresses of the user.                                                                                                                                                                                              |
-| `institution.company_name:read`                | `string`          | Full name of the company.                                                                                                                                                                                                 |
-| `institution.residential_address_country:read` | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the company's residential address.                                                                                                 |
-| `institution.accredited_investor:read`         | `boolean`         | Accredited investor status for the company's residential country.                                                                                                                                                         |
-| `person.full_name:read`                        | `string`          | Full name of the user.                                                                                                                                                                                                    |
-| `person.residential_address_country:read`      | `string`          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the user's residential address.                                                                                                    |
-| `person.accredited_investor:read`              | `boolean`         | Accredited investor status for the user's residential country.                                                                                                                                                            |
-| `uid:read`                                     | `string`          | **(default scope)** Anonymized unique user identifier.                                                                                                                                                                    |
-| `verification.v1:read`                         | `[Verification*]` | Fractal `v1` type verification, attesting the truthfulness of all the data requested.                                                                                                                                     |
-| `verification.video:read`                      | `[Verification*]` | Fractal `video` type verification. Ensures the user went through an interview with an identity specialist that verified their documents and identity. Needs `verification.v1:read` to be present in the requested scopes. |
-| `verification.v1.details:read`                 | (several types)   | All user data collected in order to issue the Fractal `v1` type verification.                                                                                                                                             |
-| `verification.video.details:read`              | (several types)   | All user data collected in order to issue the Fractal `video` type verification.                                                                                                                                          |
+### Obtaining an authorization code
 
-#### Types
-
-##### EmailAddress
-
-| member  | type   | description   |
-| ------- | ------ | ------------- |
-| address | string | Email address |
-
-##### Verification
-
-| member  | type   | description        |
-| ------- | ------ | ------------------ |
-| level   | string | Verification level |
-
-### Auth flow
-
-#### Domains
-
-| domain          | staging                  | production          |
-| --------------- | ------------------------ | ------------------- |
-| FRONTEND_DOMAIN | next.fractal.id          | fractal.id          |
-| AUTH_DOMAIN     | auth.next.fractal.id     | auth.fractal.id     |
-| RESOURCE_DOMAIN | resource.next.fractal.id | resource.fractal.id |
-| VERIFIER_DOMAIN | verifier.next.fractal.id | verifier.fractal.id |
-
-#### Obtaining an authorization code
-
-Redirect the user to our authentication endpoint as follows.
+Redirect the user to our authorization endpoint:
 
 ```
-Location: https://FRONTEND_DOMAIN/authorize
+https://FRONTEND_DOMAIN/authorize
   ?client_id={your-app-id}
   &redirect_uri={your-redirect-uri}
   &response_type=code
@@ -85,51 +163,51 @@ This request has the following parameters:
 | `client_id`     | yes       | The ID of your app on our system.                                                                                                                                                                                                                            |
 | `redirect_uri`  | yes       | The URL that you want to redirect the person logging in back to. Must be HTTPS.                                                                                                                                                                              |
 | `response_type` | yes       | `code`                                                                                                                                                                                                                                                       |
-| `scope`         | no        | A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.                                                                                                                                                      |
-| `state`         | yes       | A string value created by your app to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI. |
+| `scope`         | no        | A **space-separated** list of authorization scopes to request. Defaults to `uid:read`.                                                                                                                                                      |
+| `state`         | yes       | A value created by you to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI. |
 
 Once redirected, the user might have to log into Fractal ID. If so, they'll be
 presented with a page to that effect.
 
 Once they are logged in, they will be shown an authorization screen, where
-they're asked whether they're willing to grant the client application the
+they're asked whether they're willing to grant your application the
 requested permissions as requested through the scopes. They will then be
 redirected back to `{your-redirect-uri}`.
 
-##### Authorization grant
+#### Authorization allowed
 
-If the user **authorizes your application**, here's what the request will look like.
+If the user **authorizes your application**, they will be redirected to:
 
 ```
-GET https://{your-redirect-uri}
+https://{your-redirect-uri}
   ?code={code}
   &state={state-param}
 ```
 
 This request has the following parameters:
 
-| parameter | description                                                                  |
-| --------- | ---------------------------------------------------------------------------- |
-| `code`    | Authorization code to be exchanged for an access token for access retrieval. |
-| `state`   | Unchanged `state` parameter you provided during authorization request.       |
+| parameter | description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| `code`    | Authorization code to be exchanged for an access token, expiring in 10 minutes. |
+| `state`   | Unchanged `state` parameter you provided during authorization request.          |
 
-##### Authorization refusal
+#### Authorization denied
 
-If the user **refuses authorization**, Fractal ID will issue the following request.
+If the user **refuses authorization**, Fractal ID will redirect them to:
 
 ```
-GET https://{your-redirect-uri}
+https://{your-redirect-uri}
   ?error=access_denied
   &error_description=The+resource+owner+or+authorization+server+denied+the+request.
 ```
 
-##### Other errors
+#### Other errors
 
 The request might fail for reasons other than authorization refusal. Please
 refer to [RFC 6749 §4.1.2.1. (Error
 Response)](https://tools.ietf.org/html/rfc6749#section-4.1.2.1) for details.
 
-#### Obtaining an access token
+### Obtaining an access token
 
 You will then need to exchange the code for an access token. Be sure to do the
 following on your server, as your `client_secret` shouldn't be exposed to the
@@ -148,15 +226,15 @@ POST https://AUTH_DOMAIN/oauth/token
 | --------------- | --------- | ------------------------------------------------------------------------------- |
 | `client_id`     | yes       | Your API application ID.                                                        |
 | `client_secret` | yes       | Your API application secret.                                                    |
-| `code`          | yes       | Authorization code to be exchanged for an access token for access retrieval.    |
+| `code`          | yes       | Authorization code obtained in the previous step.                               |
 | `grant_type`    | yes       | `authorization_code`                                                            |
-| `redirect_uri`  | yes       | The URL that you want to redirect the person logging in back to. Must be HTTPS. |
+| `redirect_uri`  | yes       | The URL that the user was redirected to in the first step (without parameters). |
 
 This access token expires 2 hours later.
 
 This endpoint returns JSON. An example follows.
 
-```
+```json
 {
   "access_token": "7rgojfemuk-aq8RcA7xWxJQKv6Ux0VWJ1DQtU6178B8",
   "token_type": "bearer",
@@ -171,18 +249,18 @@ Please refer to [RFC 6749 §5.1 (Successful
 Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
 on the fields.
 
-The list of authorized scopes may be different from the required ones. Default
-scopes may be added, and the user may deny access to some of them. If you
-request both institution and person scopes, you will only be granted the ones
-that match the user type.
+**Note**: the list of authorized scopes may be different from the required
+ones. Default scopes may be added, and the user may deny access to some of
+them. If you request both institution and person scopes, you will only be
+granted the ones that match the user type.
 
-#### Refreshing access token
 
-Fractal ID OAuth authorization server implements refresh token rotation, which
-means that every access token refresh request will issue a new refresh token.
-Previous tokens are invalidated (revoked) only once the access token is used.
-For refreshed access tokens, the scopes are identical from the previous access
-token.
+### Refreshing access token
+
+Fractal ID implements refresh token rotation, which means that every access
+token refresh request will issue a new refresh token. Previous tokens are
+invalidated (revoked) only once the access token is used. For refreshed access
+tokens, the scopes are identical from the previous access token.
 
 ```
 POST https://AUTH_DOMAIN/oauth/token
@@ -203,7 +281,7 @@ This request has the following parameters:
 
 Example response:
 
-```
+```json
 {
   "access_token": "bftp_00bxmjiTyCqiptfR_hUDMMcPAZuGg9mylnNM3g",
   "token_type": "bearer",
@@ -218,10 +296,14 @@ Please refer to [RFC 6749 §5.1 (Successful
 Response)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details
 on the fields.
 
-#### Obtaining a token via a client credentials grant
+## Client authorization
 
-Some endpoints, like the stats endpoint, will require a token for authentication. You can get a token for those situations using the client credentials grant, which returns a token specific to your application, instead of any specific user, which avoids having to send a client_id and client_secret to services other than the authorization server.
-To obtain one, make a request similar to the following:
+To access information related to your application, you must obtain an access
+token using the [client credentials
+grant](https://tools.ietf.org/html/rfc6749#section-1.3.4).
+
+This flow is composed of a single step. You must send the following request to
+our authorization server:
 
 ```
 POST https://AUTH_DOMAIN/oauth/token
@@ -242,74 +324,158 @@ This request has the following parameters:
 
 Example response:
 
-```
+```json
 {
   "access_token":"OUuf_tJs-J2AAxjWr0JHvzFure5Eb7KMUQRO0jpqXWc",
   "token_type":"Bearer",
   "expires_in":7200,
-  "scope":"uid:read",
+  "scope":"client.stats:read",
   "created_at":1554400723
 }
 ```
 
-## Resource retrieval
+## User information retrieval
 
-You can retrieve information of a user through the `/users/me` endpoint. This
-requires posession of a valid `access_token`, obtained as described above.
+You can obtain user information through the `/users/me` endpoint. This requires
+a valid `access_token`.
 
 ```
 GET https://RESOURCE_DOMAIN/users/me
 Authorization: Bearer {access-token}
 ```
 
-This endpoint returns JSON. A few examples follow.
+This endpoint returns JSON. The scopes associated with the access token will
+define which fields will be returned. A few examples follow.
 
-When the user is a natural person:
+Assuming the access token has the following scopes:
 
-```
+* `uid:read`
+* `email:read`
+* `verification.plus:read`
+* `verification.selfie:read`
+* `verification.wallet:read`
+* `verification.wallet.details:read`
+
+The response payload would be:
+
+```json
 {
   "uid": "d52bdee2-0543-4b60-8c46-5956a37db8af",
   "emails": [
-    { "address": "stallman@muh-freedums.com" }
+    { "address": "ewd@example.com" }
   ],
-  "person": {
-    "full_name": "Richard Stallman",
-    "accredited_investor": true,
-    "residential_address_country": "US"
-  },
-  "institution": null,
   "verifications": [
-    { level: "v1" }
+    {
+      "level": "plus"
+    },
+    {
+      "level": "selfie"
+    },
+    {
+      "level": "wallet",
+      "details": {
+        "wallet_currency": "ETH",
+        "wallet_address": "0x0000000000000000000000000000000000000000"
+      }
+    }
   ]
 }
 ```
 
-When the user is an institution:
+If the scopes were:
 
-```
+* `uid:read`
+* `verification.plus:read`
+* `verification.plus.details:read`
+* `verification.selfie:read`
+* `verification.selfie.details:read`
+* `verification.wallet:read`
+
+The response payload would be:
+
+```json
 {
   "uid": "d52bdee2-0543-4b60-8c46-5956a37db8af",
-  "emails": [
-    { "address": "support@fractal.id" }
-  ],
-  "person": null,
-  "institution": {
-    "company_name": "Fractal Blockchain GmbH",
-    "accredited_investor": true,
-    "residential_address_country": "DE"
-  },
   "verifications": [
-    { level: "v1" }
+    {
+      "level": "plus",
+      "details": {
+        "accredited_investor": true,
+        "accredited_investor_proof_file": "https://example.com/path-to-accreditation-file",
+        "date_of_birth": "1930-05-11",
+        "full_name": "Edsger Wybe Dijkstra",
+        "place_of_birth": "Rotterdam",
+        "identification_document_country": "NL",
+        "identification_document_type": "national_id",
+        "identification_document_number": "123456789",
+        "residential_address": "Austin, Texas",
+        "residential_address_country": "US",
+        "residential_address_proof_file": "https://example.com/path-to-residence-file"
+      }
+    },
+    {
+      "level": "selfie",
+      "details": {
+        "identification_document_back_file": "https://example.com/path-to-back-file",
+        "identification_document_front_file": "https://example.com/path-to-front-file",
+        "identification_document_selfie_file": "https://example.com/path-to-selfie-file"
+      }
+    },
+    {
+      "level": "wallet"
+    }
   ]
 }
 ```
 
-Note that some of the keys may be missing if access to them was not requested
-and granted.
+We expose the following fields:
+
+| parameter | type / format | kyc level availability | restrictions |
+| --------- | ------------- | ---------------------- | ------------ |
+| `accredited_investor_proof_file` | URL | `v1`, `accreditation` | USA & Canada residents only |
+| `accredited_investor` | boolean | `v1`, `accreditation` | USA & Canada residents only |
+| `date_of_birth` | `YYYY-MM-DD` | `v1`, `light`, `plus` | |
+| `full_name` | `string` | `v1`, `light`, `plus` | |
+| `identification_document_back_file` | URL | `v1`, `selfie` | |
+| `identification_document_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `v1`, `light`, `plus` | |
+| `identification_document_front_file` | URL | `v1`, `selfie` | |
+| `identification_document_number` | `string` | `v1`, `light`, `plus` | |
+| `identification_document_selfie_file` | URL | `v1`, `selfie` | |
+| `identification_document_type` | `national_id`, <br> `passport`, or <br> `drivers_license` | `v1`, `light`, `plus` | |
+| `place_of_birth` | `string` | `v1`, `light`, `plus` | |
+| `residential_address_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `v1`, `light`, `plus` | |
+| `residential_address_proof_file` | URL | `v1`, `light`, `plus` | |
+| `residential_address` | `string` | `v1`, `light`, `plus` | |
+| `wallet_address` | `string` | `wallet` | |
+| `wallet_currency` | `BTC`, or `ETH` | `wallet` | |
+| `social_security_number` | `string` | `v1`, `ssn` | USA residents only |
+| `articles_of_association_file` | URL | `v1`, `light`, `plus` | institutions only |
+| `beneficial_owner` | `string` | `v1`, `light`, `plus` | institutions only |
+| `certificate_of_corporate_status_file` | URL | `v1`, `light`, `plus` | Canada institutions only |
+| `certificate_of_good_standing_file` | URL | `v1`, `light`, `plus` | USA institutions only |
+| `certificate_of_incorporation_file` | URL | `v1`, `light`, `plus` | USA & Canada institutions only |
+| `commercial_register_entry_file` | URL | `v1`, `light`, `plus` | institutions only |
+| `commercial_register` | `string` | `v1`, `light`, `plus` | institutions only |
+| `company_name` | `string` | `v1`, `light`, `plus` | institutions only |
+| `company_seat` | `string` | `v1`, `light`, `plus` | institutions only |
+| `jurisdiction` | `string` | `v1`, `light`, `plus` | institutions only |
+| `legal_form` | `string` | `v1`, `light`, `plus` | institutions only |
+| `managing_directors` | `string` | `v1`, `light`, `plus` | institutions only |
+| `owner_identity_proof_file` | URL | `v1`, `light`, `plus` | institutions only |
+| `power_of_attorney_file` | URL | `v1`, `light`, `plus` | institutions only |
+| `secretary_certificate_file` | URL | `v1`, `light`, `plus` | USA & Canada institutions only |
+| `shareholders_list_file` | URL | `v1`, `light`, `plus` | institutions only |
+| `transparency_register_entry_file` | URL | `v1`, `light`, `plus` | institutions only |
+| `unique_identification_number` | `string` | `v1`, `light`, `plus` | USA, Singapore & Hong-Kong institutions only |
+
+**Note**: URLs are set expire a few hours after they were requested.
+
 
 ## Statistics
 
-You can retrieve information about how many users, and their individual KYC statuses, authorized your application. You'll need to provide a token with the `client.stats:read` scope, which can be aquired via a client credentials grant, explained in this document.
+You can retrieve information about how many users, and their individual KYC
+statuses, authorized your application. You'll need to provide a token with the
+`client.stats:read` scope, which can be aquired via a client credentials grant.
 
 ### User statuses
 
@@ -332,7 +498,7 @@ Authorization: Bearer {access-token}
 
 Example response:
 
-```
+```json
 {
   "approved": 55,
   "contacted": 4,
@@ -353,7 +519,7 @@ Authorization: Bearer {access-token}
 
 Example response:
 
-```
+```json
 {
   "US": {
     "approved": 8,
@@ -382,7 +548,7 @@ Authorization: Bearer {access-token}
 
 Example response:
 
-```
+```json
 {
   "320bfdaa-213e-41fb-8d77-ed98c415f01e": "approved",
   "87dd7fcb-c193-412e-8715-b13651fca2e4": "pending",
@@ -405,12 +571,8 @@ Webhooks allow you to build or set up Applications which subscribe to certain ev
 
 ### Setup
 
-The integration of Webhooks is currently available for select partners.
-
-Setup involves:
-
-1. Partner providing Fractal with callback URL and available notification types it wants to subscribe.
-1. Fractal providing the partner with a secret token.
+To set up Webhooks, you need to provide us with the callback URL and the notification types that you would like to subscribe.
+We will then send you the webhook secret token.
 
 ### Available notifications types
 
@@ -420,7 +582,7 @@ Once user is approved, the partner can get notified about user verification proc
 
 Example payload:
 
-```
+```json
 {
   "type": "verification_approved",
   "data": {
