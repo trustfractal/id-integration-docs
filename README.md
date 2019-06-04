@@ -24,7 +24,7 @@ Note: As a security measure, all URLs [MUST be secured using
 HTTPS](https://tools.ietf.org/html/rfc6749#section-3.1.2.1), except when using
 `localhost` addresses.
 
-We have staging and production environments available. throughout this
+We have staging and production environments available. Throughout this
 document, we will use the following placeholders. You should use the domains
 that match the environment you are using.
 
@@ -39,7 +39,7 @@ that match the environment you are using.
 ## KYC levels
 
 Fractal ID supports different levels of verification. Additionally, each level
-may be extended by a number of addons.
+may be extended by a number of addons. This will impact the data the user is requested to share and consequently their journey in Fractal ID.
 
 Available levels:
 
