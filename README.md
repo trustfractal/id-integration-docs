@@ -596,6 +596,8 @@ Example payload:
 
 User can revoke an application access at any given time without prior notice trough Fractal ID dashboard. Upon getting `application_access_revoked` notification, partner can be notified that the user has decided not to share his information from now on. It means that all access grants and access tokens are being revoked and partner won't be able to query this user anymore.
 
+Note that, due to AML regulations, Fractal still has to make this information available upon Client request.
+
 Example payload:
 
 ```json
