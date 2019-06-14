@@ -580,6 +580,8 @@ We will then send you the webhook secret token.
 
 Once user is approved, the partner can get notified about user verification process being successfully completed. Upon getting `verification_approved` notification, partner can use specified user access token and retrieve latest information about the user and/or perform its business logic.
 
+We send `verification_approved` notifications for each KYC level and add-on that you have requested initially and they can come in any order. Given client requested `light` KYC level with `selfie` and `wallet` add-ons, for example, we will send 3 notifications with the same value provided in `level` field. Available values are described in KYC levels section.
+
 Example payload:
 
 ```json
@@ -650,6 +652,8 @@ Fractal ID uses `application/json` content type to deliver the JSON payload dire
 #### Expected Response
 
 Fractal ID expects your server to reply with response code `2xx` to identify successful delivery. All response codes outside this range, including `3xx` codes, will indicate to Fractal ID that you did not receive the webhook.
+
+Fractal ID will make sure to send notification successfully at least once to the client. There is a possibility of receiving the same successful webhook notification multiple times, but in very rare cases.
 
 #### Retrying sending notifications
 
