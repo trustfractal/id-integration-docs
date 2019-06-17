@@ -653,7 +653,7 @@ Fractal ID uses `application/json` content type to deliver the JSON payload dire
 
 Fractal ID expects your server to reply with response code `2xx` to identify successful delivery. All response codes outside this range, including `3xx` codes, will indicate to Fractal ID that you did not receive the webhook.
 
-Fractal ID will make sure to send notification successfully at least once to the client. There is a possibility of receiving the same successful webhook notification multiple times, but in very rare cases.
+Fractal ID will make sure to send notification successfully at least once to the client. There is a possibility of receiving the same successful webhook notification multiple times, but in very rare cases. This means you should likely want to ensure your endpoint is idempotent.
 
 #### Retrying sending notifications
 
