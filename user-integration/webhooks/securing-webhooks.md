@@ -34,3 +34,4 @@ No matter which implementation you use, the hash signature starts with `sha1=`, 
 {% hint style="info" %}
 Using a plain `==` operator is **not advised**. A method like `secure_compare` performs a "constant time" string comparison, which renders it safe from certain timing attacks against regular equality operators.
 {% endhint %}
+

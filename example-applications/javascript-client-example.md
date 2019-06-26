@@ -10,3 +10,4 @@ $ cd id-integration-docs/client-example/
 ```
 
 Follow further instructions [here](https://github.com/FractalBlockchain/id-integration-docs/tree/master/client-example).
+

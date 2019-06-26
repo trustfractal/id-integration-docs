@@ -1,7 +1,7 @@
 # Getting started
 
-Integration of Fractal ID API is currently available upon request.
-
+Integration of Fractal ID API is currently available upon request.  
+  
 To get started, we need you to provide us with:
 
 1. the target authorization redirection endpoint, `redirect_uri`
@@ -22,3 +22,4 @@ Note: As a security measure, all URLs [MUST be secured using HTTPS](https://tool
 {% hint style="info" %}
 We are actively working on improving client dashboard to allow clients manage webhooks without the steps above.
 {% endhint %}
+

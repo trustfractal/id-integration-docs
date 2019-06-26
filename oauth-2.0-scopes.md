@@ -37,3 +37,4 @@ These scopes can be used during the client credentials flow.
 | Scope | Description |
 | :--- | :--- |
 | `client.stats:read` | Grants access to our statistics API |
+

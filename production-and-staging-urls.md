@@ -8,3 +8,4 @@ We have **staging** and **production** environments available. Throughout this d
 | `AUTH_DOMAIN` | auth.next.fractal.id | auth.fractal.id |
 | `RESOURCE_DOMAIN` | resource.next.fractal.id | resource.fractal.id |
 | `VERIFIER_DOMAIN` | verifier.next.fractal.id | verifier.fractal.id |
+

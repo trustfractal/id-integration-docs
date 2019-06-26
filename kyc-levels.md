@@ -39,3 +39,4 @@ Some addons are included automatically, while others may not be supported by all
 {% hint style="warning" %}
 ⚠ ****For `light` and `plus` levels, you must specify the`selfie`addon.
 {% endhint %}
+

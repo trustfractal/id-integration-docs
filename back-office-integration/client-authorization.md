@@ -16,15 +16,14 @@ Client credentials grant flow
 {% api-method-path-parameters %}
 {% api-method-parameter name="client\_id" type="string" required=true %}
 Your API application ID
-Your API application secret
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="client\_secret" type="string" required=true %}
-
+Your API application secret
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="scope" type="string" required=false %}
-A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.
+A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.  
 You'll need to provide a token with the `client.stats:read` scope in order to access application statistics for example.
 {% endapi-method-parameter %}
 
@@ -53,3 +52,6 @@ You'll need to provide a token with the `client.stats:read` scope in order to ac
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
+## 
+

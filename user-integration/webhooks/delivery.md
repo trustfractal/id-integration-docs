@@ -41,3 +41,4 @@ X-Fractal-Signature: sha1=2e7c4e307e25dd0ce4baad4d90dc7d4b63bdbab6
 Content-Type: application/json
 {"type": "verification_approved","data":{"level":"v1","user_id":"d6d782ef-568b-4355-8eb4-2d32ac97b44c"}}
 ```
+
