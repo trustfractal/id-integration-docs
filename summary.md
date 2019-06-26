@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Introduction](README.md)
+* [Introduction](introduction.md)
 * [Getting started](getting-started.md)
 * [KYC levels](kyc-levels.md)
 * [API Authorization](api-authorization.md)
