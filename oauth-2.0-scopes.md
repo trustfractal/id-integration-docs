@@ -22,6 +22,7 @@ There are two types of KYC level scopes. One type allows you to request the veri
 | `plus` | `verification.plus:read` | `verification.plus.details:read` |
 | `accreditation` | `verification.accreditation:read` | `verification.accreditation.details:read` |
 | `selfie` | `verification.selfie:read` | `verification.selfie.details:read` |
+| `sow` | `verification.sow:read` | `verification.sow.details:read` |
 | `ssn` | `verification.ssn:read` | `verification.ssn.details:read` |
 | `video` | `verification.video:read` | `verification.video.details:read` |
 | `wallet` | `verification.wallet:read` | `verification.wallet.details:read` |
