@@ -193,3 +193,4 @@ Refresh token to be exchanged for an access token for access retrieval.
 {% hint style="info" %}
 Please refer to [RFC 6749 §5.1 \(Successful Response\)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details on the fields.
 {% endhint %}
+
