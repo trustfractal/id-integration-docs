@@ -1,7 +1,7 @@
 # User authorization
 
-Fractal ID implements the [authorization code grant](https://tools.ietf.org/html/rfc6749#section-1.3.1) of the [OAuth2 standard](https://tools.ietf.org/html/rfc6749).  
-  
+Fractal ID implements the [authorization code grant](https://tools.ietf.org/html/rfc6749#section-1.3.1) of the [OAuth2 standard](https://tools.ietf.org/html/rfc6749).
+
 This flow can be summarized by the following steps:
 
 * your application redirects your user to our authorization endpoint, with the KYC level described as a set of scopes;
@@ -9,7 +9,7 @@ This flow can be summarized by the following steps:
 * the user gets redirected back to your application \(`redirect_uri`\), with a `code` in its URL parameters \(that expires after 10 minutes\);
 * your application's backend exchanges the `code` for an `access_token` and a `refresh_token`, using your client credentials;
 * when the access token expires \(after 2 hours\), you may obtain a new one using the `refresh_token` and your client credentials;
-* 
+
 ## Obtaining an authorization code
 
 Redirect the user to our authorization endpoint:
@@ -33,8 +33,8 @@ This request has the following parameters:
 | `scope` | no | A **space-separated** list of authorization scopes to request. Defaults to `uid:read`. |
 | `state` | yes | A value created by you to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI. |
 
-Once redirected, the user might have to log into Fractal ID. If so, they'll be presented with a page to that effect.  
-  
+Once redirected, the user might have to log into Fractal ID. If so, they'll be presented with a page to that effect.
+
 Once they are logged in, they will be shown an authorization screen, where they're asked whether they're willing to grant your application the requested permissions as requested through the scopes. They will then be redirected back to `{your-redirect-uri}`.
 
 ## Authorization allowed
@@ -193,4 +193,3 @@ Refresh token to be exchanged for an access token for access retrieval.
 {% hint style="info" %}
 Please refer to [RFC 6749 §5.1 \(Successful Response\)](https://tools.ietf.org/html/rfc6749#section-5.1) for further details on the fields.
 {% endhint %}
-
