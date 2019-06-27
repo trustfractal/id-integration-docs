@@ -18,6 +18,7 @@ Fractal ID supports different levels of verification. Additionally, each level m
 | `video` | Identity check using real time video call \(Video ID\). |
 | `accreditation` | Accreditated investor check; applicable to US and Canadian residents only. |
 | `wallet` | Crypto currency wallet check; uses [Coinfirm](https://www.coinfirm.com/). |
+| `sow` | Source of wealth check. |
 | `ssn` | Social security number check; applicable to US residents only. |
 
 {% hint style="info" %}
@@ -26,11 +27,11 @@ Some addons are included automatically, while others may not be supported by all
 
 ### Add-on support matrix
 
-| Level | `selfie` | `video` | `accreditation` | `wallet` | `ssn` |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| `v1` | ✅  | ➕  | ✅  | ➕  | ✅  |
-| `light` | ➕⚠  | 🚫  | ➕  | ➕  | ➕  |
-| `plus` | ➕ ⚠  | 🚫  | ➕  | ➕  | ➕  |
+| Level | `selfie` | `video` | `accreditation` | `wallet` | `sow` | `ssn` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| `v1` | ✅ | ➕ | ✅ | ➕ | ➕ | ✅ |
+| `light` | ➕ ⚠  | 🚫 | ➕ | ➕ | ➕ | ➕ |
+| `plus` | ➕ ⚠  | 🚫 | ➕ | ➕ | ➕ | ➕ |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; 🚫 - unavailable;

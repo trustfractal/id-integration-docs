@@ -153,6 +153,45 @@ This endpoint returns JSON. The scopes associated with the access token will def
 | `shareholders_list_file` | URL | `v1`, `light`, `plus` | Institutions only |
 | `transparency_register_entry_file` | URL | `v1`, `light`, `plus` | Institutions only |
 | `unique_identification_number` | `string` | `v1`, `light`, `plus` | USA, Singapore & Hong-Kong institutions only |
+| `sow_estimated_net_worth_currency` | `EUR` or `USD` | `sow` |  |
+| `sow_estimated_net_worth_value` | `string` | `sow` |  |
+| `sow_crypto_bank_statement_file` | URL | `sow` | People only |
+| `sow_crypto_source_of_initial_investment_file` | URL | `sow` | People only |
+| `sow_crypto_transactions_last_3_months_file` | URL | `sow` | People only |
+| `sow_dividends_bank_statement_file` | URL | `sow` | People only |
+| `sow_dividends_entitlement_file` | URL | `sow` | People only |
+| `sow_divorce_settlement_bank_statement_file` | URL | `sow` | People only |
+| `sow_divorce_settlement_proof_file` | URL | `sow` | People only |
+| `sow_freelance_bank_statement_file` | URL | `sow` | People only |
+| `sow_freelance_last_year_tax_returns_file` | URL | `sow` | People only |
+| `sow_freelance_service_contracts_file` | URL | `sow` | People only |
+| `sow_gifts_bank_statement_file` | URL | `sow` | People only |
+| `sow_gifts_name_of_donator` | `string` | `sow` | People only |
+| `sow_gifts_reason_for_donation` | `string` | `sow` | People only |
+| `sow_gifts_relationship_with_donator` | `string` | `sow` | People only |
+| `sow_inheritance_bank_statement_file` | URL | `sow` | People only |
+| `sow_inheritance_proof_file` | URL | `sow` | People only |
+| `sow_lease_revenue_agreement_file` | URL | `sow` | People only |
+| `sow_lease_revenue_bank_statement_file` | URL | `sow` | People only |
+| `sow_life_policy_bank_statement_file` | URL | `sow` | People only |
+| `sow_life_policy_closing_statement_file` | URL | `sow` | People only |
+| `sow_pension_bank_statement_file` | URL | `sow` | People only |
+| `sow_pension_statement_file` | URL | `sow` | People only |
+| `sow_salary_bank_statement_file` | URL | `sow` | People only |
+| `sow_salary_last_year_tax_returns_file` | URL | `sow` | People only |
+| `sow_salary_pay_slips_last_3_months_file` | URL | `sow` | People only |
+| `sow_sale_of_company_bank_statement_file` | URL | `sow` | People only |
+| `sow_sale_of_company_contract_file` | URL | `sow` | People only |
+| `sow_sale_of_property_bank_statement_file` | URL | `sow` | People only |
+| `sow_sale_of_property_contract_file` | URL | `sow` | People only |
+| `sow_sale_of_shares_bank_statement_file` | URL | `sow` | People only |
+| `sow_sale_of_shares_proof_file` | URL | `sow` | People only |
+| `sow_type` | `crypto`, `dividends`, `divorce_settlement`, `freelance`, `gifts`, `inheritance`, `lease_revenue`, `life_policy`, `pension`, `salary`, `sale_of_company`, `sale_of_property`, or `sale_of_shares` | `sow` | People only |
+| `sow_balance_sheet_file` | URL | `sow` | Institutions only |
+| `sow_cash_flow_statement_file` | URL | `sow` | Institutions only |
+| `sow_income_statement_file` | URL | `sow` | Institutions only |
+| `sow_unaudited_accountant_name` | `string` | `sow` | Institutions only |
+| `sow_unaudited_accountant_professional_body` | `string` | `sow` | Institutions only |
 
 {% hint style="warning" %}
 URLs are set expire a few hours after they were requested.
