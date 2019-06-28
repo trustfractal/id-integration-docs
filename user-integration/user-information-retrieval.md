@@ -25,17 +25,23 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-`response1.json` suppose `access_token` has the following scopes:\* `uid:read`  
+`response1.json` suppose `access_token` has the following scopes:  
+  
+\* `uid:read`  
 \* `email:read`  
 \* `verification.plus:read`  
 \* `verification.selfie:read`  
 \* `verification.wallet:read`  
-\* `verification.wallet.details:readresponse2.json` suppose `access_token` has the following scopes:\* `uid:read`  
+\* `verification.wallet.details:read`  
+  
+`response2.json` suppose `access_token` has the following scopes:  
+  
+\* `uid:read`  
 \* `verification.plus:read`  
 \* `verification.plus.details:read`  
 \* `verification.selfie:read`  
 \* `verification.selfie.details:read`  
-\* `verification.wallet:read`
+\* `verification.wallet:read`   
 {% endapi-method-response-example-description %}
 
 {% code-tabs %}
