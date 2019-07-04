@@ -10,9 +10,5 @@ Webhooks allow you to build or set up Applications which subscribe to certain ev
 * Secret token - token that allows you to ensure that `POST` requests sent to the callback URL are from Fractal.
 * Notification - webhooks `POST` request which is triggered by certain events on Fractal ID.
 
-## Setup
-
-To set up Webhooks, you need to provide us with the callback URL and the notification types that you would like to subscribe. We will then send you the webhook secret token.
-
 
 
