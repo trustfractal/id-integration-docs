@@ -25,7 +25,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-`response1.json` suppose `access_token` has the following scopes:  
+`response1.json` supposes `access_token` has the following scopes, with plus, self and wallet verifications emitted.  
   
 \* `uid:read`  
 \* `email:read`  
@@ -48,22 +48,54 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% code-tabs-item title="response1.json" %}
 ```javascript
 {
-  "uid": "d52bdee2-0543-4b60-8c46-5956a37db8af",
   "emails": [
-    { "address": "ewd@example.com" }
+    {
+      "address": "example@frctls.com"
+    }
   ],
+  "institution": null,
+  "person": {},
+  "uid": "28718cd0-84cb-4682-a56d-24b607420b2f",
   "verifications": [
     {
-      "level": "plus"
+      "details": null,
+      "level": "plus",
+      "report": null
     },
     {
-      "level": "selfie"
+      "details": null,
+      "level": "selfie",
+      "report": null
     },
     {
-      "level": "wallet",
       "details": {
-        "wallet_currency": "ETH",
-        "wallet_address": "0x0000000000000000000000000000000000000000"
+        "wallet_address": "0x5432154321543215432154321543215432154321",
+        "wallet_currency": "ETH"
+      },
+      "level": "wallet",
+      "report": {
+        "report_id": "cb0c703dd8ff15d7b1d902a9f238e90c9f538f16d9be7d80d53e6cafeec63710",
+        "is_smart_contract": false,
+        "version": "3.3",
+        "report_type": "standard",
+        "report_time": "2019-07-04T13:52:44.835Z",
+        "report_block_height": 1,
+        "address": "5432154321543215432154321543215432154321",
+        "address_type": "ETH",
+        "address_subtype": "ETH",
+        "address_used": false,
+        "address_estimation": null,
+        "cscore": 0,
+        "multisig": null,
+        "whitelist": false,
+        "cc_balance": 0,
+        "usd_balance": 0,
+        "usd_exchange_rate": 0,
+        "profiles": [],
+        "cscore_info": [],
+        "assets_total_usd_value": 0,
+        "assets_count": 4,
+        "indicators": null
       }
     }
   ]
@@ -74,34 +106,54 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% code-tabs-item title="response2.json" %}
 ```javascript
 {
-  "uid": "d52bdee2-0543-4b60-8c46-5956a37db8af",
+  "institution": null,
+  "person": {
+    "date_of_birth": "1980-04-10",
+    "full_name": "full name",
+    "identification_document_country": "PT",
+    "identification_document_front_file": "<URL>",
+    "identification_document_number": "1",
+    "identification_document_selfie_file": "<URL>",
+    "identification_document_type": "passport",
+    "place_of_birth": "Porto",
+    "residential_address": "x",
+    "residential_address_country": "PY",
+    "residential_address_proof_file": "<URL>"
+  },
+  "uid": "28718cd0-84cb-4682-a56d-24b607420b2f",
   "verifications": [
     {
+      "details": {
+        "residential_address": "Street Name, 1",
+        "residential_address_country": "PT",
+        "residential_address_proof_file": "<URL>",
+        "identification_document_type": "passport",
+        "place_of_birth": "Porto",
+        "date_of_birth": "1980-04-10",
+        "full_name": "full name",
+        "identification_document_country": "PT",
+        "identification_document_number": "1"
+      },
       "level": "plus",
-      "details": {
-        "accredited_investor": true,
-        "accredited_investor_proof_file": "https://example.com/path-to-accreditation-file",
-        "date_of_birth": "1930-05-11",
-        "full_name": "Edsger Wybe Dijkstra",
-        "place_of_birth": "Rotterdam",
-        "identification_document_country": "NL",
-        "identification_document_type": "national_id",
-        "identification_document_number": "123456789",
-        "residential_address": "Austin, Texas",
-        "residential_address_country": "US",
-        "residential_address_proof_file": "https://example.com/path-to-residence-file"
-      }
+      "report": null
     },
     {
+      "details": {
+        "identification_document_selfie_file": "<URL>",
+        "identification_document_front_file": "<URL>"
+      },
       "level": "selfie",
-      "details": {
-        "identification_document_back_file": "https://example.com/path-to-back-file",
-        "identification_document_front_file": "https://example.com/path-to-front-file",
-        "identification_document_selfie_file": "https://example.com/path-to-selfie-file"
-      }
+      "report": null
     },
     {
-      "level": "wallet"
+      "details": null,
+      "level": "wallet",
+      "report": null
+    },
+    {
+      "details": null,
+      "level": "wallet",
+      "report": null
     }
   ]
 }
@@ -115,7 +167,71 @@ This endpoint returns JSON. The scopes associated with the access token will def
 
 ## Response fields
 
-| Parameter | Type / Format | KYC level availability | Restrictions |
+#### Top level
+
+| Field | Type / Format | Description |
+| :--- | :--- | :--- |
+| `emails` | `array` | A list of email addresses belonging to the user. |
+| `institution` | `object` | The user data fields for an institutional user. |
+| `person` | `object` | The user data fields for an individual user. |
+| `verifications` | `array` | The list of verifications given to this user. |
+
+#### Institution / Person
+
+These fields contain the last version of the user data submitted to the platform. Only one of these fields will contain data, depending upon the user representing either an institution or themselves as a person. Since the user may edit their information at any time, verified data should be looked up under the `verifications` field only. For more details on these fields, please check the [User data](user-information-retrieval.md#user-data) section below.
+
+#### Verifications
+
+A verification represents information that has been validated internally by Fractal. Verifications are emitted  separately per each level and add-ons. A verification request for `light+video` will generate two verifications, one per item.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Field</th>
+      <th style="text-align:left">Type / Format</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>level</code>
+      </td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">The level (or add-on) that this verification refers to.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>details</code>
+      </td>
+      <td style="text-align:left"><code>object</code>
+      </td>
+      <td style="text-align:left">The set of user data fields (see below for details) that have been validated
+        with respect to this level or add-on. For more details on these fields,
+        please check the <a href="user-information-retrieval.md#user-data">User data</a> section
+        below.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>report</code>
+      </td>
+      <td style="text-align:left"><code>object</code>
+      </td>
+      <td style="text-align:left">
+        <p><b>Valid only for the wallet add-on verification.</b> The AML report generated
+          by <a href="https://www.coinfirm.com/">Coinfirm</a> for the cryptocurrency
+          address present under <code>details</code>.</p>
+        <p>For further information on the report fields, please refer to the the
+          <a
+          href="https://id-docs-attachments.s3.eu-central-1.amazonaws.com/Report+fields+fromAPI+response.pdf">Coinfirm documentation</a>.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>#### User data
+
+The set of fields enumerated below contains the information submitted by the user. Since we allow the user to update his information at any moment, the most recent version of the information provided by the user in these fields will be enumerated either under the `institution` or `person` top-level field.  
+  
+The version of the information validated in the context of a verification will be present under the `details` key in each member of the `verifications` array.
+
+| Field | Type / Format | KYC level availability | Restrictions |
 | :--- | :--- | :--- | :--- |
 | `accredited_investor_proof_file` | URL | `v1`, `accreditation` | USA & Canada residents only |
 | `accredited_investor` | boolean | `v1`, `accreditation` | USA & Canada residents only |
