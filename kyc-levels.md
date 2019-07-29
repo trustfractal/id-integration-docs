@@ -30,14 +30,16 @@ Some addons are included automatically, while others may not be supported by all
 | Level | `selfie` | `video` | `accreditation` | `wallet` | `sow` | `ssn` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | `v1` | ✅ | ➕ | ✅ | ➕ | ➕ | ✅ |
-| `light` | ➕ ⚠  | 🚫 | ➕ | ➕ | ➕ | ➕ |
-| `plus` | ➕ ⚠  | 🚫 | ➕ | ➕ | ➕ | ➕ |
+| `light` | ➕ ⚠  | ➕ ⚠  | ➕ | ➕ | ➕ | ➕ |
+| `plus` | ➕ ⚠  | ➕ ⚠  | ➕ | ➕ | ➕ | ➕ |
 
 {% hint style="info" %}
-✅ - included; ➕ - available; 🚫 - unavailable;
+✅ - included; ➕ - available;
 {% endhint %}
 
 {% hint style="warning" %}
-⚠ For `light` and `plus` levels, you must specify the`selfie`addon.
+⚠ For **`light`**and **`plus`**levels, you must specify either the**`selfie`**or the**`video`**add-on.
 {% endhint %}
+
+
 
