@@ -25,7 +25,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-`response1.json` supposes `access_token` has the following scopes, with plus, self and wallet verifications emitted.  
+`response1.json` supposes `access_token` has the following scopes, with plus, selfie and wallet verifications emitted.  
   
 \* `uid:read`  
 \* `email:read`  
@@ -42,6 +42,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
 \* `verification.selfie:read`  
 \* `verification.selfie.details:read`  
 \* `verification.wallet:read`   
+\* `verification.wallet.details:read`  
 {% endapi-method-response-example-description %}
 
 {% code-tabs %}
@@ -55,7 +56,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
   ],
   "institution": null,
   "person": {},
-  "uid": "28718cd0-84cb-4682-a56d-24b607420b2f",
+  "uid": "b76ab44d-b71e-4d19-b6f9-f6e88cd73946",
   "verifications": [
     {
       "details": null,
@@ -69,18 +70,19 @@ This endpoint returns JSON. The scopes associated with the access token will def
     },
     {
       "details": {
-        "wallet_address": "0x5432154321543215432154321543215432154321",
+        "wallet_address": "0xa1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
         "wallet_currency": "ETH"
       },
       "level": "wallet",
       "report": {
-        "report_id": "cb0c703dd8ff15d7b1d902a9f238e90c9f538f16d9be7d80d53e6cafeec63710",
+        "mock_response": true,
+        "report_id": "28df4599a4256830a4285af140b00868a0e3566ad79ca058f609e6b7ea151fcb",
         "is_smart_contract": false,
         "version": "3.3",
         "report_type": "standard",
-        "report_time": "2019-07-04T13:52:44.835Z",
+        "report_time": "2019-07-29T15:24:29.422Z",
         "report_block_height": 1,
-        "address": "5432154321543215432154321543215432154321",
+        "address": "a1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
         "address_type": "ETH",
         "address_subtype": "ETH",
         "address_used": false,
@@ -108,31 +110,33 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {
   "institution": null,
   "person": {
-    "date_of_birth": "1980-04-10",
-    "full_name": "full name",
-    "identification_document_country": "PT",
+    "date_of_birth": "1967-08-16",
+    "full_name": "David Muller",
+    "identification_document_country": "DE",
     "identification_document_front_file": "<URL>",
-    "identification_document_number": "1",
+    "identification_document_number": "123456789",
     "identification_document_selfie_file": "<URL>",
     "identification_document_type": "passport",
-    "place_of_birth": "Porto",
-    "residential_address": "x",
-    "residential_address_country": "PY",
-    "residential_address_proof_file": "<URL>"
+    "place_of_birth": "Berlin",
+    "residential_address": "Wiener Straße 10, Berlin, 10999",
+    "residential_address_country": "DE",
+    "residential_address_proof_file": "<URL>",
+    "wallet_address": "0xa1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
+    "wallet_currency": "ETH"
   },
-  "uid": "28718cd0-84cb-4682-a56d-24b607420b2f",
+  "uid": "b76ab44d-b71e-4d19-b6f9-f6e88cd73946",
   "verifications": [
     {
       "details": {
-        "residential_address": "Street Name, 1",
-        "residential_address_country": "PT",
+        "residential_address_country": "DE",
         "residential_address_proof_file": "<URL>",
+        "residential_address": "Wiener Straße 10, Berlin, 10999",
         "identification_document_type": "passport",
-        "place_of_birth": "Porto",
-        "date_of_birth": "1980-04-10",
-        "full_name": "full name",
-        "identification_document_country": "PT",
-        "identification_document_number": "1"
+        "place_of_birth": "Berlin",
+        "date_of_birth": "1967-08-16",
+        "full_name": "David Muller",
+        "identification_document_country": "DE",
+        "identification_document_number": "123456789"
       },
       "level": "plus",
       "report": null
@@ -146,14 +150,36 @@ This endpoint returns JSON. The scopes associated with the access token will def
       "report": null
     },
     {
-      "details": null,
+      "details": {
+        "wallet_address": "0xa1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
+        "wallet_currency": "ETH"
+      },
       "level": "wallet",
-      "report": null
-    },
-    {
-      "details": null,
-      "level": "wallet",
-      "report": null
+      "report": {
+        "mock_response": true,
+        "report_id": "28df4599a4256830a4285af140b00868a0e3566ad79ca058f609e6b7ea151fcb",
+        "is_smart_contract": false,
+        "version": "3.3",
+        "report_type": "standard",
+        "report_time": "2019-07-29T15:24:29.422Z",
+        "report_block_height": 1,
+        "address": "a1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
+        "address_type": "ETH",
+        "address_subtype": "ETH",
+        "address_used": false,
+        "address_estimation": null,
+        "cscore": 0,
+        "multisig": null,
+        "whitelist": false,
+        "cc_balance": 0,
+        "usd_balance": 0,
+        "usd_exchange_rate": 0,
+        "profiles": [],
+        "cscore_info": [],
+        "assets_total_usd_value": 0,
+        "assets_count": 4,
+        "indicators": null
+      }
     }
   ]
 }
