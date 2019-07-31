@@ -132,12 +132,18 @@ Bearer {access-token}
 {% endapi-method-response-example-description %}
 
 ```javascript
-{
-  "320bfdaa-213e-41fb-8d77-ed98c415f01e": "approved",
-  "87dd7fcb-c193-412e-8715-b13651fca2e4": "pending",
-  "53406d1d-f06b-4fc3-960f-c5e608751aa9": "rejected",
-  "63b35630-66b7-46ef-bce6-efbe31c7c366": "approved"
-}
+[
+    {
+      "user_id": "320bfdaa-213e-41fb-8d77-ed98c415f01e",
+      "level": "v1",
+      "credential": "approved"
+    },
+    {
+      "user_id": "320bfdaa-213e-41fb-8d77-ed98c415f01e",
+      "level": "light+selfie+wallet",
+      "credential": "pending",
+    }
+]
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
