@@ -7,7 +7,7 @@ We have two environments available for integration:
 * Staging environment - used for testing and experimenting with the integration. There are no real verifications happening on it, but you can ask our support to approve/reject users on it. You can create an account on it via [staging client dashboard](https://developer.next.fractal.id/).
 * Production environment - real environment. You can create an account on it via [production client dashboard](https://developer.fractal.id/).
 
-Once you open up the client dashboard, press the `Login with Fractal` button. After pressing the button, you will be redirected to our onboarding platform. Fill all the required details on it and you will be redirected back to the dashboard.
+Once you open up the client dashboard, press the `Login with Fractal` button. After pressing the button, you will be redirected to our onboarding platform. Fill all the required details on it and authorize client dashboard application.
 
 {% hint style="info" %}
 We might use the email you provided during the onboarding as a main contact for technical communication if needed.
@@ -15,7 +15,7 @@ We might use the email you provided during the onboarding as a main contact for 
 
 ## Create an application
 
-Once you are logged in to the client dashboard, press `Create app` and provide the following information:
+Once you are logged in to the client dashboard, press `+ create app` and provide the following information:
 
 * The target authorization redirection endpoint \(callback URL\) - `redirect_uri` \(`https://example.com/oauth/callback`\). This is a place where users will be redirected after going through Fractal onboarding journey - it's a similar journey that you have already seen while creating an account.
 * The application homepage URL. It will be shown for users authorizing your application.
@@ -23,7 +23,7 @@ Once you are logged in to the client dashboard, press `Create app` and provide t
 * The application display logo \(in square format\). It will be shown for users authorizing your application and included in the emails Fractal sends to the users.
 * The application description. It will be shown for users authorizing your application
 
-![Creating new application via client dashboard](.gitbook/assets/screenshot-2019-08-07-at-11.18.48.png)
+![Creating new application via client dashboard](.gitbook/assets/screenshot-2019-07-04-at-19.08.35.png)
 
 After pressing `Create` button you will see the application listed under `My Apps` section.
 
