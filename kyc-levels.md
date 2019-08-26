@@ -1,13 +1,15 @@
 # KYC levels
 
-Fractal ID supports different levels of verification. Additionally, each level may be extended by a number of add-ons. This will impact the data the user is requested to share and consequently their journey in Fractal ID.
+Fractal ID supports different levels of verification. Additionally, each level
+may be extended by a number of add-ons. This will impact the data the user is
+requested to share and consequently their journey in Fractal ID.
 
 ## Available levels
 
 | Level | Description |
 | :--- | :--- |
-| `v1` | Identity with selfie, residence, AML, accreditation, and SSN checks. |
-| `light` | Identity and residence checks. |
+| `v1` | **[deprecated]** Identity with selfie, residence, AML, accreditation, and SSN checks. |
+| `light` | Identity check. |
 | `plus` | Identity, residence and AML checks. |
 
 ## Available add-ons
@@ -19,7 +21,7 @@ Fractal ID supports different levels of verification. Additionally, each level m
 | `accreditation` | Accreditated investor check; applicable to US and Canadian residents only. |
 | `wallet` | Crypto currency wallet check; uses [Coinfirm](https://www.coinfirm.com/). |
 | `sow` | Source of wealth check. |
-| `ssn` | Social security number check; applicable to US residents only. |
+| `ssn` | Social security number collection; applicable to US residents only. |
 
 {% hint style="info" %}
 Some addons are included automatically, while others may not be supported by all levels.
@@ -38,9 +40,6 @@ Some addons are included automatically, while others may not be supported by all
 {% endhint %}
 
 {% hint style="warning" %}
-⚠ - **light** level requires the **selfie** add-on to be used.   
+⚠ - **light** level requires the **selfie** add-on to be used.
 ⚠ - **plus** level requires either the **selfie** or the **video** add-on to be used.
 {% endhint %}
-
-
-
