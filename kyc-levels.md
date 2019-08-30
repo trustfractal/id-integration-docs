@@ -6,7 +6,7 @@ Fractal ID supports different levels of verification. Additionally, each level m
 
 | Level | Description |
 | :--- | :--- |
-| `v1` | **\[Deprecated\]** Identity with selfie, residence, AML, accreditation, and SSN checks. |
+| `v1` | **\[Deprecated\]** Identity with selfie, residence, AML, and SSN checks. |
 | `light` | Identity check. |
 | `plus` | Identity, residence and AML checks. |
 
@@ -29,7 +29,7 @@ Some addons are included automatically, while others may not be supported by all
 
 | Level | `selfie` | `video` | `accreditation` | `wallet` | `sow` | `ssn` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| `v1` | ✅ | ➕ | ✅ | ➕ | ➕ | ✅ |
+| `v1` | ✅ | ➕ | 🚫 | ➕ | ➕ | ✅ |
 | `light` | ➕ ⚠  | 🚫  | ➕ | ➕ | ➕ | ➕ |
 | `plus` | ➕ ⚠  | ➕ ⚠  | ➕ | ➕ | ➕ | ➕ |
 
