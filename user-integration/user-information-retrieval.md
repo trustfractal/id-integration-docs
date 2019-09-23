@@ -259,23 +259,26 @@ The version of the information validated in the context of a verification will b
 
 | Field | Type / Format | KYC level availability | Restrictions |
 | :--- | :--- | :--- | :--- |
-| `accredited_investor_proof_file` | URL | `v1`, `accreditation` | USA & Canada residents only |
-| `accredited_investor` | boolean | `v1`, `accreditation` | USA & Canada residents only |
-| `date_of_birth` | `YYYY-MM-DD` | `v1`, `light`, `plus` |  |
-| `full_name` | `string` | `v1`, `light`, `plus` |  |
-| `identification_document_back_file` | URL | `v1`, `selfie` |  |
-| `identification_document_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `v1`, `light`, `plus` |  |
-| `identification_document_front_file` | URL | `v1`, `selfie` |  |
-| `identification_document_number` | `string` | `v1`, `light`, `plus` |  |
-| `identification_document_selfie_file` | URL | `v1`, `selfie` |  |
-| `identification_document_type` | `national_id`, `passport` or `drivers_license` | `v1`, `light`, `plus` |  |
-| `place_of_birth` | `string` | `v1`, `light`, `plus` |  |
-| `residential_address_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `v1`, `light`, `plus` |  |
-| `residential_address_proof_file` | URL | `v1`, `light`, `plus` |  |
-| `residential_address` | `string` | `v1`, `light`, `plus` |  |
+| `accredited_investor` | boolean | `basic`, `v1`, `accreditation` | USA & Canada residents only |
+| `accredited_investor_proof_file` | URL | `basic`, `v1`, `accreditation` | USA & Canada residents only |
+| `date_of_birth` | `YYYY-MM-DD` | `basic`, `v1`, `light`, `plus` |  |
+| `full_name` | `string` | `basic`, `v1`, `light`, `plus` |  |
+| `identification_document_back_file` | URL | `basic`, `v1`, `selfie` |  |
+| `identification_document_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `basic`, `v1`, `light`, `plus` |  |
+| `identification_document_front_file` | URL | `basic`, `v1`, `selfie` |  |
+| `identification_document_number` | `string` | `basic`, `v1`, `light`, `plus` |  |
+| `identification_document_ocr` | `string` | `basic`, `v1`, `light`, `plus` |  |
+| `identification_document_selfie_file` | URL | `basic`, `v1`, `selfie` |  |
+| `identification_document_type` | `national_id`, `passport` or `drivers_license` | `basic`, `v1`, `light`, `plus` |  |
+| `liveness` | `boolean` | `basic`, `liveness` |  |
+| `liveness_facemap_file` | `boolean` | `basic`, `liveness` |  |
+| `place_of_birth` | `string` | `basic`, `v1`, `light`, `plus` |  |
+| `residential_address` | `string` | `basic`, `v1`, `light`, `plus` |  |
+| `residential_address_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `basic`, `v1`, `light`, `plus` |  |
+| `residential_address_proof_file` | URL | `basic`, `v1`, `light`, `plus` |  |
 | `wallet_address` | `string` | `wallet` |  |
 | `wallet_currency` | `BTC` or `ETH` | `wallet` |  |
-| `social_security_number` | `string` | `v1`, `ssn` | USA residents only |
+| `social_security_number` | `string` | `basic`, `v1`, `ssn` | USA residents only |
 | `articles_of_association_file` | URL | `v1`, `light`, `plus` | Institutions only |
 | `beneficial_owner` | `string` | `v1`, `light`, `plus` | Institutions only |
 | `certificate_of_corporate_status_file` | URL | `v1`, `light`, `plus` | Canada institutions only |
