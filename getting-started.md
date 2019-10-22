@@ -28,7 +28,8 @@ Once you are logged in to the client dashboard, press `+ create app` and provide
 After pressing `Create` button you will see the application listed under `My Apps` section.
 
 {% hint style="info" %}
-As a security measure, all URLs [MUST be secured using HTTPS](https://tools.ietf.org/html/rfc6749#section-3.1.2.1), except when using `localhost` addresses.
+As a security measure, all URLs [MUST be secured using HTTPS](https://tools.ietf.org/html/rfc6749#section-3.1.2.1) \(except when using `localhost` addresses\).  
+By [spec](https://tools.ietf.org/html/rfc6749#section-3.1), fragments are forbidden in the authorization callback URL.
 {% endhint %}
 
 ## Obtaining client ID and client secret
