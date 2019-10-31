@@ -261,12 +261,12 @@ The version of the information validated in the context of a verification will b
 | :--- | :--- | :--- | :--- |
 | `accredited_investor_proof_file` | URL | `v1`, `accreditation` | USA & Canada residents only |
 | `accredited_investor` | boolean | `v1`, `accreditation` | USA & Canada residents only |
-| `date_of_birth` | `YYYY-MM-DD` | `v1`, `light`, `plus` |  |
-| `full_name` | `string` | `v1`, `light`, `plus` |  |
-| `identification_document_back_file` | URL | `v1`, `selfie` |  |
-| `identification_document_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `v1`, `light`, `plus` |  |
-| `identification_document_front_file` | URL | `v1`, `selfie` |  |
-| `identification_document_number` | `string` | `v1`, `light`, `plus` |  |
+| `date_of_birth` | `YYYY-MM-DD` | `v1`, `light`, `plus, basic` |  |
+| `full_name` | `string` | `v1`, `light`, `plus, basic` |  |
+| `identification_document_back_file` | URL | `v1`, `selfie, basic` |  |
+| `identification_document_country` | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `v1`, `light`, `plus, basic` |  |
+| `identification_document_front_file` | URL | `v1`, `selfie, basic` |  |
+| `identification_document_number` | `string` | `v1`, `light`, `plus, basic` |  |
 | `identification_document_selfie_file` | URL | `v1`, `selfie` |  |
 | `identification_document_type` | `national_id`, `passport` or `drivers_license` | `v1`, `light`, `plus` |  |
 | `place_of_birth` | `string` | `v1`, `light`, `plus` |  |
@@ -287,6 +287,7 @@ The version of the information validated in the context of a verification will b
 | `company_seat` | `string` | `v1`, `light`, `plus` | Institutions only |
 | `jurisdiction` | `string` | `v1`, `light`, `plus` | Institutions only |
 | `legal_form` | `string` | `v1`, `light`, `plus` | Institutions only |
+| `liveness` | `boolean` | `liveness` |  |
 | `managing_directors` | `string` | `v1`, `light`, `plus` | Institutions only |
 | `owner_identity_proof_file` | URL | `v1`, `light`, `plus` | Institutions only |
 | `power_of_attorney_file` | URL | `v1`, `light`, `plus` | Institutions only |

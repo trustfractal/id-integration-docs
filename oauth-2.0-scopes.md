@@ -17,10 +17,12 @@ There are two types of KYC level scopes. One type allows you to request the veri
 
 | KYC level / add-on | Verification scope | Information details scope |
 | :--- | :--- | :--- |
+| `basic` | `verification.basic:read` | `verification.basic.details:read` |
 | `v1` | `verification.v1:read` | `verification.v1.details:read` |
 | `light` | `verification.light:read` | `verification.light.details:read` |
 | `plus` | `verification.plus:read` | `verification.plus.details:read` |
 | `accreditation` | `verification.accreditation:read` | `verification.accreditation.details:read` |
+| `liveness` | `verification.liveness:read` | `verification.liveness.details:read` |
 | `selfie` | `verification.selfie:read` | `verification.selfie.details:read` |
 | `sow` | `verification.sow:read` | `verification.sow.details:read` |
 | `ssn` | `verification.ssn:read` | `verification.ssn.details:read` |
