@@ -29,7 +29,6 @@ Brief description of Attestations \(Attestations are the processes included in e
 | `selfie` | Identity verification though ID document scan and selfie with ID document. |
 | `video` | Identity verification through real time video call with an operator \(Video ID\). |
 | `liveness` | Automatic liveness detection and automatic face-match. |
-| `accreditation` | Verification of accredited investor status; available for US and Canadian residents only. |
 | `wallet` | Crypto currency wallet check using [Coinfirm](https://www.coinfirm.com/). |
 | `sow` | Verification of source of wealth. |
 | `ssn` | Social security number collection; applicable to US residents only. |
@@ -40,12 +39,12 @@ Some addons are included automatically, while others may not be supported by all
 
 ### Add-on support matrix
 
-| Level | `liveness` | `selfie` | `video` | `accreditation` | `wallet` | `sow` | `ssn` |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `basic` | ➕ ⚠️ | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 |
-| `v1` | 🚫 | ✅ | ➕ | 🚫  | ➕ | ➕ | ✅ |
-| `light` | 🚫 | ➕ ⚠️ | 🚫  | ➕ | ➕ | ➕ | ➕ |
-| `plus` | 🚫 | ➕ ⚠️ | ➕ ⚠️ | ➕ | ➕ | ➕ | ➕ |
+| Level | `liveness` | `selfie` | `video` | `wallet` | `sow` | `ssn` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| `basic` | ➕ ⚠️ | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 |
+| `v1` | 🚫 | ✅ | ➕ | ➕ | ➕ | ✅ |
+| `light` | 🚫 | ➕ ⚠️ | 🚫  | ➕ | ➕ | ➕ |
+| `plus` | 🚫 | ➕ ⚠️ | ➕ ⚠️ | ➕ | ➕ | ➕ |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; 🚫 - unavailable
