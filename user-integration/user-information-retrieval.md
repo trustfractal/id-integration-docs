@@ -259,8 +259,6 @@ The version of the information validated in the context of a verification will b
 
 | Field | Type / Format | KYC level availability | Restrictions |
 | :--- | :--- | :--- | :--- |
-| `accredited_investor_proof_file` | URL | `v1`, `accreditation` | USA & Canada residents only |
-| `accredited_investor` | boolean | `v1`, `accreditation` | USA & Canada residents only |
 | `date_of_birth` | `YYYY-MM-DD` | `v1`, `light`, `plus, basic` |  |
 | `full_name` | `string` | `v1`, `light`, `plus, basic` |  |
 | `identification_document_back_file` | URL | `v1`, `selfie, basic` |  |
