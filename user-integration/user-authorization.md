@@ -23,6 +23,14 @@ https://FRONTEND_DOMAIN/authorize
   &state={state-param}
 ```
 
+{% hint style="info" %}
+If you want this window to open as a popup, you can use JavaScript's `window.open` with the above URL like so:
+
+```text
+window.open(URL, "fractal", "width=480,height=700,top=150,left=150")
+```
+{% endhint %}
+
 This request has the following parameters:
 
 | Parameter | Required? | Description |
