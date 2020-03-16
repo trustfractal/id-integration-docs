@@ -45,8 +45,8 @@ This endpoint returns JSON. The scopes associated with the access token will def
 \* `verification.wallet.details:read`  
 {% endapi-method-response-example-description %}
 
-{% code-tabs %}
-{% code-tabs-item title="response1.json" %}
+{% tabs %}
+{% tab title="response1.json" %}
 ```javascript
 {
   "emails": [
@@ -103,9 +103,9 @@ This endpoint returns JSON. The scopes associated with the access token will def
   ]
 }
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="response2.json" %}
+{% tab title="response2.json" %}
 ```javascript
 {
   "institution": null,
@@ -184,8 +184,8 @@ This endpoint returns JSON. The scopes associated with the access token will def
   ]
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 {% endapi-method-response-example %}
 {% endapi-method-response %}
 {% endapi-method-spec %}

@@ -14,6 +14,7 @@
   * [Available types](user-integration/webhooks/available-types.md)
   * [Delivery](user-integration/webhooks/delivery.md)
   * [Securing webhooks](user-integration/webhooks/securing-webhooks.md)
+* [Mobile app integration](user-integration/mobile-app-integration.md)
 
 ## Back-office integration
 
