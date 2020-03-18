@@ -44,7 +44,7 @@ Some addons are included automatically, while others may not be supported by all
 | `basic` | ➕ ⚠️ | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 |
 | `v1` | 🚫 | ✅ | ➕ | ➕ | ➕ | ✅ |
 | `light` | 🚫 | ➕ ⚠️ | 🚫  | ➕ | ➕ | ➕ |
-| `plus` | 🚫 | ➕ ⚠️ | ➕ ⚠️ | ➕ | ➕ | ➕ |
+| `plus` | ➕ ⚠️ | ➕ ⚠️ | ➕ ⚠️ | ➕ | ➕ | ➕ |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; 🚫 - unavailable
@@ -53,7 +53,7 @@ Some addons are included automatically, while others may not be supported by all
 {% hint style="warning" %}
 ⚠️ - **basic** level requires the **liveness** add-on to be used.  
 ⚠️ - **light** level requires the **selfie** add-on to be used.  
-⚠️ - **plus** level requires either the **selfie** or the **video** add-on to be used.
+⚠️ - **plus** level requires either the **selfie**, **liveness** or the **video** add-on to be used.
 {% endhint %}
 
 
