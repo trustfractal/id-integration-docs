@@ -34,6 +34,14 @@ Fractal ID uses exponential backoff to retry events.
 | 15 | 86400 |
 | 20 | 86400 |
 
+## Order of delivery
+
+The order of callbacks to webhook endpoints is not guaranteed. 
+
+For, e.g., two subsequent status changes, if initial attempt to deliver first notification fails it's being scheduled for retry. Second notification may arrive earlier than the retry on the first notification happens.
+
+To mitigate the risk of setting incorrect user status based on received webhook callbacks we encourage you to keep track of the `timestamp` fields of the status change notifications and compare them internally, or [retrieve user information ](../user-information-retrieval.md#retrieve-user-information)upon getting a webhook callback.
+
 ## Example delivery
 
 Suppose for the given example the secret token is `9d7e80c0f169ab94d34392d64617b7517fb07c40`.
