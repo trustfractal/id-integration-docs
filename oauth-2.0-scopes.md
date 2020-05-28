@@ -11,9 +11,15 @@ We have the following scopes available.
 | `email:read` | Email addresses of the user. |
 | `uid:read` | **\(default scope\)** Anonymized unique user identifier. |
 
-## User KYC level scopes
+## User KYC scopes
 
-There are two types of KYC level scopes. One type allows you to request the verification, while the second type allows you to access the information used.
+There are two types of user KYC scopes, the verification scope and information details scope. One type allows you to request the verification status \(like `verification.basic:read`\), while the second type allows you to access the information provided during the onboarding \(`verification.basic.details:read`\).
+
+{% hint style="info" %}
+If you wish to see the information details scope and request that the user goes through a given KYC level verification, you must specify both scopes.
+{% endhint %}
+
+### Level scopes
 
 | KYC level / add-on | Verification scope | Information details scope |
 | :--- | :--- | :--- |
@@ -21,6 +27,15 @@ There are two types of KYC level scopes. One type allows you to request the veri
 | `v1` | `verification.v1:read` | `verification.v1.details:read` |
 | `light` | `verification.light:read` | `verification.light.details:read` |
 | `plus` | `verification.plus:read` | `verification.plus.details:read` |
+
+### Add-on scopes
+
+{% hint style="warning" %}
+Asking a user for the following scopes without the presence of a level scope \(like the ones above\) is unsupported, and will result in an unexpected user experience.
+{% endhint %}
+
+| KYC level / add-on | Verification scope | Information details scope |
+| :--- | :--- | :--- |
 | `liveness` | `verification.liveness:read` | `verification.liveness.details:read` |
 | `selfie` | `verification.selfie:read` | `verification.selfie.details:read` |
 | `sow` | `verification.sow:read` | `verification.sow.details:read` |
@@ -28,13 +43,9 @@ There are two types of KYC level scopes. One type allows you to request the veri
 | `video` | `verification.video:read` | `verification.video.details:read` |
 | `wallet` | `verification.wallet:read` | `verification.wallet.details:read` |
 
-{% hint style="info" %}
-If you wish to see the information details scope and request that the user goes through a given KYC level verification, you must specify both scopes.
-{% endhint %}
-
 ## Client scopes
 
-These scopes can be used during the client credentials flow.
+These scopes can be used during the [client credentials](back-office-integration/client-authorization.md#client-credentials-grant-flow) flow.
 
 | Scope | Description |
 | :--- | :--- |

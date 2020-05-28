@@ -2,6 +2,10 @@
 
 As soon as you [obtain an user's access token](user-authorization.md), you are able to access the status of their verification case and the personal information they submitted.
 
+{% hint style="info" %}
+You can also access the user's provided information, as well as their KYC process status, in the [user explorer](../client-dashboard.md#user-explorer) within the client dashboard.
+{% endhint %}
+
 {% api-method method="get" host="https://RESOURCE\_DOMAIN" path="/users/me" %}
 {% api-method-summary %}
 Retrieve user information

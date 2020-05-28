@@ -4,6 +4,10 @@ You can retrieve information about how many users, and their individual KYC stat
 
 To access information related to your application, you must obtain an access token using the [client credentials grant](https://tools.ietf.org/html/rfc6749#section-1.3.4), described in the previous section. You'll need to provide a token with the `client.stats:read` scope, which can be acquired via a client credentials grant.
 
+{% hint style="info" %}
+Some of these can also be easily inspected in the [statistics section](../client-dashboard.md#statistics) of the client dashboard.
+{% endhint %}
+
 ## User statuses
 
 | Status | Meaning |

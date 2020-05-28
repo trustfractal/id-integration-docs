@@ -62,8 +62,8 @@ This request has the following parameters:
 | `code` | Authorization code to be exchanged for an access token, expiring in 10 minutes. |
 | `state` | Unchanged `state` parameter you provided during authorization request. |
 
-{% hint style="danger" %}
-After the user is redirected, their authorization will only be effective once this code is exchanged for an access token, as described below.
+{% hint style="info" %}
+After the user is redirected, their authorization will only be counted as authorized once this code is exchanged for an access token, as described below.
 {% endhint %}
 
 ## Authorization denied
@@ -84,8 +84,10 @@ The request might fail for reasons other than authorization refusal. Please refe
 
 You will then need to exchange the code for an access token. Be sure to do the following on your server, as your `client_secret` shouldn't be exposed to the client.
 
-{% hint style="danger" %}
-The access token MUST be fetched, or the user's authorization won't be effective.
+{% hint style="warning" %}
+If the access token is not fetched, the user's authorization won't be effective, and as such won't increase the count of authorized users.
+
+The user's information and status will still be available through the [user explorer](../client-dashboard.md#user-explorer) within the client dashboard.
 {% endhint %}
 
 {% api-method method="post" host="https://AUTH\_DOMAIN" path="/oauth/token" %}

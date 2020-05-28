@@ -5,6 +5,7 @@
 * [KYC levels](kyc-levels.md)
 * [OAuth 2.0 scopes](oauth-2.0-scopes.md)
 * [Production and staging URLs](production-and-staging-urls.md)
+* [Client dashboard](client-dashboard.md)
 
 ## User integration
 
