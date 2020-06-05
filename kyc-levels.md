@@ -41,10 +41,10 @@ Some addons are included automatically, while others may not be supported by all
 
 | Level | `liveness` | `selfie` | `video` | `wallet` | `sow` | `ssn` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| `basic` | ➕ ⚠️ | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 |
+| `basic` | ➕  | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 |
 | `v1` | 🚫 | ✅ | ➕ | ➕ | ➕ | ✅ |
-| `light` | 🚫 | ➕ ⚠️ | 🚫  | ➕ | ➕ | ➕ |
-| `plus` | ➕ ⚠️ | ➕ ⚠️ | ➕ ⚠️ | ➕ | ➕ | ➕ |
+| `light` | 🚫 | ➕  | 🚫  | ➕ | ➕ | ➕ |
+| `plus` | ➕ | ➕  | ➕  | ➕ | ➕ | ➕ |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; 🚫 - unavailable
