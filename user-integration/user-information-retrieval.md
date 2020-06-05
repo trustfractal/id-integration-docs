@@ -274,7 +274,9 @@ This endpoint returns JSON. The scopes associated with the access token will def
       </td>
     </tr>
   </tbody>
-</table>#### `emails`
+</table>
+
+#### `emails`
 
 An array of email addresses belonging to the user. Available when users sign up using an email address. We do not support more than one email address. If the user registered using a phone number, this may be an empty array. Each email entry contains the following fields:
 
@@ -381,7 +383,9 @@ A verification case represents represents information that has been validated in
       </td>
     </tr>
   </tbody>
-</table>#### \[Deprecated\] `institution`
+</table>
+
+#### \[Deprecated\] `institution`
 
 This field will be removed on 2020-06-15. Use `verification_cases` instead.
 
@@ -545,7 +549,9 @@ Some fields are available for natural `person`s only, while others are `institut
       <td style="text-align:left"></td>
     </tr>
   </tbody>
-</table>#### Institution related fields
+</table>
+
+#### Institution related fields
 
 These fields will only be available if the user is an institution and not a natural person.
 
@@ -784,7 +790,9 @@ These fields will only be available if the user is an institution and not a natu
       <td style="text-align:left">USA, Singapore &amp; Hong-Kong institution</td>
     </tr>
   </tbody>
-</table>#### Residency related fields
+</table>
+
+#### Residency related fields
 
 <table>
   <thead>
@@ -835,7 +843,9 @@ These fields will only be available if the user is an institution and not a natu
       <td style="text-align:left"></td>
     </tr>
   </tbody>
-</table>#### Wallet related fields
+</table>
+
+#### Wallet related fields
 
 | Field | Type / Format | KYC level availability | Restrictions |
 | :--- | :--- | :--- | :--- |
@@ -1189,7 +1199,9 @@ These fields will only be available if the user is an institution and not a natu
       </td>
     </tr>
   </tbody>
-</table>#### Social security related fields
+</table>
+
+#### Social security related fields
 
 | Field | Type / Format | KYC level availability | Restrictions |
 | :--- | :--- | :--- | :--- |
