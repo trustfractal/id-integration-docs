@@ -8,7 +8,7 @@ We have the following scopes available.
 
 | Scope | Description |
 | :--- | :--- |
-| `email:read` | Email addresses of the user. |
+| `contact:read` | Email address or phone number of the user \(whichever they chose during registration, where they provide one or the other\) |
 | `uid:read` | **\(default scope\)** Anonymized unique user identifier. |
 
 ## User KYC scopes

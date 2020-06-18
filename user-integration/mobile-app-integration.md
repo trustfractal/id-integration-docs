@@ -14,6 +14,5 @@ Once these are set up, the user will be redirected to your app at the end of the
 
 ## Roadmap
 
-* Q3 2020: new login flow to enable Fractal to be loaded within a web view \(only `SFSafariViewController` in iOS\)
 * Q4 2020: native SDKs for Android and iOS
 
