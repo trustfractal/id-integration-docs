@@ -19,11 +19,11 @@ This endpoint returns `HTTP 201 Created` when successful.
 
 {% api-method-spec %}
 {% api-method-request %}
-{% api-method-path-parameters %}
+{% api-method-body-parameters %}
 {% api-method-parameter name="user\_id" type="string" required=true %}
 The user ID \(uid\) you stored for this user
 {% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
+{% endapi-method-body-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
