@@ -387,15 +387,15 @@ A verification case represents represents information that has been validated in
 
 #### \[Deprecated\] `institution`
 
-This field will be removed on 2020-06-15. Use `verification_cases` instead.
+This field will be removed eventually. Use `verification_cases` instead.
 
 #### \[Deprecated\] `person` 
 
-This field will be removed on 2020-06-15. Use `verification_cases` instead.
+This field will be removed eventually. Use `verification_cases` instead.
 
 #### **\[Deprecated\]** `verifications`
 
-This field will be removed on 2020-06-15. Use `verification_cases` instead.
+This field will be removed eventually. Use `verification_cases` instead.
 
 ### `details`
 
@@ -539,17 +539,22 @@ Some fields are available for natural `person`s only, while others are `institut
       </td>
       <td style="text-align:left"></td>
     </tr>
-    <tr>
-      <td style="text-align:left"><code>liveness</code>
-      </td>
-      <td style="text-align:left"><code>boolean</code>
-      </td>
-      <td style="text-align:left"><code>liveness</code>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
   </tbody>
 </table>
+
+#### Liveness related fields
+
+`liveness_audit_best_file` will generally be the best image of the user. `liveness_audit_least_similar_file` is the least similar image to the first image. `liveness_audit_open_eyes_file` is the image where the users' eyes are the most open. `liveness_audit_quality{1,2,3}_file` are the next 3 highest images.
+
+| Field | Type / Format | KYC level availability | Restrictions |
+| :--- | :--- | :--- | :--- |
+| `liveness` | boolean | `liveness` |  |
+| `liveness_audit_best_file` | URL | `liveness` |  |
+| `liveness_audit_least_similar_file` | URL | `liveness` |  |
+| `liveness_audit_open_eyes_file` | URL | `liveness` |  |
+| `liveness_audit_quality1_file` | URL | `liveness` |  |
+| `liveness_audit_quality2_file` | URL | `liveness` |  |
+| `liveness_audit_quality3_file` | URL | `liveness` |  |
 
 #### Institution related fields
 

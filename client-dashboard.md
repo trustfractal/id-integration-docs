@@ -13,6 +13,10 @@ We cover how to create your first integration in the [Getting started](getting-s
 
 You can click on any of the shown integrations for further details and actions with them. 
 
+## Accounts
+
+You can create as many accounts as you need by letting us know which email addresses should have access to which application and we can do that manually; alternatively, you can use a group email. 
+
 ## Integration details page
 
 In this page, after clicking an integration in the dashboard home, you can inspect multiple aspects of your integration, as well as edit it via the `Edit integration` button on the top right of this page. The page's sections are described below:

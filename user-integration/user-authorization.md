@@ -111,7 +111,7 @@ Your API application secret.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="code" type="string" required=true %}
-Authorization code ontained in the previous step.
+Authorization code obtained in the previous step.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="grant\_type" type="string" required=true %}
