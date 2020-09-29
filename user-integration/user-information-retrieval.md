@@ -313,6 +313,15 @@ A verification case represents represents information that has been validated in
       <td style="text-align:left">The level (or add-on) that this verification refers to.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>journey_completed</code>
+      </td>
+      <td style="text-align:left"><code>boolean</code>
+      </td>
+      <td style="text-align:left"><code>true</code> once a user completes all the journey steps required
+        by your scopes, and gets redirected to <code>redirect_uri</code>. <code>false</code> until
+        then.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>status</code>
       </td>
       <td style="text-align:left">
