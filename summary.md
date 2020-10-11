@@ -30,3 +30,7 @@
 
 * [Reporting referral conversions](referrals/reporting-referral-conversions.md)
 
+## Troubleshooting
+
+* [Common issues](troubleshooting/common-issues.md)
+
