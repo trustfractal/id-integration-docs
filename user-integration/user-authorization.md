@@ -31,6 +31,10 @@ window.open(URL, "fractal", "width=480,height=700,top=150,left=150")
 ```
 {% endhint %}
 
+{% hint style="info" %}
+You can send the user to this authorization link as many times as you like \(for example, if you didn't obtain an access token for them the first time around\). They will be transparently redirected to the redirection URL you set, provided they already authorized your application previously, or shown an authorization screen otherwise.
+{% endhint %}
+
 This request has the following parameters:
 
 | Parameter | Required? | Description |
