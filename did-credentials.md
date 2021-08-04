@@ -1,4 +1,4 @@
-# DID Credentials
+# Fractal DID Credentials
 
 The Fractal DID credentials are automatically generated in our system after a supported KYC is approved. If the user has the Fractal Wallet installed, they will have instant access to them. If not, as a verifier you can access the credentials via Fractal OAuth.
 
@@ -63,15 +63,14 @@ const credential = await window.Fractal.getVerificationRequest(
   kycType,
   requester,
   fields,
-  "V2"
 );
 ```
 
-The first argument is the KYC type you wish to access, the second is an object with data about the requester \(your organization\). This data will be displayed in the prompt the user sees when allowing or rejecting data access. The third argument is a map where the keys are the fields to request access to \(you can find the fields and schema for each KYC type [here](https://github.com/trustfractal/sdk/blob/main/src/Schema/schemas.ts)\) and the values are a boolean indicating whether or not this field is required. The final argument is the credential version. The most recent type of credentials are “V2”.
+The first argument is the KYC type you wish to access, the second is an object with data about the requester \(your organization\). This data will be displayed in the prompt the user sees when allowing or rejecting data access. The final argument is a map where the keys are the fields to request access to \(you can find the fields and schema for each KYC type [here](https://github.com/trustfractal/sdk/blob/main/src/Schema/schemas.ts)\) and the values are a boolean indicating whether or not this field is required. 
 
 ### **Fractal OAuth**
 
-An alternative method for accessing a credential is possible. To do so you need to implement the [classic OAuth solution](https://docs.developer.fractal.id/user-integration/user-authorization). Afterwards, you can perform a GET request to [https://maguro.fractal.id/](https://maguro.fractal.id/)credentials using the token as a bearer token.
+An alternative method for accessing a credential is possible. To do so you need to implement the [classic OAuth solution](https://docs.developer.fractal.id/user-integration/user-authorization). Afterwards, you can perform a GET request to [https://maguro.fractal.id/](https://maguro.fractal.id/)credentials using the token as a bearer token. If you’re using staging, use [https://maguro.staging.sandbox.fractal.id/](https://maguro.staging.sandbox.fractal.id/) credentials instead.
 
   
 **Note that this will give you full-access to the user’s credentials and thus should be used with care.**
@@ -159,10 +158,10 @@ The final argument, the address, should be inferred from the caller, although th
   }
 ```
 
-**The current signing keys are:**
+**The current signing keys are \(FRACTAL\_SIGNER in the code example\) are:**
 
-* Staging: TODO
-* Production: TODO
+* **Staging:** 0xa372CA5A906f7FAD480C49bBc73453672d4d375d
+* **Production:** 0xa3015543Ce7da7B9708076C1171E242C36452F10
 
 You should note that, depending on your restrictions, verifying the signature is not enough to ensure the KYC is acceptable. It should still be checked if the `kycType` is of a desired value, as well as if the countryOfResidence and countryOfIDIssuance belong to supported tiers. This can be done on-chain or off-chain.
 
