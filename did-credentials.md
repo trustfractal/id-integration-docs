@@ -70,7 +70,7 @@ The first argument is the KYC type you wish to access, the second is an object w
 
 ### **Fractal OAuth**
 
-An alternative method for accessing a credential is possible. To do so you need to implement the [classic OAuth solution](https://docs.developer.fractal.id/user-integration/user-authorization). Afterwards, you can perform a GET request to [https://maguro.fractal.id/](https://maguro.fractal.id/)credentials using the token as a bearer token. If you’re using staging, use [https://maguro.staging.sandbox.fractal.id/](https://maguro.staging.sandbox.fractal.id/) credentials instead.
+An alternative method for accessing a credential is possible. To do so you need to implement the [classic OAuth solution](https://docs.developer.fractal.id/user-integration/user-authorization). Afterwards, you can perform a GET request to [https://maguro.fractal.id/](https://maguro.fractal.id/)credentials using the token as a bearer token. If you’re using staging, use [https://maguro.staging.sandbox.fractal.id/credentials](https://maguro.staging.sandbox.fractal.id/credentials) instead.
 
   
 **Note that this will give you full-access to the user’s credentials and thus should be used with care.**
