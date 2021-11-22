@@ -32,7 +32,7 @@ Brief description of Attestations (Attestations are the processes included in ea
 | `ssn`        | Social security number collection; applicable to US residents only.             |
 | `telegram`   | Telegram username collection.                                                   |
 | `video`      | Identity verification through real time video call with an operator (Video ID). |
-| `wallet`     | Cryptocurrency wallet address collection (`ETH` only).                          |
+| `wallet`     | ERC-20 (ETH) wallet address collection.                                         |
 | `wallet-sol` | Solana wallet address collection.                                               |
 
 
