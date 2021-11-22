@@ -31,6 +31,7 @@ Brief description of Attestations (Attestations are the processes included in ea
 | `sow`        | Verification of source of wealth.                                               |
 | `ssn`        | Social security number collection; applicable to US residents only.             |
 | `telegram`   | Telegram username collection.                                                   |
+| `twitter`    | Twitter username collection.                                                    |
 | `video`      | Identity verification through real time video call with an operator (Video ID). |
 | `wallet`     | ERC-20 (ETH) wallet address collection.                                         |
 | `wallet-sol` | Solana wallet address collection.                                               |
@@ -43,12 +44,12 @@ Some addons are included automatically, while others may not be supported by all
 
 ### Add-on support matrix
 
-| Level   |     `liveness`    |      `selfie`     |       `sow`       |       `ssn`       |     `telegram`    |       `video`      |      `wallet`     |    `wallet-sol`   |
-| ------- | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: | :----------------: | :---------------: | :---------------: |
-| `basic` |         ➕         | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: |  :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: |
-| `v1`    | :no\_entry\_sign: |         ✅         |         ➕         |         ✅         | :no\_entry\_sign: |          ➕         |         ➕         | :no\_entry\_sign: |
-| `light` | :no\_entry\_sign: |         ➕         |         ➕         |         ➕         | :no\_entry\_sign: | :no\_entry\_sign:  |         ➕         | :no\_entry\_sign: |
-| `plus`  |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |         ➕          |         ➕         |         ➕         |
+| Level   |     `liveness`    |      `selfie`     |       `sow`       |       `ssn`       |     `telegram`    |     `twitter`     |       `video`      |      `wallet`     |    `wallet-sol`   |
+| ------- | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: | :----------------: | :---------------: | :---------------: |
+| `basic` |         ➕         | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: |  :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: |
+| `v1`    | :no\_entry\_sign: |         ✅         |         ➕         |         ✅         | :no\_entry\_sign: | :no\_entry\_sign: |          ➕         |         ➕         | :no\_entry\_sign: |
+| `light` | :no\_entry\_sign: |         ➕         |         ➕         |         ➕         | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign:  |         ➕         | :no\_entry\_sign: |
+| `plus`  |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |         ➕          |         ➕         |         ➕         |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; :no\_entry\_sign: - unavailable
