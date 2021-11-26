@@ -24,7 +24,6 @@ If you wish to see the information details scope and request that the user goes 
 | KYC level / add-on | Verification scope        | Information details scope         |
 | ------------------ | ------------------------- | --------------------------------- |
 | `basic`            | `verification.basic:read` | `verification.basic.details:read` |
-| `v1`               | `verification.v1:read`    | `verification.v1.details:read`    |
 | `light`            | `verification.light:read` | `verification.light.details:read` |
 | `plus`             | `verification.plus:read`  | `verification.plus.details:read`  |
 
