@@ -42,7 +42,6 @@ Asking a user for the following scopes without the presence of a level scope (li
 | `ssn`              | `verification.ssn:read`        | `verification.ssn.details:read`        |
 | `telegram`         | `verification.telegram:read`   | `verification.telegram.details:read`   |
 | `twitter`          | `verification.twitter:read`    | `verification.twitter.details:read`    |
-| `video`            | `verification.video:read`      | `verification.video.details:read`      |
 | `wallet`           | `verification.wallet:read`     | `verification.wallet.details:read`     |
 | `wallet-sol`       | `verification.wallet-sol:read` | `verification.wallet-sol.details:read` |
 
