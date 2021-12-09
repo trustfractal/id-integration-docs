@@ -32,7 +32,6 @@ Brief description of Attestations (Attestations are the processes included in ea
 | `telegram`   | Telegram username collection.                                              |
 | `twitter`    | Twitter username collection.                                               |
 | `wallet`     | ERC-20 (ETH) wallet address collection.                                    |
-| `wallet-ada` | Cardano wallet address collection.                                         |
 | `wallet-sol` | Solana wallet address collection.                                          |
 
 
@@ -43,24 +42,19 @@ Some add-ons are included automatically, while others may not be supported by al
 
 ### Add-on support matrix
 
-| **Addon/Level** | `basic` | `plus` |      `light`      |
-| --------------- | :-----: | :----: | :---------------: |
-| `liveness`      |    ➕    |    ➕   | :no\_entry\_sign: |
-| `selfie`        |    ➕    |    ➕   |         ➕         |
-| `sow`           |    ➕    |    ➕   |         ➕         |
-| `ssn`           |    ➕    |    ➕   |         ➕         |
-| `telegram`      |    ➕    |    ➕   | :no\_entry\_sign: |
-| `twitter`       |    ➕    |    ➕   | :no\_entry\_sign: |
-| `wallet`        |    ➕    |    ➕   |         ➕         |
-| `wallet-ada`    |    ➕    |    ➕   | :no\_entry\_sign: |
-| `wallet-sol`    |    ➕    |    ➕   | :no\_entry\_sign: |
+| Level   |     `liveness`    |      `selfie`     |       `sow`       |       `ssn`       |     `telegram`    |     `twitter`     |      `wallet`     |    `wallet-sol`   |
+| ------- | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: | :---------------: |
+| `basic` |         ➕         | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: | :no\_entry\_sign: |
+| `light` | :no\_entry\_sign: |         ➕         |         ➕         |         ➕         | :no\_entry\_sign: | :no\_entry\_sign: |         ➕         | :no\_entry\_sign: |
+| `plus`  |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |         ➕         |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; :no\_entry\_sign: - unavailable
 {% endhint %}
 
 {% hint style="warning" %}
+⚠️ - **basic** level requires the **liveness** add-on to be used.\
 ⚠️ - **light** level requires the **selfie** add-on to be used.\
-⚠️ - **plus** level requires either the **selfie** or **liveness** add-on to be used.
+⚠️ - **plus** level requires either the **selfie **or **liveness** add-on to be used.
 {% endhint %}
 
