@@ -17,7 +17,7 @@ Fractal ID will make sure to send notification successfully at least once to the
 Fractal ID will retry to send webhooks notification if:
 
 * Client server failed to respond in 10 seconds.
-* Client server is unavailable \(network errors\).
+* Client server is unavailable (network errors).
 * Client server returns other response code than `2xx`.
 
 Fractal ID uses exponential backoff to retry events.
@@ -25,18 +25,18 @@ Fractal ID uses exponential backoff to retry events.
 ### Example retry times table
 
 | Retries | Next retry in seconds |
-| :--- | :--- |
-| 1 | 20 |
-| 2 | 40 |
-| 3 | 80 |
-| 5 | 320 |
-| 10 | 10240 |
-| 15 | 86400 |
-| 20 | 86400 |
+| ------- | --------------------- |
+| 1       | 20                    |
+| 2       | 40                    |
+| 3       | 80                    |
+| 5       | 320                   |
+| 10      | 10240                 |
+| 15      | 86400                 |
+| 20      | 86400                 |
 
 ## Order of delivery
 
-The order of callbacks to webhook endpoints is not guaranteed. 
+The order of callbacks to webhook endpoints is not guaranteed.&#x20;
 
 For, e.g., two subsequent status changes, if initial attempt to deliver first notification fails it's being scheduled for retry. Second notification may arrive earlier than the retry on the first notification happens.
 
@@ -46,11 +46,10 @@ To mitigate the risk of setting incorrect user status based on received webhook 
 
 Suppose for the given example the secret token is `9d7e80c0f169ab94d34392d64617b7517fb07c40`.
 
-```text
+```
 POST /callback HTTP/1.1
 Host: localhost:3001
 X-Fractal-Signature: sha1=ba213ac630ca4e30446a923fdd1fa78655902880
 Content-Type: application/json
-{"type": "verification_approved","data":{"level":"v1","user_id":"d6d782ef-568b-4355-8eb4-2d32ac97b44c"}}
+{"type": "verification_approved","data":{"level":"basic","user_id":"d6d782ef-568b-4355-8eb4-2d32ac97b44c"}}
 ```
-
