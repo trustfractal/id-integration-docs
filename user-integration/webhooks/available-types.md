@@ -1,7 +1,7 @@
 # Available notifications
 
 {% hint style="info" %}
-We send `verification_approved` and `verification_rejected` notifications for each KYC level and add-on that you have requested initially and they can come in any order. Given the client requested `light` KYC level with `selfie` add-on, for example, we will send 2 notifications of the same type with different values \(`light` and `selfie`\) provided in a `level` field. Available values are described in the [KYC levels](../../kyc-levels.md) section.
+We send `verification_approved` and `verification_rejected` notifications for each KYC level and add-on that you have requested initially and they can come in any order. Given the client requested `basic` KYC level with `liveness` add-on, for example, we will send 2 notifications of the same type with different values (`basic` and `liveness`) provided in a `level` field. Available values are described in the [KYC levels](../../kyc-levels.md) section.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -18,7 +18,7 @@ Example payload:
 {
   "type": "verification_approved",
   "data": {
-    "level": "v1",
+    "level": "basic",
     "user_id": "14ec6af0-12f8-4bce-a6ab-01ce87fa1812",
     "timestamp": "2020-04-02T13:35:35Z"
   }
@@ -35,10 +35,9 @@ Example payload:
 {
   "type": "verification_rejected",
   "data": {
-    "level": "v1",
+    "level": "basic",
     "user_id": "14ec6af0-12f8-4bce-a6ab-01ce87fa1812",
     "timestamp": "2020-04-02T13:35:35Z"
   }
 }
 ```
-
