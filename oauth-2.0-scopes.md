@@ -24,7 +24,6 @@ If you wish to see the information details scope and request that the user goes 
 | KYC level / add-on | Verification scope        | Information details scope         |
 | ------------------ | ------------------------- | --------------------------------- |
 | `basic`            | `verification.basic:read` | `verification.basic.details:read` |
-| `light`            | `verification.light:read` | `verification.light.details:read` |
 | `plus`             | `verification.plus:read`  | `verification.plus.details:read`  |
 
 ### Add-on scopes
@@ -33,17 +32,18 @@ If you wish to see the information details scope and request that the user goes 
 Asking a user for the following scopes without the presence of a level scope (like the ones above) is unsupported, and will result in an unexpected user experience.
 {% endhint %}
 
-| KYC level / add-on | Verification scope             | Information details scope              |
-| ------------------ | ------------------------------ | -------------------------------------- |
-| `liveness`         | `verification.liveness:read`   | `verification.liveness.details:read`   |
-| `selfie`           | `verification.selfie:read`     | `verification.selfie.details:read`     |
-| `sow`              | `verification.sow:read`        | `verification.sow.details:read`        |
-| `ssn`              | `verification.ssn:read`        | `verification.ssn.details:read`        |
-| `telegram`         | `verification.telegram:read`   | `verification.telegram.details:read`   |
-| `twitter`          | `verification.twitter:read`    | `verification.twitter.details:read`    |
-| `wallet`           | `verification.wallet:read`     | `verification.wallet.details:read`     |
-| `wallet-ada`       | `verification.wallet-ada:read` | `verification.wallet-ada.details:read` |
-| `wallet-sol`       | `verification.wallet-sol:read` | `verification.wallet-sol.details:read` |
+| KYC level / add-on | Verification scope              | Information details scope               |
+| ------------------ | ------------------------------- | --------------------------------------- |
+| `liveness`         | `verification.liveness:read`    | `verification.liveness.details:read`    |
+| `selfie`           | `verification.selfie:read`      | `verification.selfie.details:read`      |
+| `sow`              | `verification.sow:read`         | `verification.sow.details:read`         |
+| `ssn`              | `verification.ssn:read`         | `verification.ssn.details:read`         |
+| `telegram`         | `verification.telegram:read`    | `verification.telegram.details:read`    |
+| `twitter`          | `verification.twitter:read`     | `verification.twitter.details:read`     |
+| `wallet`           | `verification.wallet:read`      | `verification.wallet.details:read`      |
+| `wallet-ada`       | `verification.wallet-ada:read`  | `verification.wallet-ada.details:read`  |
+| `wallet-algo`      | `verification.wallet-algo:read` | `verification.wallet-algo.details:read` |
+| `wallet-sol`       | `verification.wallet-sol:read`  | `verification.wallet-sol.details:read`  |
 
 ## Client scopes
 

@@ -23,16 +23,17 @@ Brief description of Attestations (Attestations are the processes included in ea
 
 ## Available add-ons
 
-| Add-on       | Description                                                                |
-| ------------ | -------------------------------------------------------------------------- |
-| `liveness`   | Automatic liveness detection and automatic face-match.                     |
-| `selfie`     | Identity verification though ID document scan and selfie with ID document. |
-| `sow`        | Verification of source of wealth.                                          |
-| `telegram`   | Telegram username collection.                                              |
-| `twitter`    | Twitter username collection.                                               |
-| `wallet`     | ERC-20 (ETH) wallet address collection.                                    |
-| `wallet-ada` | Cardano wallet address collection.                                         |
-| `wallet-sol` | Solana wallet address collection.                                          |
+| Add-on        | Description                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| `liveness`    | Automatic liveness detection and automatic face-match.                     |
+| `selfie`      | Identity verification though ID document scan and selfie with ID document. |
+| `sow`         | Verification of source of wealth.                                          |
+| `telegram`    | Telegram username collection.                                              |
+| `twitter`     | Twitter username collection.                                               |
+| `wallet`      | ERC-20 (ETH) wallet address collection.                                    |
+| `wallet-ada`  | Cardano wallet address collection.                                         |
+| `wallet-algo` | Algorand wallet address collection.                                        |
+| `wallet-sol`  | Solana wallet address collection.                                          |
 
 
 
@@ -52,6 +53,7 @@ Some add-ons are included automatically, while others may not be supported by al
 | `twitter`       |    ➕    |    ➕   |
 | `wallet`        |    ➕    |    ➕   |
 | `wallet-ada`    |    ➕    |    ➕   |
+| `wallet-algo`   |    ➕    |    ➕   |
 | `wallet-sol`    |    ➕    |    ➕   |
 
 {% hint style="info" %}
