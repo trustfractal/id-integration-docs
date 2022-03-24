@@ -223,7 +223,7 @@ An array of phone numbers belonging to the user. Available when users sign up us
 
 #### `verification_cases`
 
-A verification case represents information that has been validated internally by Fractal. Verifications are emitted  separately per each level and add-ons. A verification request for `light+video` will generate two verifications, one per item.
+A verification case represents information that has been validated internally by Fractal. Verifications are emitted  separately per each level and add-ons. A verification request for `basic+liveness` will generate two verifications, one per item.
 
 | Field               | Type / Format                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
