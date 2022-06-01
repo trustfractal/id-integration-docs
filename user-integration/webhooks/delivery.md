@@ -49,7 +49,7 @@ Suppose for the given example the secret token is `9d7e80c0f169ab94d34392d64617b
 ```
 POST /callback HTTP/1.1
 Host: localhost:3001
-X-Fractal-Signature: sha1=ba213ac630ca4e30446a923fdd1fa78655902880
+X-Fractal-Signature: sha1=9e581dd775e5ba87e9839b595d6eb0d784ecfdb6
 Content-Type: application/json
-{"type": "verification_approved","data":{"level":"basic","user_id":"d6d782ef-568b-4355-8eb4-2d32ac97b44c"}}
+{"type":"verification_approved","data":{"level":"basic","user_id":"b5c5a2cd-643e-444b-9591-e7b25fec997d","timestamp":"2020-10-09T10:50:32Z"}}
 ```
