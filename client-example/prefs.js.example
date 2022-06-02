@@ -6,6 +6,6 @@ module.exports = {
   client_id: "CLIENT_ID",
   client_secret: "CLIENT_SECRET",
 
-  scope: "uid:read email:read person.full_name:read verification.v1:read",
+  scope: "contact:read verification.basic:read verification.basic.details:read verification.liveness:read verification.liveness.details:read",
   redirect_uri: "http://localhost:8080/oauth/callback",
 };
