@@ -6,6 +6,7 @@
 * [OAuth 2.0 scopes](oauth-2.0-scopes.md)
 * [Production and staging URLs](production-and-staging-urls.md)
 * [Fractal DID Credentials](did-credentials.md)
+* [Fractal Credentials API](fractal-credentials-api.md)
 * [Client dashboard](client-dashboard.md)
 
 ## User integration
@@ -34,4 +35,3 @@
 ## Troubleshooting
 
 * [Common issues](troubleshooting/common-issues.md)
-
