@@ -4,10 +4,11 @@ Fractal ID supports different levels of verification. Additionally, each level m
 
 ## Available levels
 
-| Level   | Attestations                                                                                                   |
-| ------- | -------------------------------------------------------------------------------------------------------------- |
-| `basic` | ID document verification, Liveness check, Age of Majority, PEP/Sanction lists                                  |
-| `plus`  | ID document verification, Liveness check, Age of Majority, PEP/Sanction lists, Residency, High-risk Countries. |
+| Level        | Attestations                                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------------------------------- |
+| `uniqueness` | Liveness check, uniqueness check                                                                               |
+| `basic`      | ID document verification, Liveness check, Age of Majority, PEP/Sanction lists                                  |
+| `plus`       | ID document verification, Liveness check, Age of Majority, PEP/Sanction lists, Residency, High-risk Countries. |
 
 {% hint style="info" %}
 Brief description of Attestations (Attestations are the processes included in each Level)
@@ -30,6 +31,7 @@ Brief description of Attestations (Attestations are the processes included in ea
 | `sow`         | Verification of source of wealth.                                          |
 | `telegram`    | Telegram username collection.                                              |
 | `twitter`     | Twitter username collection.                                               |
+| `uniq`        | Uniqueness check                                                           |
 | `wallet`      | ERC-20 (ETH) wallet address collection.                                    |
 | `wallet-ada`  | Cardano wallet address collection.                                         |
 | `wallet-algo` | Algorand wallet address collection.                                        |
@@ -43,18 +45,18 @@ Some add-ons are included automatically, while others may not be supported by al
 
 ### Add-on support matrix
 
-| **Addon/Level** | `basic` | `plus` |
-| --------------- | :-----: | :----: |
-| `liveness`      |    ➕    |    ➕   |
-| `selfie`        |    ➕    |    ➕   |
-| `sow`           |    ➕    |    ➕   |
-| `ssn`           |    ➕    |    ➕   |
-| `telegram`      |    ➕    |    ➕   |
-| `twitter`       |    ➕    |    ➕   |
-| `wallet`        |    ➕    |    ➕   |
-| `wallet-ada`    |    ➕    |    ➕   |
-| `wallet-algo`   |    ➕    |    ➕   |
-| `wallet-sol`    |    ➕    |    ➕   |
+| Addon/Level   |     uniqueness    | basic | plus |
+| ------------- | :---------------: | :---: | :--: |
+| `liveness`    |         ✅         |   ➕   |   ➕  |
+| `selfie`      | :no\_entry\_sign: |   ➕   |   ➕  |
+| `sow`         |         ➕         |   ➕   |   ➕  |
+| `ssn`         |         ➕         |   ➕   |   ➕  |
+| `telegram`    |         ➕         |   ➕   |   ➕  |
+| `twitter`     |         ➕         |   ➕   |   ➕  |
+| `wallet`      |         ➕         |   ➕   |   ➕  |
+| `wallet-ada`  |         ➕         |   ➕   |   ➕  |
+| `wallet-algo` |         ➕         |   ➕   |   ➕  |
+| `wallet-sol`  |         ➕         |   ➕   |   ➕  |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; :no\_entry\_sign: - unavailable

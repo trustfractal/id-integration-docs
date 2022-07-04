@@ -21,10 +21,11 @@ If you wish to see the information details scope and request that the user goes 
 
 ### Level scopes
 
-| KYC level / add-on | Verification scope        | Information details scope         |
-| ------------------ | ------------------------- | --------------------------------- |
-| `basic`            | `verification.basic:read` | `verification.basic.details:read` |
-| `plus`             | `verification.plus:read`  | `verification.plus.details:read`  |
+| KYC level / add-on | Verification scope             | Information details scope              |
+| ------------------ | ------------------------------ | -------------------------------------- |
+| `uniqueness`       | `verification.uniqueness:read` | `verification.uniqueness.details:read` |
+| `basic`            | `verification.basic:read`      | `verification.basic.details:read`      |
+| `plus`             | `verification.plus:read`       | `verification.plus.details:read`       |
 
 ### Add-on scopes
 
@@ -40,6 +41,7 @@ Asking a user for the following scopes without the presence of a level scope (li
 | `ssn`              | `verification.ssn:read`         | `verification.ssn.details:read`         |
 | `telegram`         | `verification.telegram:read`    | `verification.telegram.details:read`    |
 | `twitter`          | `verification.twitter:read`     | `verification.twitter.details:read`     |
+| `uniq`             | `verification.uniq:read`        | `verification.uniq.details:read`        |
 | `wallet`           | `verification.wallet:read`      | `verification.wallet.details:read`      |
 | `wallet-ada`       | `verification.wallet-ada:read`  | `verification.wallet-ada.details:read`  |
 | `wallet-algo`      | `verification.wallet-algo:read` | `verification.wallet-algo.details:read` |
