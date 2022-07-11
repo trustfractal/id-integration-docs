@@ -6,10 +6,10 @@ Using this API, you can leverage our existing user base with a quick and easy so
 
 ## Environments
 
-| Environment | URL                                  | Signing address                              |
-| ----------- | ------------------------------------ | -------------------------------------------- |
-| Staging     | resource.next.fractal.id/credentials | `0x2fCAb633adFA6aF8266025D63228047033c3ceD0` |
-| Production  | resource.fractal.id/credentials      | `0xacD08d6714ADba531beFF582e6FD5DA1AFD6bc65` |
+| Environment | URL                         | Signing address                              |
+| ----------- | --------------------------- | -------------------------------------------- |
+| Staging     | credentials.next.fractal.id | `0x2fCAb633adFA6aF8266025D63228047033c3ceD0` |
+| Production  | credentials.fractal.id      | `0xacD08d6714ADba531beFF582e6FD5DA1AFD6bc65` |
 
 ## Before using
 
@@ -49,7 +49,7 @@ mainContract.methods.main(proof, validUntil, approvedAt, fractalId).send({ from:
 
 ## Getting a KYC proof
 
-{% swagger method="get" path="/credentials" baseUrl="resource.fractal.id" summary="Get proof of KYC" %}
+{% swagger method="get" path="" baseUrl="credentials.fractal.id" summary="Get proof of KYC" %}
 {% swagger-description %}
 
 {% endswagger-description %}
@@ -123,7 +123,7 @@ async function main() {
   const encMessage = encodeURIComponent(message);
 
   try {
-    const res = await fetch(`https://resource.fractal.id/credentials?message=${encMessage}&signature=${signature}`);
+    const res = await fetch(`https://credentials.fractal.id?message=${encMessage}&signature=${signature}`);
     const proof = await res.json();
     // do something with proof
     console.log(proof);
