@@ -46,7 +46,7 @@ Integrating with the wallet is simple. When the wallet is installed, a `window.F
 
 **You can request a credential by doing the following:**
 
-```text
+```
 const fields = {
   full_name: true,
   liveness: true,
@@ -66,13 +66,13 @@ const credential = await window.Fractal.getVerificationRequest(
 );
 ```
 
-The first argument is the KYC type you wish to access, the second is an object with data about the requester \(your organization\). This data will be displayed in the prompt the user sees when allowing or rejecting data access. The final argument is a map where the keys are the fields to request access to \(you can find the fields and schema for each KYC type [here](https://github.com/trustfractal/sdk/blob/main/src/Schema/schemas.ts)\) and the values are a boolean indicating whether or not this field is required. 
+The first argument is the KYC type you wish to access, the second is an object with data about the requester (your organization). This data will be displayed in the prompt the user sees when allowing or rejecting data access. The final argument is a map where the keys are the fields to request access to (you can find the fields and schema for each KYC type [here](https://github.com/trustfractal/sdk/blob/main/src/Schema/schemas.ts)) and the values are a boolean indicating whether or not this field is required.&#x20;
 
 ### **Fractal OAuth**
 
-An alternative method for accessing a credential is possible. To do so you need to implement the [classic OAuth solution](https://docs.developer.fractal.id/user-integration/user-authorization). Afterwards, you can perform a GET request to [https://maguro.fractal.id/](https://maguro.fractal.id/)credentials using the token as a bearer token. If you’re using staging, use [https://maguro.staging.sandbox.fractal.id/credentials](https://maguro.staging.sandbox.fractal.id/credentials) instead.
+An alternative method for accessing a credential is possible. To do so you need to implement the [classic OAuth solution](https://docs.developer.fractal.id/user-integration/user-authorization). Afterwards, you can perform a GET request to [https://maguro.fractal.id/credentials](https://maguro.fractal.id/credentials) using the token as a bearer token. If you’re using staging, use [https://maguro.staging.sandbox.fractal.id/credentials](https://maguro.staging.sandbox.fractal.id/credentials) instead.
 
-  
+****\
 **Note that this will give you full-access to the user’s credentials and thus should be used with care.**
 
 ## **Verifying a Credential**
@@ -89,15 +89,15 @@ If you prefer to perform on-chain credential validation, we recommend implementi
 
 The final argument, the address, should be inferred from the caller, although this can also be an argument sent to the smart contract. To call the smart contract, it is assumed credential access has already been provided, either via Fractal OAuth or via the Fractal Wallet.
 
-  
+****\
 ****Essentially, verifying a signature is computing the hash that Fractal has signed, using the previous parameters, and ensuring it was signed by a known Fractal address.
 
-**`hash(address, kycType, countryOfResidence, countryOfIDIssuance, rootHash).`**  
-
+**`hash(address, kycType, countryOfResidence, countryOfIDIssuance, rootHash).`**\
+****
 
 **An example Solidity implementation of credential verification is the following:**
 
-```text
+```
  function verify(
     uint8 kycType,
     uint8 countryOfIDIssuance,
@@ -158,7 +158,7 @@ The final argument, the address, should be inferred from the caller, although th
   }
 ```
 
-**The current signing keys are \(FRACTAL\_SIGNER in the code example\) are:**
+**The current signing keys are (FRACTAL\_SIGNER in the code example) are:**
 
 * **Staging:** 0xa372CA5A906f7FAD480C49bBc73453672d4d375d
 * **Production:** 0xa3015543Ce7da7B9708076C1171E242C36452F10
@@ -167,21 +167,19 @@ You should note that, depending on your restrictions, verifying the signature is
 
 ### **Off-chain Verification**
 
-If you prefer to implement off-chain credential verification, you can do so by making use of [our SDK](https://github.com/trustfractal/sdk).  
+If you prefer to implement off-chain credential verification, you can do so by making use of [our SDK](https://github.com/trustfractal/sdk).\
 ****Assuming you have the credential in JSON format:
 
-```text
+```
 const credential = new Credential(json);
 credential.verifyIntegrity() && credential.verifySignature();
 ```
 
 Note that this does not verify if the credential was signed by a Fractal address, but instead if it is properly signed. As described in the On-chain Verification section, you should still make sure the KYC Type is supported by your organization and the country tiers are in line with the regulations you are subjected to:
 
-```text
+```
 credential.kycType // field for the KYC type
 credential.countryOfResidence  // field for the country of residence
 credential.countryOfIDIssuance // field for the country of ID Issuance
 ```
-
-
 

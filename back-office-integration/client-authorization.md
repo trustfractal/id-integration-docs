@@ -2,43 +2,41 @@
 
 In order to access information related to your application, you must obtain an access token using the [client credentials grant](https://tools.ietf.org/html/rfc6749#section-1.3.4).
 
-{% api-method method="post" host="https://AUTH\_DOMAIN" path="/oauth/token" %}
-{% api-method-summary %}
-Client credentials grant flow
-{% endapi-method-summary %}
+{% swagger baseUrl="https://AUTH_DOMAIN" path="/oauth/token" method="post" summary="Client credentials grant flow" %}
+{% swagger-description %}
 
-{% api-method-description %}
+{% endswagger-description %}
 
-{% endapi-method-description %}
-
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-path-parameters %}
-{% api-method-parameter name="client\_id" type="string" required=true %}
+{% swagger-parameter in="path" name="client_id" type="string" %}
 Your API application ID
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="client\_secret" type="string" required=true %}
+{% swagger-parameter in="path" name="client_secret" type="string" %}
 Your API application secret
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="scope" type="string" required=false %}
-A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.  
-You'll need to provide a token with the `client.stats:read` scope in order to access application statistics for example.
-{% endapi-method-parameter %}
+{% swagger-parameter in="path" name="scope" type="string" %}
+A space-separated list of authorization scopes to request. If not mentioned, it defaults to 
 
-{% api-method-parameter name="grant\_type" type="string" required=true %}
+`uid:read`
+
+.
+
+\
+
+
+You'll need to provide a token with the 
+
+`client.stats:read`
+
+ scope in order to access application statistics for example.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="path" name="grant_type" type="string" %}
 `client_credentials`
-{% endapi-method-parameter %}
-{% endapi-method-path-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
   "access_token":"OUuf_tJs-J2AAxjWr0JHvzFure5Eb7KMUQRO0jpqXWc",
@@ -48,10 +46,7 @@ You'll need to provide a token with the `client.stats:read` scope in order to ac
   "created_at":1554400723
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-## 
-
+##

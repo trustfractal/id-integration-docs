@@ -11,11 +11,11 @@ The dashboard will list all integrations owned by you, as well as providing a wa
 We cover how to create your first integration in the [Getting started](getting-started.md) guide.
 {% endhint %}
 
-You can click on any of the shown integrations for further details and actions with them. 
+You can click on any of the shown integrations for further details and actions with them.&#x20;
 
 ## Accounts
 
-You can create as many accounts as you need by letting us know which email addresses should have access to which application and we can do that manually; alternatively, you can use a group email. 
+You can create as many accounts as you need by letting us know which email addresses should have access to which application and we can do that manually; alternatively, you can use a group email.&#x20;
 
 ## Integration details page
 
@@ -27,33 +27,32 @@ In this section, your integration's name and homepage URL and redirect URI are d
 
 ### API Info
 
-![](.gitbook/assets/screenshot-2019-07-04-at-19.13.32.png)
+![](<.gitbook/assets/Screenshot 2019-07-04 at 19.13.32.png>)
 
-In this section, you can inspect your client ID and Secret, as well as revoking access for all users and resetting the client secret \(in case of a security leak\), via the appropriate buttons.
+In this section, you can inspect your client ID and Secret, as well as revoking access for all users and resetting the client secret (in case of a security leak), via the appropriate buttons.
 
 ### Webhooks
 
-![](.gitbook/assets/screenshot-2019-07-04-at-19.17.29.png)
+![](<.gitbook/assets/Screenshot 2019-07-04 at 19.17.29.png>)
 
 In this section, you can enable and configure webhooks we offer. By clicking on each, you can setup its URL and access the webhook secret token. Further information on available webhooks and their use is [available here](user-integration/webhooks/).
 
 ### Statistics
 
-![](.gitbook/assets/screenshot-2020-05-19-at-20.05.32.png)
+![](<.gitbook/assets/Screenshot 2020-05-19 at 20.05.32.png>)
 
-In this section, you can at a glance understand how many users authorized your application \(after their authorization code is exchanged by an access/refresh token combination\). Further statistics, such as those found in this page, can be inspected by clicking the `View detailed stats` button.
+In this section, you can at a glance understand how many users authorized your application (after their authorization code is exchanged by an access/refresh token combination). Further statistics, such as those found in this page, can be inspected by clicking the `View detailed stats` button.
 
 ### User Explorer
 
-![](.gitbook/assets/screenshot-2020-05-19-at-20.06.29.png)
+![](<.gitbook/assets/Screenshot 2020-05-19 at 20.06.29.png>)
 
 In this section, you can see the user data and KYC status of every user that started a KYC process after authorizing your integration. By clicking on each row, you can access all the information the clicked user has provided, and view all the documents they submitted.
 
 You can use the email address and phone number filters at the top of the table to find specific user rows faster.
 
-In case you want a copy of all user information, you can use the `Export CSV` button, which exports all the users' data \(the responses they provided during onboarding\) to a CSV.
+In case you want a copy of all user information, you can use the `Export CSV` button, which exports all the users' data (the responses they provided during onboarding) to a CSV.
 
 {% hint style="info" %}
 The CSV export does not include user-submitted files, such as proofs of identity. Please contact your account manager if this is something you'd require.
 {% endhint %}
-

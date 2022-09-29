@@ -10,41 +10,43 @@ Some of these can also be easily inspected in the [statistics section](../client
 
 ## User statuses
 
-| Status | Meaning |
-| :--- | :--- |
-| `approved` | User was issued a Credential for the requested KYC Level. |
-| `rejected` | User was refused a Credential for the requested KYC Level. |
-| `pending` | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified. |
-| `contacted` | User has been contacted by Fractal to provide further information, and has yet to do so. |
+| Status      | Meaning                                                                                                                                              |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `approved`  | User was issued a Credential for the requested KYC Level.                                                                                            |
+| `rejected`  | User was refused a Credential for the requested KYC Level.                                                                                           |
+| `pending`   | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified. |
+| `contacted` | User has been contacted by Fractal to provide further information, and has yet to do so.                                                             |
 
-{% api-method method="get" host="https://VERIFIER\_DOMAIN" path="/api/stats/total-verifications" %}
-{% api-method-summary %}
-Total verifications
-{% endapi-method-summary %}
+{% swagger baseUrl="https://VERIFIER_DOMAIN" path="/api/stats/total-verifications" method="get" summary="Total verifications" %}
+{% swagger-description %}
+Returns total number of user verifications that are 
 
-{% api-method-description %}
-Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` right now.
-{% endapi-method-description %}
+`approved`
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-headers %}
-{% api-method-parameter name="Content-Type" type="string" required=true %}
+, 
+
+`contacted`
+
+, 
+
+`rejected`
+
+ or 
+
+`pending`
+
+ right now.
+{% endswagger-description %}
+
+{% swagger-parameter in="header" name="Content-Type" type="string" %}
 application/json
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Authorization" type="string" required=true %}
+{% swagger-parameter in="header" name="Authorization" type="string" %}
 Bearer {access-token}
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
   "approved": 55,
@@ -53,39 +55,39 @@ Bearer {access-token}
   "pending": 7
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="https://VERIFIER\_DOMAIN" path="/api/stats/country-verifications" %}
-{% api-method-summary %}
-Verifications by countries
-{% endapi-method-summary %}
+{% swagger baseUrl="https://VERIFIER_DOMAIN" path="/api/stats/country-verifications" method="get" summary="Verifications by countries" %}
+{% swagger-description %}
+Returns total number of user verifications that are 
 
-{% api-method-description %}
-Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` by countries.
-{% endapi-method-description %}
+`approved`
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-headers %}
-{% api-method-parameter name="Content-Type" type="string" required=true %}
+, 
+
+`contacted`
+
+, 
+
+`rejected`
+
+ or 
+
+`pending`
+
+ by countries.
+{% endswagger-description %}
+
+{% swagger-parameter in="header" name="Content-Type" type="string" %}
 application/json
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Authorization" type="string" required=true %}
+{% swagger-parameter in="header" name="Authorization" type="string" %}
 Bearer {access-token}
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 {
   "US": {
@@ -102,39 +104,35 @@ Bearer {access-token}
   }
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
-{% api-method method="get" host="https://VERIFIER\_DOMAIN" path="/api/stats/user-verifications" %}
-{% api-method-summary %}
-Verifications by user ids
-{% endapi-method-summary %}
+{% swagger baseUrl="https://VERIFIER_DOMAIN" path="/api/stats/user-verifications" method="get" summary="Verifications by user ids" %}
+{% swagger-description %}
+Returns user ids and their status, which can be 
 
-{% api-method-description %}
-Returns user ids and their status, which can be `approved`, `pending` or `rejected`.
-{% endapi-method-description %}
+`approved`
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-headers %}
-{% api-method-parameter name="Content-Type" type="string" required=true %}
+, 
+
+`pending`
+
+ or 
+
+`rejected`
+
+.
+{% endswagger-description %}
+
+{% swagger-parameter in="header" name="Content-Type" type="string" %}
 application/json
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="Authorization" type="string" required=true %}
+{% swagger-parameter in="header" name="Authorization" type="string" %}
 Bearer {access-token}
-{% endapi-method-parameter %}
-{% endapi-method-headers %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```javascript
 [
     {
@@ -149,8 +147,5 @@ Bearer {access-token}
     }
 ]
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
-
+{% endswagger-response %}
+{% endswagger %}
