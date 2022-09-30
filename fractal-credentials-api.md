@@ -299,5 +299,7 @@ If it does not match, then there's a difference between the message you asked th
 
 ## Using the KYC proof
 
+Once you have received&#x20;
+
 Please refer to [this repo](https://github.com/trustfractal/credentials-api-verifiers) for an example on how to use the KYC proof in your smart contract. &#x20;
 

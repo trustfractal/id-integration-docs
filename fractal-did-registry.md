@@ -98,6 +98,8 @@ contract Main {
 
 </details>
 
+The example above adds **approximately 25k gas** to the transaction cost. Gas usage increases with the number of lookups.
+
 ## dApp code example
 
 We have created this simple [demo](https://did-registry.demo.fractal.id/) dApp to show how a javascript app might interact with our Registry. You can find the code (written in Typescript and React) for this demo in this [repo](https://github.com/trustfractal/did-registry-demo-dapp).
