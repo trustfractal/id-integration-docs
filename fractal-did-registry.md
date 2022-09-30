@@ -6,7 +6,7 @@ description: Authorize transactions by looking up their sender on Fractal's DID 
 
 Both Credentials API and DID Registry enable you to verify the credentials associated with a wallet address in your smart contract (on-chain) or in your dApp.&#x20;
 
-The DID Registry is a smart contract Fractal has deployed which contains two public [methods](fractal-did-registry.md#interface) your [dApp](fractal-did-registry.md#dapp-code-example) and [smart contract](fractal-did-registry.md#smart-contract-example) can call to verify a credential. Registries are deployed on Karura, Avalanche, Gnosis (soon),  Aurora (soon) and Polygon. Registries will be deployed on other chains on a demand basis.
+The DID Registry is a [smart contract](https://github.com/trustfractal/registry-deployer) Fractal has deployed which contains two public [methods](fractal-did-registry.md#interface) your [dApp](fractal-did-registry.md#dapp-code-example) and [smart contract](fractal-did-registry.md#smart-contract-example) can call to verify a credential. Registries are deployed on Karura, Avalanche, Gnosis (soon),  Aurora (soon) and Polygon. Registries will be deployed on other chains on a demand basis.
 
 In order to verify a credential, you call `getFractalId()` to get a `fractalId` associated with a wallet address. Every `fractalId` in the DID Registry corresponds to a unique human. You call `isUserInList()` to determine whether a `fractalId` exists in one of the Registry's maintained [lists](fractal-did-registry.md#available-lists). Lists are currently maintained for KYC level, citizenship and residency.
 
@@ -119,8 +119,6 @@ const fetchKycStatus = (
   fractalRegistry.connect(signer).isUserInList(fractalId, KYCList);
 ```
 
-
-
 ## **Developer demo**
 
-If you want to understand more deeply how our registries work, check out our [developer demo](https://github.com/trustfractal/did\_registry\_demo).
+If you want to understand more deeply how our registries work, check out our [developer demo](https://github.com/trustfractal/did\_registry\_demo). Or, you can review the registry smart contract along with a simple environment to deploy it [here](https://github.com/trustfractal/registry-deployer).
