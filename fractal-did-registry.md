@@ -51,6 +51,10 @@ Every `fractalId` in the DID Registry corresponds to a unique human. Use cases r
 
 _If you have KYC compliance needs that don't fit these standards, please get in touch with_ [_engineering@fractal.id_](mailto:engineering@fractal.id) _for creating your own bespoke list._
 
+{% hint style="info" %}
+**Best practice**: If you want to know if a user passed KYC level `basic`, then you should check both the `basic` and `plus` lists since a user that passed KYC level `plus` would have passed KYC level `basic`.
+{% endhint %}
+
 ## Smart contract code example
 
 1. Import our `FractalRegistry.sol` contract and set its address.
