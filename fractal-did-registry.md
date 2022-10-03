@@ -65,36 +65,33 @@ _If you have KYC compliance needs that don't fit these standards, please get in 
 <summary><strong></strong><span data-gb-custom-inline data-tag="emoji" data-code="1f441">👁</span> <strong>See an example in Solidity</strong></summary>
 
 ```
-import {FractalRegistry} from "github.com/trustfractal/web3-identity/FractalRegistry.sol";
+import {FractalRegistry} from "github.com/trustfractal/registry-deployer/blob/master/contracts/FractalRegistry.sol";
 
 contract Main {
   FractalRegistry registry = FractalRegistry(0x5FD6eB55D12E759a21C09eF703fe0CBa1DC9d88D);
 
-  modifier requiresRegistry(
-      string memory allowedLevel,
-      string[3] memory blockedResidencyCountries,
-      string[2] memory blockedCitizenshipCountries
-  ) {
-      bytes32 fractalId = registry.getFractalId(msg.sender);
+  function requiresRegistry(
+      address sender,
+      string[1] memory requiredLists,
+      string[2] memory blockedLists
+  ) private view {
+      bytes32 fractalId = registry.getFractalId(sender);
 
       require(fractalId != 0);
 
-      require(registry.isUserInList(fractalId, allowedLevel));
-
-      for (uint256 i = 0; i < blockedResidencyCountries.length; i++) {
-          require(!registry.isUserInList(fractalId, string.concat("residency_", blockedResidencyCountries[i])));
+      for (uint256 i = 0; i < requiredLists.length; i++) {
+          require(registry.isUserInList(fractalId, requiredLists[i]));
       }
 
-      for (uint256 i = 0; i < blockedCitizenshipCountries.length; i++) {
-          require(!registry.isUserInList(fractalId, string.concat("citizenship_", blockedCitizenshipCountries[i])));
+      for (uint256 i = 0; i < blockedLists.length; i++) {
+          require(!registry.isUserInList(fractalId, blockedLists[i]));
       }
-
-      _;
   }
 
   function main(
       /* your transaction arguments go here */
-  ) external requiresRegistry("plus", ["ca", "de", "us"], ["de", "us"]) {
+  ) external view {
+      requiresRegistry(msg.sender, ["plus"], ["fatf_grey", "fatf_black"]);
       /* your transaction logic goes here */
   }
 }
