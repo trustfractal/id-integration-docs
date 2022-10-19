@@ -21,6 +21,7 @@ https://FRONTEND_DOMAIN/authorize
   &response_type=code
   &scope={desired-scope}
   &state={state-param}
+  &ensure_wallet={ensure-wallet-param}
 ```
 
 {% hint style="info" %}
@@ -44,6 +45,7 @@ This request has the following parameters:
 | `response_type` | yes       | `code`                                                                                                                                                                                                                                           |
 | `scope`         | no        | A **space-separated** list of authorization scopes to request. Defaults to `uid:read`.                                                                                                                                                           |
 | `state`         | yes       | A value created by you to maintain state between the request and callback. This parameter is [mostly used to prevent CSRF](https://auth0.com/docs/protocols/oauth2/oauth-state) and will be passed back to you, unchanged, in your redirect URI. |
+| `ensure_wallet` | no        | The wallet address you wish the user to input as part of the `wallet` addon. Note that the user can choose to ignore the suggestion.                                                                                                             |
 
 Once redirected, the user might have to log into Fractal ID. If so, they'll be presented with a page to that effect.
 
