@@ -49,7 +49,9 @@ Every `fractalId` in the DID Registry corresponds to a unique human. Use cases r
 | `fatf_grey`  | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring. |
 | `fatf_black` | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                  |
 
-_If you have KYC compliance needs that don't fit these standards, please get in touch with_ [_engineering@fractal.id_](mailto:engineering@fractal.id) _for creating your own bespoke list._
+Besides these lists, if you have KYC compliance needs that don't fit these standards, we also publish bespoke client lists.
+
+Please get in touch with [engineering@fractal.id](mailto:engineering@fractal.id) for creating your own bespoke list.
 
 {% hint style="info" %}
 **Best practice**: If you want to know if a user passed KYC level `basic`, then you should check both the `basic` and `plus` lists since a user that passed KYC level `plus` would have passed KYC level `basic`.
