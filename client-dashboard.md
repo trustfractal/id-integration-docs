@@ -47,11 +47,11 @@ In this section, you can at a glance understand how many users authorized your a
 
 ![](<.gitbook/assets/Screenshot 2020-05-19 at 20.06.29.png>)
 
-In this section, you can see the user data and KYC status of every user that started a KYC process after authorizing your integration. By clicking on each row, you can access all the information the clicked user has provided, and view all the documents they submitted.
+In this section, you can see the KYC status of every user that started a KYC process after authorizing your integration. If you asked for `details` scopes, you'll also have access to all the answers and files provided during onboarding.
 
-You can use the email address and phone number filters at the top of the table to find specific user rows faster.
+If asked the user to share their contact, you can use the email address and phone number filters at the top of the table to find specific user rows faster.
 
-In case you want a copy of all user information, you can use the `Export CSV` button, which exports all the users' data (the responses they provided during onboarding) to a CSV.
+If you want a copy of this information in file format, you can use the `Export CSV` button.
 
 {% hint style="info" %}
 The CSV export does not include user-submitted files, such as proofs of identity. Please contact your account manager if this is something you'd require.
