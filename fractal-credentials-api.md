@@ -10,6 +10,10 @@ The API replies with a credential proof if it exists associated with that wallet
 
 Using the Credentials API, you can leverage our existing user base with a quick and easy solution to access the provably verifiable KYC status of the identity behind a wallet address and validate it on-chain.
 
+{% hint style="success" %}
+For compliance purposes, you may be required to access the user data supporting the issued Credential. In order to do this, make sure to follow the directions in [obtaining user's data](fractal-credentials-api.md#obtaining-users-data) in the Message format section.
+{% endhint %}
+
 ## Environments
 
 | Environment | URL                         | Signing address                              |
