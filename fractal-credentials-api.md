@@ -148,6 +148,7 @@ I authorize <application_name> (<client_id>) to get a proof from Fractal that:
 - I passed KYC level <level>
 [- I am not a citizen of the following countries: <citizenship_country_list>]
 [- I am not a resident of the following countries: <residency_country_list>]
+[I also allow access to my data that was used to pass this KYC level.]
 ```
 
 | Parameter                    |                                     |
@@ -197,9 +198,29 @@ Both lists are optional. In case you don't want to restrict any citizenship/resi
 `plus` level supports **both** citizenship and residency country restrictions.
 {% endhint %}
 
+#### Obtaining user's data
+
+For compliance purposes, you might want to be able to access the user data supporting the issued Credential. In order to do this, you should include the last string described in the [Message format](fractal-credentials-api.md#message-format).
+
+```
+I also allow access to my data that was used to pass this KYC level.
+```
+
+By including this string, you'll have access to the user's data in the [Developer dashboard](client-dashboard.md).
+
 #### Message examples
 
-Example #1 — citizenship and residency restrictions
+Example #1 — citizenship and residency restrictions, and access to user data
+
+```
+I authorize Defistarter (dc3aa1910acbb7ff4d22c07e43a6926adc3a81305a9355a304410048c9a91afd) to get a proof from Fractal that:
+- I passed KYC level plus+liveness
+- I am not a citizen of the following countries: Germany (DE)
+- I am not a resident of the following countries: Canada (CA), Germany (DE), United States of America (US)
+I also allow access to my data that was used to pass this KYC level.
+```
+
+Example #2 — citizenship and residency restrictions (no access to user data)
 
 ```
 I authorize Defistarter (dc3aa1910acbb7ff4d22c07e43a6926adc3a81305a9355a304410048c9a91afd) to get a proof from Fractal that:
@@ -208,7 +229,7 @@ I authorize Defistarter (dc3aa1910acbb7ff4d22c07e43a6926adc3a81305a9355a30441004
 - I am not a resident of the following countries: Canada (CA), Germany (DE), United States of America (US)
 ```
 
-Example #2 — citizenship restriction
+Example #3 — citizenship restriction (no access to user data)
 
 ```
 I authorize Defistarter (dc3aa1910acbb7ff4d22c07e43a6926adc3a81305a9355a304410048c9a91afd) to get a proof from Fractal that:
@@ -216,7 +237,7 @@ I authorize Defistarter (dc3aa1910acbb7ff4d22c07e43a6926adc3a81305a9355a30441004
 - I am not a citizen of the following countries: Germany (DE)
 ```
 
-Example #3 — no country restrictions
+Example #4 — no country restrictions (no access to user data)
 
 ```
 I authorize Defistarter (dc3aa1910acbb7ff4d22c07e43a6926adc3a81305a9355a304410048c9a91afd) to get a proof from Fractal that:
