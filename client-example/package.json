@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "node-fetch": "^2.3.0",
     "uri-template": "^1.0.1"
   }
