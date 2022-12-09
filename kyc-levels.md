@@ -24,19 +24,22 @@ Brief description of Attestations (Attestations are the processes included in ea
 
 ## Available add-ons
 
-| Add-on             | Description                                                                |
-| ------------------ | -------------------------------------------------------------------------- |
-| `liveness`         | Automatic liveness detection and automatic face-match.                     |
-| `selfie`           | Identity verification though ID document scan and selfie with ID document. |
-| `sow`              | Verification of source of wealth.                                          |
-| `telegram`         | Telegram username collection.                                              |
-| `twitter`          | Twitter username collection.                                               |
-| `uniq`             | Uniqueness check                                                           |
-| `wallet`           | ERC-20 (ETH) wallet address collection.                                    |
-| `wallet-ada`       | Cardano wallet address collection.                                         |
-| `wallet-algo`      | Algorand wallet address collection.                                        |
-| `wallet-sol`       | Solana wallet address collection.                                          |
-| `wallet-substrate` | Substrate wallet address collection.                                       |
+| Add-on                     | Description                                                                |
+| -------------------------- | -------------------------------------------------------------------------- |
+| `liveness`                 | Automatic liveness detection and automatic face-match.                     |
+| `selfie`                   | Identity verification though ID document scan and selfie with ID document. |
+| `sow`                      | Verification of source of wealth.                                          |
+| `telegram`                 | Telegram username collection.                                              |
+| `twitter`                  | Twitter username collection.                                               |
+| `uniq`                     | Uniqueness check                                                           |
+| **\[DEPRECATED]** `wallet` | ERC-20 (ETH) wallet address collection.                                    |
+| `wallet-ada`               | Cardano wallet address collection.                                         |
+| `wallet-algo`              | Algorand wallet address collection.                                        |
+| `wallet-btc`               | Bitcoin wallet address collection.                                         |
+| `wallet-eth`               | ERC-20 (ETH) wallet address collection.                                    |
+| `wallet-kar`               | Karura wallet address collection and ownership verification.               |
+| `wallet-sol`               | Solana wallet address collection.                                          |
+| `wallet-substrate`         | Substrate wallet address collection.                                       |
 
 
 
@@ -46,19 +49,22 @@ Some add-ons are included automatically, while others may not be supported by al
 
 ### Add-on support matrix
 
-| Addon/Level        |     uniqueness    | basic | plus |
-| ------------------ | :---------------: | :---: | :--: |
-| `liveness`         |         ✅         |   ➕   |   ➕  |
-| `selfie`           | :no\_entry\_sign: |   ➕   |   ➕  |
-| `sow`              |         ➕         |   ➕   |   ➕  |
-| `ssn`              |         ➕         |   ➕   |   ➕  |
-| `telegram`         |         ➕         |   ➕   |   ➕  |
-| `twitter`          |         ➕         |   ➕   |   ➕  |
-| `wallet`           |         ➕         |   ➕   |   ➕  |
-| `wallet-ada`       |         ➕         |   ➕   |   ➕  |
-| `wallet-algo`      |         ➕         |   ➕   |   ➕  |
-| `wallet-sol`       |         ➕         |   ➕   |   ➕  |
-| `wallet-substrate` |         ➕         |   ➕   |   ➕  |
+| Addon/Level                |     uniqueness    | basic | plus |
+| -------------------------- | :---------------: | :---: | :--: |
+| `liveness`                 |         ✅         |   ➕   |   ➕  |
+| `selfie`                   | :no\_entry\_sign: |   ➕   |   ➕  |
+| `sow`                      |         ➕         |   ➕   |   ➕  |
+| `ssn`                      |         ➕         |   ➕   |   ➕  |
+| `telegram`                 |         ➕         |   ➕   |   ➕  |
+| `twitter`                  |         ➕         |   ➕   |   ➕  |
+| **\[DEPRECATED]** `wallet` |         ➕         |   ➕   |   ➕  |
+| `wallet-ada`               |         ➕         |   ➕   |   ➕  |
+| `wallet-algo`              |         ➕         |   ➕   |   ➕  |
+| `wallet-btc`               |         ➕         |   ➕   |   ➕  |
+| `wallet-eth`               |         ➕         |   ➕   |   ➕  |
+| `wallet-kar`               |         ➕         |   ➕   |   ➕  |
+| `wallet-sol`               |         ➕         |   ➕   |   ➕  |
+| `wallet-substrate`         |         ➕         |   ➕   |   ➕  |
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; :no\_entry\_sign: - unavailable
