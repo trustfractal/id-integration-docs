@@ -42,16 +42,15 @@ bool presence = isUserInList(bytes32 fractaId, string listId);
 
 Every `fractalId` in the DID Registry corresponds to a unique human. Use cases requiring additional guarantees, such as KYC/AML, can also make use of the following lists.
 
-| listId       | Meaning                                                                                              |
-| ------------ | ---------------------------------------------------------------------------------------------------- |
-| `basic`      | Passed KYC level _basic_                                                                             |
-| `plus`       | Passed KYC level _plus_                                                                              |
-| `fatf_grey`  | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring. |
-| `fatf_black` | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                  |
+| listId               | Meaning                                                                                                   |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `basic`              | Passed KYC level _basic_                                                                                  |
+| `plus`               | Passed KYC level _plus_                                                                                   |
+| `fatf_grey`          | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring.      |
+| `fatf_black`         | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                       |
+| `client_custom_list` | These are custom lists created for clients that have KYC compliance needs that don't fit the above lists. |
 
-Besides these lists, if you have KYC compliance needs that don't fit these standards, we also publish bespoke client lists.
-
-Please get in touch with [engineering@fractal.id](mailto:engineering@fractal.id) for creating your own bespoke list.
+Please get in touch with [engineering@fractal.id](mailto:engineering@fractal.id) for creating your own `client_custom_list`
 
 {% hint style="info" %}
 **Best practice**: If you want to know if a user passed KYC level `basic`, then you should check both the `basic` and `plus` lists since a user that passed KYC level `plus` would have passed KYC level `basic`.
