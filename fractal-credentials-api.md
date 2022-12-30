@@ -8,7 +8,7 @@ Both Credentials API and [DID Registry](fractal-did-registry.md) enable you to v
 
 The API replies with a credential proof if it exists associated with that wallet address. Your dApp includes the proof with the transaction sent to your smart contract which can verify the credential by importing our `CredentialVerifier.sol` contract to inherit its `requiresCredential` modifier. To get more details and examples check our [verifiers](https://github.com/trustfractal/credentials-api-verifiers) documentation.
 
-Using the Credentials API, you can leverage our existing user base with a quick and easy solution to access the provably verifiable KYC status of the identity behind a wallet address and validate it on-chain.
+Using the Credentials API, you can leverage our existing user base with a quick and easy solution to access the provably verifiable KYC/KYB status of the identity behind a wallet address and validate it on-chain.
 
 {% hint style="success" %}
 For compliance purposes, you may be required to access the user data supporting the issued Credential. In order to do this, make sure to follow the directions in [obtaining user's data](fractal-credentials-api.md#obtaining-users-data) in the Message format section.
@@ -57,15 +57,15 @@ const mainContract = new web3.eth.Contract(contractABI, contractAddress);
 mainContract.methods.main(proof, validUntil, approvedAt, fractalId).send({ from: account });
 ```
 
-## Getting a KYC proof
+## Getting a KYC/KYB proof
 
-{% swagger method="get" path="" baseUrl="credentials.fractal.id" summary="Get proof of KYC" %}
+{% swagger method="get" path="" baseUrl="credentials.fractal.id" summary="Get proof" %}
 {% swagger-description %}
 
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="message" required="true" %}
-Message that authorizes sharing KYC data and defines credential requirements
+Message that authorizes sharing KYC/KYB data and defines credential requirements
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="signature" required="true" %}
@@ -149,7 +149,7 @@ You can easily generate a valid message using the [example code](fractal-credent
 
 ```
 I authorize <application_name> (<client_id>) to get a proof from Fractal that:
-- I passed KYC level <level>
+- I passed <verification_type> level <level>
 [- I am not a citizen of the following countries: <citizenship_country_list>]
 [- I am not a resident of the following countries: <residency_country_list>]
 [I also allow access to my data that was used to pass this level.]
@@ -158,8 +158,9 @@ I authorize <application_name> (<client_id>) to get a proof from Fractal that:
 | Parameter                    |                                     |
 | ---------------------------- | ----------------------------------- |
 | `<application_name>`         | Name of your Fractal ID application |
+| `<verification_type>`        | KYB or KYC                          |
 | `<client_id>`                | UID of your Fractal ID application  |
-| `<level>`                    | Requested KYC level                 |
+| `<level>`                    | Requested KYC/KYB level             |
 | `<citizenship_country_list>` | Citizenship country blocklist       |
 | `<residency_country_list>`   | Residency country blocklist         |
 
@@ -167,9 +168,13 @@ I authorize <application_name> (<client_id>) to get a proof from Fractal that:
 
 These can be found in the [Developer Dashboard](getting-started.md#create-an-application).
 
+#### Verification type
+
+Choose or verification type — `KYB` or `KYC`.
+
 #### Level
 
-Choose your required [KYC level and addons](kyc-levels.md). Please reach out to [sales@fractal.id](mailto:sales@fractal.id) if you don't know what to choose.
+Choose your required [KYC/KYB level and addons](kyc-levels.md). Please reach out to [sales@fractal.id](mailto:sales@fractal.id) if you don't know what to choose.
 
 You must choose 1 level and any number of addons in the following format:
 
@@ -200,6 +205,10 @@ Both lists are optional. In case you don't want to restrict any citizenship/resi
 `basic` level supports **only** citizenship country restrictions;
 
 `plus` level supports **both** citizenship and residency country restrictions.
+{% endhint %}
+
+{% hint style="warning" %}
+Note that, currently, country blocklists only apply to individuals. In case of KYB, these are applied to the individual person representing the company.
 {% endhint %}
 
 #### Obtaining user's data
@@ -272,7 +281,7 @@ Example response
 | `address`    | EVM address    | User address                                     |
 | `fractalId`  | Hex string     | User unique identifier                           |
 | `validUntil` | UNIX timestamp | Credential expiry timestamp (24h after issuance) |
-| `proof`      | Hex string     | Signed proof of KYC                              |
+| `proof`      | Hex string     | Signed proof of KYC/KYB                          |
 
 ### Error codes
 
@@ -309,12 +318,12 @@ Example response
 #### 404 Not Found
 
 `error: user_pending`\
-``**Why?** There is a user in our system that matches your KYC requirements and is identified by the wallet address that signed the message. However, their verification has not yet been approved.\
+``**Why?** There is a user in our system that matches your KYC/KYB requirements and is identified by the wallet address that signed the message. However, their verification has not yet been approved.\
 **Fix:** Direct the user to Fractal ID — if they're waiting on Fractal to approve their verification, there's no further action; if they've been contacted by Fractal's Identity Specialists to update their data, they should do so in Fractal ID.&#x20;
 
 `error: user_not_found`\
-``**Why?** There is no user in our system that matches your KYC requirements and is identified by the wallet address that signed the message.\
-**Fix:** Use your authorization link to direct the user to our KYC journey.
+``**Why?** There is no user in our system that matches your KYC/KYB requirements and is identified by the wallet address that signed the message.\
+**Fix:** Use your authorization link to direct the user to our KYC/KYB journey.
 
 {% hint style="info" %}
 If you supply a valid `signature parameter`but the message does not match, the flow of `personal_recover` may yield a random address. We include the recovered address in the response, so that you can check if it matches with the one that signed the message.
@@ -322,9 +331,9 @@ If you supply a valid `signature parameter`but the message does not match, the f
 If it does not match, then there's a difference between the message you asked the user to sign and the one you sent to our endpoint.
 {% endhint %}
 
-## Using the KYC proof
+## Using the KYC/KYB proof
 
 Once you have received&#x20;
 
-Please refer to [this repo](https://github.com/trustfractal/credentials-api-verifiers) for an example on how to use the KYC proof in your smart contract. &#x20;
+Please refer to [this repo](https://github.com/trustfractal/credentials-api-verifiers) for an example on how to use the KYC/KYB proof in your smart contract. &#x20;
 
