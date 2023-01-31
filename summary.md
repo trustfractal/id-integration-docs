@@ -29,10 +29,6 @@
 
 * [Javascript client example](example-applications/javascript-client-example.md)
 
-## Referrals
-
-* [Reporting referral conversions](referrals/reporting-referral-conversions.md)
-
 ## Troubleshooting
 
 * [Common issues](troubleshooting/common-issues.md)
