@@ -8,7 +8,7 @@ Both Credentials API and DID Registry enable you to verify the credentials assoc
 
 The DID Registry is a [smart contract](https://github.com/trustfractal/registry-deployer) Fractal has deployed which contains two public [methods](fractal-did-registry.md#interface) your [dApp](fractal-did-registry.md#dapp-code-example) and [smart contract](fractal-did-registry.md#smart-contract-example) can call to verify a credential. Registries are deployed on Karura, [Binance](https://bscscan.com/address/0x91562c86174656976E1a58f4eD02942Ac5a34e77#code), [Avalanche](https://snowtrace.io/address/0x187fa9c568522b5275f420245f6b00c79681c270), [Goerli](https://goerli.etherscan.io/address/0x4D9DE1bb481B9dA37A7a7E3a07F6f60654fEe7BB) (demos only), [Gnosis](https://gnosisscan.io/address/0xae94424d66f5758a7aa128c4125e25b1247143c3#code),  Aurora (soon) and [Polygon](https://polygonscan.com/address/0xfBDb867e7eFf0e3dBe63eE52eDA24d83fBacFe25). Registries will be deployed on other chains on a demand basis.
 
-In order to verify a credential, you call `getFractalId()` to get a `fractalId` associated with a wallet address. Every `fractalId` in the DID Registry corresponds to a unique human. You call `isUserInList()` to determine whether a `fractalId` exists in one of the Registry's maintained [lists](fractal-did-registry.md#available-lists). Lists are currently maintained for KYC level, citizenship and residency.
+In order to verify a credential, you call `getFractalId()` to get a `fractalId` associated with a wallet address. Every `fractalId` in the DID Registry corresponds to a unique human. You call `isUserInList()` to determine whether a `fractalId` exists in one of the Registry's maintained [lists](fractal-did-registry.md#available-lists). Only client-specific lists are currently maintained.
 
 The advantages of the DID Registry are:
 
@@ -40,21 +40,13 @@ bool presence = isUserInList(bytes32 fractaId, string listId);
 
 ## **Available lists**
 
-Every `fractalId` in the DID Registry corresponds to a unique human. Use cases requiring additional guarantees, such as KYC/AML, can also make use of the following lists.
+Every `fractalId` in the DID Registry corresponds to a unique human. Aditionally, you can also make use of the following lists.
 
 | listId               | Meaning                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------- |
-| `basic`              | Passed KYC level _basic_                                                                                  |
-| `plus`               | Passed KYC level _plus_                                                                                   |
-| `fatf_grey`          | Resident of a country that's present in the FATF's list of jurisdictions under increased monitoring.      |
-| `fatf_black`         | Resident of a country that's present in the FATF's list of high-risk jurisdictions.                       |
 | `client_custom_list` | These are custom lists created for clients that have KYC compliance needs that don't fit the above lists. |
 
 Please get in touch with [engineering@fractal.id](mailto:engineering@fractal.id) for creating your own `client_custom_list`
-
-{% hint style="info" %}
-**Best practice**: If you want to know if a user passed KYC level `basic`, then you should check both the `basic` and `plus` lists since a user that passed KYC level `plus` would have passed KYC level `basic`.
-{% endhint %}
 
 ## Smart contract code example
 
@@ -63,7 +55,7 @@ Please get in touch with [engineering@fractal.id](mailto:engineering@fractal.id)
 
 <details>
 
-<summary><strong></strong><span data-gb-custom-inline data-tag="emoji" data-code="1f441">👁</span> <strong>See an example in Solidity</strong></summary>
+<summary><span data-gb-custom-inline data-tag="emoji" data-code="1f441">👁</span> <strong>See an example in Solidity</strong></summary>
 
 ```
 import {FractalRegistry} from "github.com/trustfractal/registry-deployer/blob/master/contracts/FractalRegistry.sol";
@@ -92,7 +84,7 @@ contract Main {
   function main(
       /* your transaction arguments go here */
   ) external view {
-      requiresRegistry(msg.sender, ["plus"], ["fatf_grey", "fatf_black"]);
+      requiresRegistry(msg.sender, ["client_custom_list_id"], []);
       /* your transaction logic goes here */
   }
 }
