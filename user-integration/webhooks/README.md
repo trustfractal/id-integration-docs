@@ -7,8 +7,6 @@ Webhooks allow you to build or set up Applications which subscribe to certain ev
 ## Terminology
 
 * Callback URL - the URL of the server that will receive the webhook `POST` requests.
-* Secret token - token that allows you to ensure that `POST` requests sent to the callback URL are from Fractal.
+* Secret token - token that allows you to ensure that `POST` requests sent to the callback URL are from Fractal. Each [webhook type](available-types.md) has an associated secret token.
 * Notification - webhooks `POST` request which is triggered by certain events on Fractal ID.
-
-
 
