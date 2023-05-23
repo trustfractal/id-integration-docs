@@ -269,17 +269,19 @@ Some fields are available for natural `person`s only, while others are `institut
 
 #### Identification related fields
 
-| Field                                 | Type / Format                                                                                  | KYC level availability                                                     | Restrictions |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------ |
-| `date_of_birth`                       | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `full_name`                           | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_back_file`   | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p>                        |              |
-| `identification_document_country`     | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2)                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_front_file`  | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p>                        |              |
-| `identification_document_number`      | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_type`        | <p><code>national_id</code></p><p><code>passport</code></p><p><code>drivers_license</code></p> | <p><code>light</code></p><p><code>plus</code></p>                          |              |
-| `place_of_birth`                      | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p>                          |              |
-| `identification_document_selfie_file` | URL                                                                                            | `selfie`                                                                   |              |
+| Field                                    | Type / Format                                                                                  | KYC level availability                                                     | Restrictions |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------ |
+| `date_of_birth`                          | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
+| `full_name`                              | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
+| `identification_document_back_file`      | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p>                        |              |
+| `identification_document_country`        | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2)                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
+| `identification_document_front_file`     | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p>                        |              |
+| `identification_document_number`         | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
+| `identification_document_type`           | <p><code>national_id</code></p><p><code>passport</code></p><p><code>drivers_license</code></p> | <p><code>light</code></p><p><code>plus</code></p>                          |              |
+| `place_of_birth`                         | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p>                          |              |
+| `identification_document_selfie_file`    | URL                                                                                            | `selfie`                                                                   |              |
+| `identification_document_date_of_issue`  | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
+| `identification_document_date_of_expiry` | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
 
 #### Liveness related fields
 
@@ -322,11 +324,12 @@ These fields will only be available if the user is an institution and not a natu
 
 #### Residency related fields
 
-| Field                            | Type / Format                                                            | KYC level availability                            | Restrictions |
-| -------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------- | ------------ |
-| `residential_address_country`    | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2) | <p><code>light</code></p><p><code>plus</code></p> |              |
-| `residential_address_proof_file` | URL                                                                      | <p><code>light</code></p><p><code>plus</code></p> |              |
-| `residential_address`            | `string`                                                                 | <p><code>light</code></p><p><code>plus</code></p> |              |
+| Field                                      | Type / Format                                                            | KYC level availability                            | Restrictions |
+| ------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------- | ------------ |
+| `residential_address_country`              | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2) | <p><code>light</code></p><p><code>plus</code></p> |              |
+| `residential_address_proof_file`           | URL                                                                      | <p><code>light</code></p><p><code>plus</code></p> |              |
+| `residential_address`                      | `string`                                                                 | <p><code>light</code></p><p><code>plus</code></p> |              |
+| `residential_address_proof_date_of_expiry` | `YYYY-MM-DD`                                                             | `plus`                                            |              |
 
 #### Wallet related fields
 
