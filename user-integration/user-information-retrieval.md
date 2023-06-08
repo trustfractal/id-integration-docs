@@ -18,7 +18,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% swagger-parameter in="header" name="Authorization" type="string" %}
 `Bearer`
 
-
+ 
 
 _`access_token`_
 {% endswagger-parameter %}
@@ -39,7 +39,7 @@ response2.json suppose access_token has the following scopes:
 * verification.plus.details:read
 * verification.selfie:read
 * verification.selfie.details:read
-* verification.wallet:read
+* verification.wallet:read 
 * verification.wallet.details:read
 " %}
 {% tabs %}
