@@ -18,7 +18,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {% swagger-parameter in="header" name="Authorization" type="string" %}
 `Bearer`
 
- 
+
 
 _`access_token`_
 {% endswagger-parameter %}
@@ -39,7 +39,7 @@ response2.json suppose access_token has the following scopes:
 * verification.plus.details:read
 * verification.selfie:read
 * verification.selfie.details:read
-* verification.wallet:read 
+* verification.wallet:read
 * verification.wallet.details:read
 " %}
 {% tabs %}
@@ -242,12 +242,12 @@ An array of wallet addresses and currencies the user has provided during onboard
 At this time, this array cannot shrink.\
 Please note that the wallet currency is merely representative of the addon that was used to request the wallet. For example, if you have used the `wallet-eth` addon to request any EVM-compatible wallet, the currency will be `eth`.
 
-| Field      | Type / Format                                                                                                                                                            | Description                                                                                                      |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `id`       | `uuid`                                                                                                                                                                   | A unique identifier for the wallet.                                                                              |
-| `address`  | `string`                                                                                                                                                                 | The wallet address.                                                                                              |
-| `currency` | <p><code>ada</code></p><p><code>algo</code></p><p><code>btc</code></p><p><code>eth</code></p><p><code>kar</code></p><p><code>sol</code></p><p><code>substrate</code></p> | The wallet currency derived from the used wallet addon.                                                          |
-| `verified` | `boolean`                                                                                                                                                                | Only avaliable for Karura wallets. Indicates wether the ownership of the wallet has been confirmed with Fractal. |
+| Field      | Type / Format                                                                                                                                                                                   | Description                                                                   |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| `id`       | `uuid`                                                                                                                                                                                          | A unique identifier for the wallet.                                           |
+| `address`  | `string`                                                                                                                                                                                        | The wallet address.                                                           |
+| `currency` | <p><code>ada</code></p><p><code>algo</code></p><p><code>btc</code></p><p><code>eth</code></p><p><code>kar</code></p><p><code>sol</code></p><p><code>substrate</code></p><p><code>xrp</code></p> | The wallet currency derived from the used wallet addon.                       |
+| `verified` | `boolean`                                                                                                                                                                                       | Indicates wether the ownership of the wallet has been confirmed with Fractal. |
 
 #### \[Deprecated] `institution`
 
