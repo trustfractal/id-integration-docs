@@ -15,9 +15,10 @@ Some of these can also be easily inspected in the [statistics section](../client
 | `approved`  | User was issued a Credential for the requested KYC Level.                                                                                            |
 | `rejected`  | User was refused a Credential for the requested KYC Level.                                                                                           |
 | `pending`   | User has submitted information for review, either for the first time or as a follow-up to a contact, and is waiting to have their identity verified. |
-| `contacted` | User has been contacted by Fractal to provide further information, and has yet to do so.                                                             |
+| `contacted` | Fractal has contacted the user to provide further information and has yet to do so.                                                                  |
+| `expired`   | The user has an expired POA or POI and the client has expiration enabled.                                                                            |
 
-{% swagger baseUrl="https://VERIFIER_DOMAIN" path="/api/stats/total-verifications" method="get" summary="Total verifications" %}
+{% swagger baseUrl="https://RESOURCE_DOMAIN" path="/v2/stats/total-verifications" method="get" summary="Total verifications" %}
 {% swagger-description %}
 Returns total number of user verifications that are 
 
@@ -58,7 +59,7 @@ Bearer {access-token}
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="https://VERIFIER_DOMAIN" path="/api/stats/country-verifications" method="get" summary="Verifications by countries" %}
+{% swagger baseUrl="https://RESOURCE_DOMAIN" path="/v2/stats/country-verifications" method="get" summary="Verifications by countries" %}
 {% swagger-description %}
 Returns total number of user verifications that are 
 
@@ -107,7 +108,7 @@ Bearer {access-token}
 {% endswagger-response %}
 {% endswagger %}
 
-{% swagger baseUrl="https://VERIFIER_DOMAIN" path="/api/stats/user-verifications" method="get" summary="Verifications by user ids" %}
+{% swagger baseUrl="https://RESOURCE_DOMAIN" path="/v2/stats/user-verifications" method="get" summary="Verifications by user ids" %}
 {% swagger-description %}
 Returns user ids and their status, which can be 
 
