@@ -118,6 +118,10 @@ Returns user ids and their status, which can be
 
 `pending`
 
+, 
+
+`contacted`
+
  or 
 
 `rejected`
