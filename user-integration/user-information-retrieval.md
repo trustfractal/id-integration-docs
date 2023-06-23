@@ -23,25 +23,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
 _`access_token`_
 {% endswagger-parameter %}
 
-{% swagger-response status="200" description="response1.json supposes access_token has the following scopes, with plus, selfie and wallet verifications emitted.
-
-* uid:read
-* contact:read
-* verification.plus:read
-* verification.selfie:read
-* verification.wallet:read
-* verification.wallet.details:read
-
-response2.json suppose access_token has the following scopes:
-
-* uid:read
-* verification.plus:read
-* verification.plus.details:read
-* verification.selfie:read
-* verification.selfie.details:read
-* verification.wallet:read
-* verification.wallet.details:read
-" %}
+{% swagger-response status="200" description="response description"%}
 {% tabs %}
 {% tab title="response1.json" %}
 ```javascript
