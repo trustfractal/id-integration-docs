@@ -14,6 +14,8 @@ Using the Credentials API, you can leverage our existing user base with a quick 
 For compliance purposes, you may be required to access the user data supporting the issued Credential. In order to do this, make sure to follow the directions in [obtaining user's data](fractal-credentials-api.md#obtaining-users-data) in the Message format section.
 {% endhint %}
 
+You can play around with a demo on [https://credentials-api.demo.fractal.id/](https://credentials-api.demo.fractal.id/). The full source code is available at [https://github.com/trustfractal/credentials-api-demo](https://github.com/trustfractal/credentials-api-demo).
+
 ## Environments
 
 <table><thead><tr><th width="150">Environment</th><th width="256.41016663492337">URL</th><th>Signing address</th></tr></thead><tbody><tr><td>Staging</td><td>credentials.next.fractal.id</td><td><code>0x2fCAb633adFA6aF8266025D63228047033c3ceD0</code></td></tr><tr><td>Production</td><td>credentials.fractal.id</td><td><code>0xacD08d6714ADba531beFF582e6FD5DA1AFD6bc65</code></td></tr></tbody></table>
