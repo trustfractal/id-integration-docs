@@ -6,27 +6,37 @@ As soon as you [obtain an user's access token](user-authorization.md), you are a
 You can also access the user's provided information, as well as their KYC process status, in the [user explorer](../client-dashboard.md#user-explorer) within the client dashboard.
 {% endhint %}
 
-{% swagger baseUrl="https://RESOURCE_DOMAIN" path="/users/me" method="get" summary="Retrieve user information" %}
+{% swagger baseUrl="https://RESOURCE_DOMAIN" path="/users/me" method="get" summary="Retrieve user information" expanded="false" fullWidth="false" %}
 {% swagger-description %}
 This endpoint returns JSON. The scopes associated with the access token will define which fields will be returned.
 {% endswagger-description %}
 
-{% swagger-parameter in="header" name="Content-Type" type="string" %}
+{% swagger-parameter in="header" name="Content-Type" type="string" required="false" %}
 `application/json`
 {% endswagger-parameter %}
 
-{% swagger-parameter in="header" name="Authorization" type="string" %}
+{% swagger-parameter in="header" name="Authorization" type="string" required="false" %}
 `Bearer`
-
-
 
 _`access_token`_
 {% endswagger-parameter %}
 
-{% swagger-response status="200" description="response description"%}
+{% swagger-response status="200" description="Please refer to response1.json and response2.json tabs for details" %}
 {% tabs %}
 {% tab title="response1.json" %}
 ```javascript
+/**
+* supposes `access_token` has the following scopes, with plus, 
+* selfie and wallet verifications emitted.
+*  
+* - uid:read  
+* - contact:read  
+* - verification.plus:read  
+* - verification.selfie:read  
+* - verification.wallet:read  
+* - verification.wallet.details:read  
+*/
+
 {
   "emails": [
     {
@@ -91,6 +101,18 @@ _`access_token`_
 
 {% tab title="response2.json" %}
 ```javascript
+/**
+* supposes `access_token` has the following scopes:  
+* 
+* - uid:read  
+* - verification.plus:read  
+* - verification.plus.details:read  
+* - verification.selfie:read  
+* - verification.selfie.details:read  
+* - verification.wallet:read  
+* - verification.wallet.details:read
+*/
+
 {
   "institution": null,
   "person": {
@@ -206,17 +228,17 @@ An array of phone numbers belonging to the user. Available when users sign up us
 
 #### `verification_cases`
 
-A verification case represents information that has been validated internally by Fractal. Verifications are emitted  separately per each level and add-ons. A verification request for `basic+liveness` will generate two verifications, one per item.
+A verification case represents information that has been validated internally by Fractal. Verifications are emitted separately per each level and add-ons. A verification request for `basic+liveness` will generate two verifications, one per item.
 
-| Field               | Type / Format                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `level`             | `string`                                                                            | The level (or add-on) that this verification refers to.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `journey_completed` | `boolean`                                                                           | `true` once a user completes all the journey steps required by your scopes, and gets redirected to `redirect_uri`. `false` until then.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `status`            | <p><code>pending</code></p><p><code>contacted</code></p><p><code>done</code></p>    | <ul><li><code>pending</code>: if Fractal needs to take action,</li><li><code>contacted</code>: if the user needs to take action</li><li><code>done</code>: if Fractal has reached a conclusion</li></ul>                                                                                                                                                                                                                                                                                                                                                                                   |
-| `credential`        | <p><code>pending</code></p><p><code>approved</code></p><p><code>rejected</code></p> | <p>The outcome of our analysis.</p><ul><li><code>approved</code>: The user fulfills all the requirements</li><li><code>rejected</code>: The user is unable to fulfill all the requirements</li><li><code>pending</code>: Fractal is still evaluating the case</li></ul>                                                                                                                                                                                                                                                                                                                    |
-| `id`                | `string`                                                                            | A unique identifier for this verification case.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `details`           | `object`                                                                            | The set of user data fields (see below for details) that have been validated with respect to this level or add-on. For more details on these fields, please check the [`details`](user-information-retrieval.md#details) section below.                                                                                                                                                                                                                                                                                                                                                    |
-| `report`            | `object`                                                                            | <p><strong>[Deprecated]</strong> Coinfirm integration has been deprecated. If you wish to use Coinfirm, please integrate with it directly.</p><p></p><p><strong>Valid only for the wallet add-on verification.</strong> The AML report generated by <a href="https://www.coinfirm.com/">Coinfirm</a> for the cryptocurrency address present under <code>details</code>.</p><p>For further information on the report fields, please refer to the the <a href="https://id-docs-attachments.s3.eu-central-1.amazonaws.com/Report+fields+fromAPI+response.pdf">Coinfirm documentation</a>.</p> |
+| Field               | Type / Format                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `level`             | `string`                                                                            | The level (or add-on) that this verification refers to.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `journey_completed` | `boolean`                                                                           | `true` once a user completes all the journey steps required by your scopes, and gets redirected to `redirect_uri`. `false` until then.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `status`            | <p><code>pending</code></p><p><code>contacted</code></p><p><code>done</code></p>    | <ul><li><code>pending</code>: if Fractal needs to take action,</li><li><code>contacted</code>: if the user needs to take action</li><li><code>done</code>: if Fractal has reached a conclusion</li></ul>                                                                                                                                                                                                                                                                                                                                                                            |
+| `credential`        | <p><code>pending</code></p><p><code>approved</code></p><p><code>rejected</code></p> | <p>The outcome of our analysis.</p><ul><li><code>approved</code>: The user fulfills all the requirements</li><li><code>rejected</code>: The user is unable to fulfill all the requirements</li><li><code>pending</code>: Fractal is still evaluating the case</li></ul>                                                                                                                                                                                                                                                                                                             |
+| `id`                | `string`                                                                            | A unique identifier for this verification case.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `details`           | `object`                                                                            | The set of user data fields (see below for details) that have been validated with respect to this level or add-on. For more details on these fields, please check the [`details`](user-information-retrieval.md#details) section below.                                                                                                                                                                                                                                                                                                                                             |
+| `report`            | `object`                                                                            | <p><strong>[Deprecated]</strong> Coinfirm integration has been deprecated. If you wish to use Coinfirm, please integrate with it directly.</p><p><strong>Valid only for the wallet add-on verification.</strong> The AML report generated by <a href="https://www.coinfirm.com/">Coinfirm</a> for the cryptocurrency address present under <code>details</code>.</p><p>For further information on the report fields, please refer to the the <a href="https://id-docs-attachments.s3.eu-central-1.amazonaws.com/Report+fields+fromAPI+response.pdf">Coinfirm documentation</a>.</p> |
 
 #### **`wallets`**
 
@@ -224,18 +246,18 @@ An array of wallet addresses and currencies the user has provided during onboard
 At this time, this array cannot shrink.\
 Please note that the wallet currency is merely representative of the addon that was used to request the wallet. For example, if you have used the `wallet-eth` addon to request any EVM-compatible wallet, the currency will be `eth`.
 
-| Field      | Type / Format                                                                                                                                                                                   | Description                                                                   |
-|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| `id`       | `uuid`                                                                                                                                                                                          | A unique identifier for the wallet.                                           |
-| `address`  | `string`                                                                                                                                                                                        | The wallet address.                                                           |
+| Field      | Type / Format                                                                                                                                                                                                          | Description                                                                   |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `id`       | `uuid`                                                                                                                                                                                                                 | A unique identifier for the wallet.                                           |
+| `address`  | `string`                                                                                                                                                                                                               | The wallet address.                                                           |
 | `currency` | <p><code>ada</code></p><p><code>algo</code></p><p><code>btc</code></p><p><code>eth</code></p><p><code>kar</code></p><p><code>sol</code></p><p><code>substrate</code></p><p><code>sui</code></p><p><code>xrp</code></p> | The wallet currency derived from the used wallet addon.                       |
-| `verified` | `boolean`                                                                                                                                                                                       | Indicates wether the ownership of the wallet has been confirmed with Fractal. |
+| `verified` | `boolean`                                                                                                                                                                                                              | Indicates wether the ownership of the wallet has been confirmed with Fractal. |
 
 #### \[Deprecated] `institution`
 
 This field will be removed eventually. Use `verification_cases` instead.
 
-#### \[Deprecated] `person`&#x20;
+#### \[Deprecated] `person`
 
 This field will be removed eventually. Use `verification_cases` instead.
 
@@ -320,7 +342,7 @@ These fields will only be available if the user is an institution and not a natu
 
 Use the top[-level wallets array](user-information-retrieval.md#wallets) for \`wallet\_address\` and \`wallet\_currency\`.
 
-Coinfirm integration has been deprecated. If you wish to use Coinfirm, please integrate with it directly. This is now only used to return previously stored results.&#x20;
+Coinfirm integration has been deprecated. If you wish to use Coinfirm, please integrate with it directly. This is now only used to return previously stored results.
 {% endhint %}
 
 | Field                  | Type / Format  | KYC level availability | Restrictions |
