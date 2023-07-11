@@ -16,10 +16,7 @@ For compliance purposes, you may be required to access the user data supporting 
 
 ## Environments
 
-| Environment | URL                         | Signing address                              |
-| ----------- | --------------------------- | -------------------------------------------- |
-| Staging     | credentials.next.fractal.id | `0x2fCAb633adFA6aF8266025D63228047033c3ceD0` |
-| Production  | credentials.fractal.id      | `0xacD08d6714ADba531beFF582e6FD5DA1AFD6bc65` |
+<table><thead><tr><th width="150">Environment</th><th width="256.41016663492337">URL</th><th>Signing address</th></tr></thead><tbody><tr><td>Staging</td><td>credentials.next.fractal.id</td><td><code>0x2fCAb633adFA6aF8266025D63228047033c3ceD0</code></td></tr><tr><td>Production</td><td>credentials.fractal.id</td><td><code>0xacD08d6714ADba531beFF582e6FD5DA1AFD6bc65</code></td></tr></tbody></table>
 
 ## Before using
 
@@ -155,14 +152,7 @@ I authorize <application_name> (<client_id>) to get a proof from Fractal that:
 [I also allow access to my data that was used to pass this level.]
 ```
 
-| Parameter                    |                                     |
-| ---------------------------- | ----------------------------------- |
-| `<application_name>`         | Name of your Fractal ID application |
-| `<verification_type>`        | KYB or KYC                          |
-| `<client_id>`                | UID of your Fractal ID application  |
-| `<level>`                    | Requested KYC/KYB level             |
-| `<citizenship_country_list>` | Citizenship country blocklist       |
-| `<residency_country_list>`   | Residency country blocklist         |
+<table><thead><tr><th width="220">Parameter</th><th></th></tr></thead><tbody><tr><td><code>&#x3C;application_name></code></td><td>Name of your Fractal ID application</td></tr><tr><td><code>&#x3C;verification_type></code></td><td>KYB or KYC</td></tr><tr><td><code>&#x3C;client_id></code></td><td>UID of your Fractal ID application</td></tr><tr><td><code>&#x3C;level></code></td><td>Requested KYC/KYB level </td></tr><tr><td><code>&#x3C;citizenship_country_list></code></td><td>Citizenship country blocklist</td></tr><tr><td><code>&#x3C;residency_country_list></code></td><td>Residency country blocklist</td></tr></tbody></table>
 
 #### Application name and UID
 
@@ -275,54 +265,48 @@ Example response
 }
 ```
 
-| Field        | Type           | Description                                      |
-| ------------ | -------------- | ------------------------------------------------ |
-| `approvedAt` | UNIX timestamp | User approval timestamp                          |
-| `address`    | EVM address    | User address                                     |
-| `fractalId`  | Hex string     | User unique identifier                           |
-| `validUntil` | UNIX timestamp | Credential expiry timestamp (24h after issuance) |
-| `proof`      | Hex string     | Signed proof of KYC/KYB                          |
+<table><thead><tr><th width="160.59667345552242">Field</th><th width="218.00094626667357">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>approvedAt</code></td><td>UNIX timestamp</td><td>User approval timestamp</td></tr><tr><td><code>address</code></td><td>EVM address</td><td>User address</td></tr><tr><td><code>fractalId</code></td><td>Hex string</td><td>User unique identifier</td></tr><tr><td><code>validUntil</code></td><td>UNIX timestamp</td><td>Credential expiry timestamp (24h after issuance)</td></tr><tr><td><code>proof</code></td><td>Hex string</td><td>Signed proof of KYC/KYB</td></tr></tbody></table>
 
 ### Error codes
 
 #### 400 Bad request
 
 `error: invalid_configuration`\
-``**Why?** You've tried to add country restrictions that are not supported by the level you chose.\
+**Why?** You've tried to add country restrictions that are not supported by the level you chose.\
 **Fix:** Use only valid country restrictions — see [Country blocklists](fractal-credentials-api.md#country-blocklists).
 
 `error: invalid_client_id`\
-``**Why?** The `application_uid` you have supplied is not in the system.\
+**Why?** The `application_uid` you have supplied is not in the system.\
 **Fix:** Check if there's a typo; or [create an application](getting-started.md#create-an-application) if you have not done so.
 
 `error: invalid_country`\
-``**Why?** The country list(s) you supplied contain invalid country names or codes.\
+**Why?** The country list(s) you supplied contain invalid country names or codes.\
 **Fix:** Please refer to the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2) list or use our [example message generator](fractal-credentials-api.md#message-generator-example).
 
 `error: invalid_level`\
-``**Why?** The `level` you supplied is not valid.\
+**Why?** The `level` you supplied is not valid.\
 **Fix:** Please refer to the [KYC levels page](kyc-levels.md).
 
 `error: invalid_message_schema`\
-``**Why?** The `message` you supplied is not valid.\
+**Why?** The `message` you supplied is not valid.\
 **Fix:** Please use our [example message generator](fractal-credentials-api.md#message-generator-example) or make sure that the message that you created matches the format described above.
 
 `error: invalid_params`\
-``**Why?** The `message` and/or `signature` query parameter is missing.\
+**Why?** The `message` and/or `signature` query parameter is missing.\
 **Fix:** Both parameters are required.
 
 `error: invalid_signature`\
-``**Why?** The `signature` you supplied is invalid.\
+**Why?** The `signature` you supplied is invalid.\
 **Fix:** Please make sure to use `personal_sign` when requesting the user to sign the message.
 
 #### 404 Not Found
 
 `error: user_pending`\
-``**Why?** There is a user in our system that matches your KYC/KYB requirements and is identified by the wallet address that signed the message. However, their verification has not yet been approved.\
+**Why?** There is a user in our system that matches your KYC/KYB requirements and is identified by the wallet address that signed the message. However, their verification has not yet been approved.\
 **Fix:** Direct the user to Fractal ID — if they're waiting on Fractal to approve their verification, there's no further action; if they've been contacted by Fractal's Identity Specialists to update their data, they should do so in Fractal ID.&#x20;
 
 `error: user_not_found`\
-``**Why?** There is no user in our system that matches your KYC/KYB requirements and is identified by the wallet address that signed the message.\
+**Why?** There is no user in our system that matches your KYC/KYB requirements and is identified by the wallet address that signed the message.\
 **Fix:** Use your authorization link to direct the user to our KYC/KYB journey.
 
 {% hint style="info" %}
@@ -332,8 +316,6 @@ If it does not match, then there's a difference between the message you asked th
 {% endhint %}
 
 ## Using the KYC/KYB proof
-
-Once you have received&#x20;
 
 Please refer to [this repo](https://github.com/trustfractal/credentials-api-verifiers) for an example on how to use the KYC/KYB proof in your smart contract. &#x20;
 
