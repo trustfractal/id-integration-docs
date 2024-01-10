@@ -49,22 +49,7 @@ Some add-ons are included automatically, while others may not be supported by al
 
 ### Add-on support matrix
 
-| Addon/Level                |     uniqueness    | basic | plus |
-| -------------------------- | :---------------: | :---: | :--: |
-| `liveness`                 |         ✅         |   ➕   |   ➕  |
-| `selfie`                   | :no\_entry\_sign: |   ➕   |   ➕  |
-| `sow`                      |         ➕         |   ➕   |   ➕  |
-| `ssn`                      |         ➕         |   ➕   |   ➕  |
-| `telegram`                 |         ➕         |   ➕   |   ➕  |
-| `twitter`                  |         ➕         |   ➕   |   ➕  |
-| **\[DEPRECATED]** `wallet` |         ➕         |   ➕   |   ➕  |
-| `wallet-ada`               |         ➕         |   ➕   |   ➕  |
-| `wallet-algo`              |         ➕         |   ➕   |   ➕  |
-| `wallet-btc`               |         ➕         |   ➕   |   ➕  |
-| `wallet-eth`               |         ➕         |   ➕   |   ➕  |
-| `wallet-kar`               |         ➕         |   ➕   |   ➕  |
-| `wallet-sol`               |         ➕         |   ➕   |   ➕  |
-| `wallet-substrate`         |         ➕         |   ➕   |   ➕  |
+<table><thead><tr><th width="176.83098725743793">Addon/Level</th><th align="center">uniqueness</th><th width="186.28571428571428" align="center">basic</th><th width="193.94328076609133" align="center">plus</th></tr></thead><tbody><tr><td><code>liveness</code></td><td align="center">✅</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>selfie</code></td><td align="center"><span data-gb-custom-inline data-tag="emoji" data-code="1f6ab">🚫</span></td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>sow</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>ssn</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>telegram</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>twitter</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><strong>[DEPRECATED]</strong> <code>wallet</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-ada</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-algo</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-btc</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-eth</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-kar</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-sol</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr><tr><td><code>wallet-substrate</code></td><td align="center">➕</td><td align="center">➕</td><td align="center">➕</td></tr></tbody></table>
 
 {% hint style="info" %}
 ✅ - included; ➕ - available; :no\_entry\_sign: - unavailable

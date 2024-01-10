@@ -20,23 +20,7 @@ Some of these can also be easily inspected in the [statistics section](../client
 
 {% swagger baseUrl="https://RESOURCE_DOMAIN" path="/v2/stats/total-verifications" method="get" summary="Total verifications" %}
 {% swagger-description %}
-Returns total number of user verifications that are 
-
-`approved`
-
-, 
-
-`contacted`
-
-, 
-
-`rejected`
-
- or 
-
-`pending`
-
- right now.
+Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` right now.
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="Content-Type" type="string" %}
@@ -61,23 +45,7 @@ Bearer {access-token}
 
 {% swagger baseUrl="https://RESOURCE_DOMAIN" path="/v2/stats/country-verifications" method="get" summary="Verifications by countries" %}
 {% swagger-description %}
-Returns total number of user verifications that are 
-
-`approved`
-
-, 
-
-`contacted`
-
-, 
-
-`rejected`
-
- or 
-
-`pending`
-
- by countries.
+Returns total number of user verifications that are `approved`, `contacted`, `rejected` or `pending` by countries.
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="Content-Type" type="string" %}
@@ -110,23 +78,7 @@ Bearer {access-token}
 
 {% swagger baseUrl="https://RESOURCE_DOMAIN" path="/v2/stats/user-verifications" method="get" summary="Verifications by user ids" %}
 {% swagger-description %}
-Returns user ids and their status, which can be 
-
-`approved`
-
-, 
-
-`pending`
-
-, 
-
-`contacted`
-
- or 
-
-`rejected`
-
-.
+Returns user ids and their status, which can be `approved`, `pending`, `contacted` or `rejected`.
 {% endswagger-description %}
 
 {% swagger-parameter in="header" name="Content-Type" type="string" %}

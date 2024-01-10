@@ -16,20 +16,8 @@ Your API application secret
 {% endswagger-parameter %}
 
 {% swagger-parameter in="path" name="scope" type="string" %}
-A space-separated list of authorization scopes to request. If not mentioned, it defaults to 
-
-`uid:read`
-
-.
-
-\
-
-
-You'll need to provide a token with the 
-
-`client.stats:read`
-
- scope in order to access application statistics for example.
+A space-separated list of authorization scopes to request. If not mentioned, it defaults to `uid:read`.\
+You'll need to provide a token with the `client.stats:read` scope in order to access application statistics for example.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="path" name="grant_type" type="string" %}

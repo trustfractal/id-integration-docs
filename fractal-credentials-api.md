@@ -68,9 +68,7 @@ Message that authorizes sharing KYC/KYB data and defines credential requirements
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="signature" required="true" %}
-Signature of message using 
-
-`personal_sign`
+Signature of message using `personal_sign`
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
