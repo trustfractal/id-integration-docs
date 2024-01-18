@@ -5,8 +5,6 @@
 * [KYC levels](kyc-levels.md)
 * [OAuth 2.0 scopes](oauth-2.0-scopes.md)
 * [Production and staging URLs](production-and-staging-urls.md)
-* [Fractal Credentials API](fractal-credentials-api.md)
-* [Fractal DID registry](fractal-did-registry.md)
 * [Client dashboard](client-dashboard.md)
 
 ## User integration
@@ -27,6 +25,11 @@
 ## Example applications
 
 * [Javascript client example](example-applications/javascript-client-example.md)
+
+## Legacy Integrations
+
+* [Fractal Credentials API](legacy-integrations/fractal-credentials-api.md)
+* [Fractal DID registry](legacy-integrations/fractal-did-registry.md)
 
 ## Troubleshooting
 

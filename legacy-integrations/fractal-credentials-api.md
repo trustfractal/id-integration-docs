@@ -22,7 +22,7 @@ You can play around with a demo on [https://credentials-api.demo.fractal.id/](ht
 
 ## Before using
 
-You are required to create an application using our Developer Dashboard in order to use this API. See how [here](getting-started.md#create-an-application).
+You are required to create an application using our Developer Dashboard in order to use this API. See how [here](../getting-started.md#create-an-application).
 
 ## Usage
 
@@ -156,7 +156,7 @@ I authorize <application_name> (<client_id>) to get a proof from Fractal that:
 
 #### Application name and UID
 
-These can be found in the [Developer Dashboard](getting-started.md#create-an-application).
+These can be found in the [Developer Dashboard](../getting-started.md#create-an-application).
 
 #### Verification type
 
@@ -164,7 +164,7 @@ Choose or verification type — `KYB` or `KYC`.
 
 #### Level
 
-Choose your required [KYC/KYB level and addons](kyc-levels.md). Please reach out to [sales@fractal.id](mailto:sales@fractal.id) if you don't know what to choose.
+Choose your required [KYC/KYB level and addons](../kyc-levels.md). Please reach out to [sales@fractal.id](mailto:sales@fractal.id) if you don't know what to choose.
 
 You must choose 1 level and any number of addons in the following format:
 
@@ -209,7 +209,7 @@ For compliance purposes, you might want to be able to access the user data suppo
 I also allow access to my data that was used to pass this level.
 ```
 
-By including this string, you'll have access to the user's data in the [Developer dashboard](client-dashboard.md).
+By including this string, you'll have access to the user's data in the [Developer dashboard](../client-dashboard.md).
 
 #### Message examples
 
@@ -277,7 +277,7 @@ Example response
 
 `error: invalid_client_id`\
 **Why?** The `application_uid` you have supplied is not in the system.\
-**Fix:** Check if there's a typo; or [create an application](getting-started.md#create-an-application) if you have not done so.
+**Fix:** Check if there's a typo; or [create an application](../getting-started.md#create-an-application) if you have not done so.
 
 `error: invalid_country`\
 **Why?** The country list(s) you supplied contain invalid country names or codes.\
@@ -285,7 +285,7 @@ Example response
 
 `error: invalid_level`\
 **Why?** The `level` you supplied is not valid.\
-**Fix:** Please refer to the [KYC levels page](kyc-levels.md).
+**Fix:** Please refer to the [KYC levels page](../kyc-levels.md).
 
 `error: invalid_message_schema`\
 **Why?** The `message` you supplied is not valid.\
