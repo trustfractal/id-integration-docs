@@ -78,7 +78,8 @@ Signature of message using `personal_sign`
     "address": "0xC61bA26E1C0F463Cd1BB57C962c6e7E411E79cb4",
     "fractalId": "0x02f1da55bc94926ef44faa6153cc9ad4f1e0f5ec3844b7c12ef96dea88657fdd",
     "validUntil": 1656080869,
-    "proof": "0x8951496d1d0091945647fb425310e66ea766254bf52899bdca6d8fd70cda2e26091ba3fefad64428b07d78caf1f1ed077b6ca1ee1e6682c6838ad73a3d95ace51c"
+    "proof": "0x8951496d1d0091945647fb425310e66ea766254bf52899bdca6d8fd70cda2e26091ba3fefad64428b07d78caf1f1ed077b6ca1ee1e6682c6838ad73a3d95ace51c",
+    "credential": "level:plus+liveness;citizenship_not:de;residency_not:de"
 }
 ```
 {% endswagger-response %}
@@ -261,11 +262,12 @@ Example response
     "address": "0xC61bA26E1C0F463Cd1BB57C962c6e7E411E79cb4",
     "fractalId": "0x02f1da55bc94926ef44faa6153cc9ad4f1e0f5ec3844b7c12ef96dea88657fdd",
     "validUntil": 1656080869,
-    "proof": "0x8951496d1d0091945647fb425310e66ea766254bf52899bdca6d8fd70cda2e26091ba3fefad64428b07d78caf1f1ed077b6ca1ee1e6682c6838ad73a3d95ace51c"
+    "proof": "0x8951496d1d0091945647fb425310e66ea766254bf52899bdca6d8fd70cda2e26091ba3fefad64428b07d78caf1f1ed077b6ca1ee1e6682c6838ad73a3d95ace51c",
+    "credential": "level:plus+liveness;citizenship_not:de;residency_not:de"
 }
 ```
 
-<table><thead><tr><th width="160.59667345552242">Field</th><th width="218.00094626667357">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>approvedAt</code></td><td>UNIX timestamp</td><td>User approval timestamp</td></tr><tr><td><code>address</code></td><td>EVM address</td><td>User address</td></tr><tr><td><code>fractalId</code></td><td>Hex string</td><td>User unique identifier</td></tr><tr><td><code>validUntil</code></td><td>UNIX timestamp</td><td>Credential expiry timestamp (24h after issuance)</td></tr><tr><td><code>proof</code></td><td>Hex string</td><td>Signed proof of KYC/KYB</td></tr></tbody></table>
+<table><thead><tr><th width="160.59667345552242">Field</th><th width="218.00094626667357">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>approvedAt</code></td><td>UNIX timestamp</td><td>User approval timestamp</td></tr><tr><td><code>address</code></td><td>EVM address</td><td>User address</td></tr><tr><td><code>fractalId</code></td><td>Hex string</td><td>User unique identifier</td></tr><tr><td><code>validUntil</code></td><td>UNIX timestamp</td><td>Credential expiry timestamp (24h after issuance)</td></tr><tr><td><code>proof</code></td><td>Hex string</td><td>Signed proof of KYC/KYB</td></tr><tr><td><code>credential</code></td><td>String</td><td>The <code>expectedCredential</code> this proof is for</td></tr></tbody></table>
 
 ### Error codes
 
