@@ -16,6 +16,7 @@
   * [Delivery](user-integration/webhooks/delivery.md)
   * [Securing webhooks](user-integration/webhooks/securing-webhooks.md)
 * [Mobile app integration](user-integration/mobile-app-integration.md)
+* [Embedded Journey Iframe (BETA)](user-integration/embedded-journey-iframe-beta.md)
 
 ## Back-office integration
 

@@ -42,6 +42,7 @@ Asking a user for the following scopes without the presence of a level scope (li
 | `telegram`                 | `verification.telegram:read`         | `verification.telegram.details:read`         |
 | `twitter`                  | `verification.twitter:read`          | `verification.twitter.details:read`          |
 | `uniq`                     | `verification.uniq:read`             | `verification.uniq.details:read`             |
+| `idos`                     | `verification.idos:read`             | `verification.idos.details:read`             |
 | **\[DEPRECATED]** `wallet` | `verification.wallet:read`           | `verification.wallet.details:read`           |
 | `wallet-ada`               | `verification.wallet-ada:read`       | `verification.wallet-ada.details:read`       |
 | `wallet-algo`              | `verification.wallet-algo:read`      | `verification.wallet-algo.details:read`      |
