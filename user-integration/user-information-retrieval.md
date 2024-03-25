@@ -241,19 +241,19 @@ Some fields are available for natural `person`s only, while others are `institut
 
 #### Identification related fields
 
-| Field                                    | Type / Format                                                                                  | KYC level availability                                                     | Restrictions |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------ |
-| `date_of_birth`                          | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `full_name`                              | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_back_file`      | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p>                        |              |
-| `identification_document_country`        | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2)                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_front_file`     | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p>                        |              |
-| `identification_document_number`         | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_type`           | <p><code>national_id</code></p><p><code>passport</code></p><p><code>drivers_license</code></p> | <p><code>light</code></p><p><code>plus</code></p>                          |              |
-| `place_of_birth`                         | `string`                                                                                       | <p><code>light</code></p><p><code>plus</code></p>                          |              |
-| `identification_document_selfie_file`    | URL                                                                                            | `selfie`                                                                   |              |
-| `identification_document_date_of_issue`  | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
-| `identification_document_date_of_expiry` | `YYYY-MM-DD`                                                                                   | <p><code>light</code></p><p><code>plus</code></p><p><code>basic</code></p> |              |
+| Field                                    | Type / Format                                                                                  | KYC level availability                              | Restrictions |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------ |
+| `date_of_birth`                          | `YYYY-MM-DD`                                                                                   | <p><code>plus</code></p><p><code>basic</code></p>   |              |
+| `full_name`                              | `string`                                                                                       | <p><code>plus</code></p><p><code>basic</code></p>   |              |
+| `identification_document_back_file`      | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p> |              |
+| `identification_document_country`        | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2)                       | <p><code>plus</code></p><p><code>basic</code></p>   |              |
+| `identification_document_front_file`     | URL                                                                                            | <p><code>selfie</code></p><p><code>basic</code></p> |              |
+| `identification_document_number`         | `string`                                                                                       | <p><code>plus</code></p><p><code>basic</code></p>   |              |
+| `identification_document_type`           | <p><code>national_id</code></p><p><code>passport</code></p><p><code>drivers_license</code></p> | `plus`                                              |              |
+| `place_of_birth`                         | `string`                                                                                       | `plus`                                              |              |
+| `identification_document_selfie_file`    | URL                                                                                            | `selfie`                                            |              |
+| `identification_document_date_of_issue`  | `YYYY-MM-DD`                                                                                   | <p><code>plus</code></p><p><code>basic</code></p>   |              |
+| `identification_document_date_of_expiry` | `YYYY-MM-DD`                                                                                   | <p><code>plus</code></p><p><code>basic</code></p>   |              |
 
 #### Liveness related fields
 
@@ -273,26 +273,26 @@ Some fields are available for natural `person`s only, while others are `institut
 
 These fields will only be available if the user is an institution and not a natural person.
 
-| Field                                  | Type / Format | KYC level availability                            | Restrictions                           |
-| -------------------------------------- | ------------- | ------------------------------------------------- | -------------------------------------- |
-| `articles_of_association_file`         | URL           | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `beneficial_owner`                     | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `certificate_of_corporate_status_file` | URL           | <p><code>light</code></p><p><code>plus</code></p> | Canada institution                     |
-| `certificate_of_good_standing_file`    | URL           | <p><code>light</code></p><p><code>plus</code></p> | USA institution                        |
-| `certificate_of_incorporation_file`    | URL           | <p><code>light</code></p><p><code>plus</code></p> | USA & Canada institution               |
-| `commercial_register_entry_file`       | URL           | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `commercial_register`                  | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `company_name`                         | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `company_seat`                         | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `jurisdiction`                         | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `legal_form`                           | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `managing_directors`                   | `string`      | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `owner_identity_proof_file`            | URL           | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `power_of_attorney_file`               | URL           | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `secretary_certificate_file`           | URL           | <p><code>light</code></p><p><code>plus</code></p> | USA & Canada institution               |
-| `shareholders_list_file`               | URL           | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `transparency_register_entry_file`     | URL           | <p><code>light</code></p><p><code>plus</code></p> |                                        |
-| `unique_identification_number`         | `string`      | <p><code>light</code></p><p><code>plus</code></p> | USA, Singapore & Hong-Kong institution |
+| Field                                  | Type / Format | KYC level availability | Restrictions                           |
+| -------------------------------------- | ------------- | ---------------------- | -------------------------------------- |
+| `articles_of_association_file`         | URL           | `plus`                 |                                        |
+| `beneficial_owner`                     | `string`      | `plus`                 |                                        |
+| `certificate_of_corporate_status_file` | URL           | `plus`                 | Canada institution                     |
+| `certificate_of_good_standing_file`    | URL           | `plus`                 | USA institution                        |
+| `certificate_of_incorporation_file`    | URL           | `plus`                 | USA & Canada institution               |
+| `commercial_register_entry_file`       | URL           | `plus`                 |                                        |
+| `commercial_register`                  | `string`      | `plus`                 |                                        |
+| `company_name`                         | `string`      | `plus`                 |                                        |
+| `company_seat`                         | `string`      | `plus`                 |                                        |
+| `jurisdiction`                         | `string`      | `plus`                 |                                        |
+| `legal_form`                           | `string`      | `plus`                 |                                        |
+| `managing_directors`                   | `string`      | `plus`                 |                                        |
+| `owner_identity_proof_file`            | URL           | `plus`                 |                                        |
+| `power_of_attorney_file`               | URL           | `plus`                 |                                        |
+| `secretary_certificate_file`           | URL           | `plus`                 | USA & Canada institution               |
+| `shareholders_list_file`               | URL           | `plus`                 |                                        |
+| `transparency_register_entry_file`     | URL           | `plus`                 |                                        |
+| `unique_identification_number`         | `string`      | `plus`                 | USA, Singapore & Hong-Kong institution |
 
 #### Residency related fields
 
