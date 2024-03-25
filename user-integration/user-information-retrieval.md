@@ -6,22 +6,21 @@ As soon as you [obtain an user's access token](user-authorization.md), you are a
 You can also access the user's provided information, as well as their KYC process status, in the [user explorer](../client-dashboard.md#user-explorer) within the client dashboard.
 {% endhint %}
 
-{% swagger baseUrl="https://RESOURCE_DOMAIN" path="/users/me" method="get" summary="Retrieve user information" expanded="false" fullWidth="false" %}
-{% swagger-description %}
+## Retrieve user information
+
+<mark style="color:blue;">`GET`</mark> `https://RESOURCE_DOMAIN/v2/users/me`
+
 This endpoint returns JSON. The scopes associated with the access token will define which fields will be returned.
-{% endswagger-description %}
 
-{% swagger-parameter in="header" name="Content-Type" type="string" required="false" %}
-`application/json`
-{% endswagger-parameter %}
+#### Headers
 
-{% swagger-parameter in="header" name="Authorization" type="string" required="false" %}
-`Bearer`
+| Name          | Type   | Description                                                         |
+| ------------- | ------ | ------------------------------------------------------------------- |
+| Content-Type  | string | `application/json`                                                  |
+| Authorization | string | <p><code>Bearer</code></p><p><em><code>access_token</code></em></p> |
 
-_`access_token`_
-{% endswagger-parameter %}
-
-{% swagger-response status="200" description="Please refer to response1.json and response2.json tabs for details" %}
+{% tabs %}
+{% tab title="200 Please refer to response1.json and response2.json tabs for details" %}
 {% tabs %}
 {% tab title="response1.json" %}
 ```javascript
@@ -114,24 +113,8 @@ _`access_token`_
 */
 
 {
-  "institution": null,
-  "person": {
-    "date_of_birth": "1967-08-16",
-    "full_name": "David Muller",
-    "identification_document_country": "DE",
-    "identification_document_front_file": "<URL>",
-    "identification_document_number": "123456789",
-    "identification_document_selfie_file": "<URL>",
-    "identification_document_type": "passport",
-    "place_of_birth": "Berlin",
-    "residential_address": "Wiener Straße 10, Berlin, 10999",
-    "residential_address_country": "DE",
-    "residential_address_proof_file": "<URL>",
-    "wallet_address": "0xa1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
-    "wallet_currency": "ETH"
-  },
   "uid": "b76ab44d-b71e-4d19-b6f9-f6e88cd73946",
-  "verifications": [
+  "verification_cases": [
     {
       "details": {
         "residential_address_country": "DE",
@@ -192,23 +175,20 @@ _`access_token`_
 ```
 {% endtab %}
 {% endtabs %}
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 ## Response fields
 
 #### Top level
 
-| Field                | Type / Format | Description                                                                                                                             |
-| -------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `uid`                | `string`      | This user's unique identifier.                                                                                                          |
-| `emails`             | `array`       | A list of email addresses belonging to the user.                                                                                        |
-| `phones`             | `array`       | A list of phone numbers belonging to the user.                                                                                          |
-| `verification_cases` | `array`       | The verification cases that you requested for this user.                                                                                |
-| `wallets`            | `array`       | The wallets this user has provided during onboarding.                                                                                   |
-| `institution`        | `object`      | <p><strong>[Deprecated]</strong> Use <code>verification_cases</code> instead.</p><p>The user data fields for an institutional user.</p> |
-| `person`             | `object`      | <p><strong>[Deprecated]</strong> Use <code>verification_cases</code> instead.</p><p>The user data fields for an individual user.</p>    |
-| `verifications`      | `array`       | <p><strong>[Deprecated]</strong> Use <code>verification_cases</code> instead.</p><p>The list of verifications given to this user.</p>   |
+| Field                | Type / Format | Description                                              |
+| -------------------- | ------------- | -------------------------------------------------------- |
+| `uid`                | `string`      | This user's unique identifier.                           |
+| `emails`             | `array`       | A list of email addresses belonging to the user.         |
+| `phones`             | `array`       | A list of phone numbers belonging to the user.           |
+| `verification_cases` | `array`       | The verification cases that you requested for this user. |
+| `wallets`            | `array`       | The wallets this user has provided during onboarding.    |
 
 #### `emails`
 
@@ -253,21 +233,9 @@ Please note that the wallet currency is merely representative of the addon that 
 | `currency` | <p><code>ada</code></p><p><code>algo</code></p><p><code>btc</code></p><p><code>eth</code></p><p><code>kar</code></p><p><code>sol</code></p><p><code>substrate</code></p><p><code>sui</code></p><p><code>xrp</code></p> | The wallet currency derived from the used wallet addon.                       |
 | `verified` | `boolean`                                                                                                                                                                                                              | Indicates wether the ownership of the wallet has been confirmed with Fractal. |
 
-#### \[Deprecated] `institution`
-
-This field will be removed eventually. Use `verification_cases` instead.
-
-#### \[Deprecated] `person`
-
-This field will be removed eventually. Use `verification_cases` instead.
-
-#### **\[Deprecated]** `verifications`
-
-This field will be removed eventually. Use `verification_cases` instead.
-
 ### `details`
 
-The set of fields enumerated below contains the information submitted by the user. The version of the information validated in the context of a verification will be present under the `details` key in each member of the `verification_cases` array. As our process evolves, we may add or remove fields from this list.
+The set of fields enumerated below contains the information submitted by the user. The version of the information validated in the context of verification will be present under the `details` key in each member of the `verification_cases` array. As our process evolves, we may add or remove fields from this list.
 
 Some fields are available for natural `person`s only, while others are `institution` only. These will be marked in the "Restrictions" column below.
 
@@ -328,30 +296,16 @@ These fields will only be available if the user is an institution and not a natu
 
 #### Residency related fields
 
-| Field                                      | Type / Format                                                            | KYC level availability                            | Restrictions |
-| ------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------- | ------------ |
-| `residential_address_country`              | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2) | <p><code>light</code></p><p><code>plus</code></p> |              |
-| `residential_address_proof_file`           | URL                                                                      | <p><code>light</code></p><p><code>plus</code></p> |              |
-| `residential_address`                      | `string`                                                                 | <p><code>light</code></p><p><code>plus</code></p> |              |
-| `residential_address_proof_date_of_expiry` | `YYYY-MM-DD`                                                             | `plus`                                            |              |
-
-#### Wallet related fields
-
-{% hint style="warning" %}
-**\[Deprecated]** All fields are currently deprecated.
-
-Use the top[-level wallets array](user-information-retrieval.md#wallets) for \`wallet\_address\` and \`wallet\_currency\`.
-
-Coinfirm integration has been deprecated. If you wish to use Coinfirm, please integrate with it directly. This is now only used to return previously stored results.
-{% endhint %}
-
-| Field                  | Type / Format  | KYC level availability | Restrictions |
-| ---------------------- | -------------- | ---------------------- | ------------ |
-| `wallet_address`       | `string`       | `wallet`               |              |
-| `wallet_currency`      | `BTC` or `ETH` | `wallet`               |              |
-| `wallet_check_reports` | `array`        | `wallet`               |              |
-
-`wallet_check_reports` contains an array of every AML report we requested from [Coinfirm](https://www.coinfirm.com/) for this user's wallet address during the verification case process. For more information on the report fields, please refer to the the [Coinfirm documentation](https://id-docs-attachments.s3.eu-central-1.amazonaws.com/Report+fields+fromAPI+response.pdf).
+| Field                                      | Type / Format                                                            | KYC level availability | Restrictions                                                                                                        |
+| ------------------------------------------ | ------------------------------------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `residential_address_country`              | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO\_3166-1\_alpha-2) | `plus`                 |                                                                                                                     |
+| `residential_address_proof_file`           | URL                                                                      | `plus`                 |                                                                                                                     |
+| `residential_address`                      | `string`                                                                 | `plus`                 |                                                                                                                     |
+| `residential_address_line1`                | `string`                                                                 | `plus`                 | This field is required only for applications with split address configuration enabled.  For, the rest is optional.  |
+| `residential_address_line2`                | `string`                                                                 | `plus`                 | This field is required only for applications with split address configuration enabled.  For, the rest is optional.  |
+| `residential_address_city`                 | `string`                                                                 | `plus`                 | This field is required only for applications with split address configuration enabled.  For, the rest is optional.  |
+| `residential_address_zip`                  | `string`                                                                 | `plus`                 | This field is required only for applications with split address configuration enabled.  For , the rest is optional. |
+| `residential_address_proof_date_of_expiry` | `YYYY-MM-DD`                                                             | `plus`                 |                                                                                                                     |
 
 #### Source of wealth related fields
 
