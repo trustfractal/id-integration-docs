@@ -77,7 +77,7 @@ puts Hash[
 $ ruby --version
 ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x86_64-linux]
 
-$ ruby ver.rb SUP3RS3CR3T my-payload sig
+$ ruby ver.rb SUP3RS3CR3T my-payload badsig
 {:webhook_secret_token=>"SUP3RS3CR3T", :payload_body=>"my-payload", :expected_signature=>"badsig", :calculated_signature=>"6a89633e5f131bfb5f0b5826b33b3bab4bf52068", :signature_matches=>false}
 
 $ ruby ver.rb SUP3RS3CR3T my-payload 6a89633e5f131bfb5f0b5826b33b3bab4bf52068
@@ -120,7 +120,7 @@ console.log(JSON.stringify({
 $ node --version
 v18.15.0
 
-$ node ver.js SUP3RS3CR3T my-payload sig
+$ node ver.js SUP3RS3CR3T my-payload badsig
 {"webhook_secret_token":"SUP3RS3CR3T","payload_body":"my-payload","expected_signature":"badsig","calculated_signature":"6a89633e5f131bfb5f0b5826b33b3bab4bf52068","signature_matches":false}
 
 $ node ver.js SUP3RS3CR3T my-payload 6a89633e5f131bfb5f0b5826b33b3bab4bf52068
