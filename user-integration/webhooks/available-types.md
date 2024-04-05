@@ -14,7 +14,7 @@ Once the user is approved, the partner can get notified about the user verificat
 
 Example payload:
 
-```javascript
+```json
 {
   "type": "verification_approved",
   "data": {
@@ -31,7 +31,7 @@ When the user fails verification for the selected level, the partner can get a w
 
 Example payload:
 
-```javascript
+```json
 {
   "type": "verification_rejected",
   "data": {
