@@ -39,7 +39,8 @@ This endpoint returns JSON. The scopes associated with the access token will def
 {
   "emails": [
     {
-      "address": "example@frctls.com"
+      "address": "example@frctls.com",
+      "source_type": "registration", // "obsolete", "journey"
     }
   ],
   "phones:": [
@@ -194,9 +195,10 @@ This endpoint returns JSON. The scopes associated with the access token will def
 
 An array of email addresses belonging to the user. Available when users sign up using an email address. We do not support more than one email address. If the user registered using a phone number, this may be an empty array. Each email entry contains the following fields:
 
-| Field     | Type / Format | Description                                      |
-| --------- | ------------- | ------------------------------------------------ |
-| `address` | `string`      | A email address, confirmed to belong to the user |
+| Field         | Type / Format  | Description                                                                                                                                                                                                                                                                         |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `address`     | `string`       | A email address, confirmed to belong to the user                                                                                                                                                                                                                                    |
+| `source_type` | `enum(string)` | <ul><li><strong>registration</strong> - verified authentication email address</li><li><strong>journey</strong> - unverified email address, not used for authentication</li><li><strong>obsolete</strong> - verified authentication email address that is no longer in use</li></ul> |
 
 #### `phones`
 
