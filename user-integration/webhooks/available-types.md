@@ -25,6 +25,23 @@ Example payload:
 }
 ```
 
+### User contacted
+
+Once the user is requested for additional information, the partner can get notified about the user verification process being marked for contact.&#x20;
+
+Example payload:
+
+```json
+{
+  "type": "verification_contacted",
+  "data": {
+    "level": "basic",
+    "user_id": "14ec6af0-12f8-4bce-a6ab-01ce87fa1812",
+    "timestamp": "2020-04-02T13:35:35Z"
+  }
+}
+```
+
 ### Verification rejected
 
 When the user fails verification for the selected level, the partner can get a webhook notification about the rejection. This can be caused by fake or expired documents, refusal to provide proof documents for certain validations, inability to pass a liveness check, etc. Fractal does not disclose the exact reason for rejection via the webhook call. Upon getting `verification_rejected` notification, the partner should mark the user internally as failed to pass the verification.
