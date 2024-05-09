@@ -74,4 +74,18 @@ Webhook is used by ID when credentials have been approved and shared on behalf o
 }
 ```
 
-### &#x20;
+### The user's email has been changed
+
+Once the user confirms their email change, this webhook is triggered with a new email and a user ID.
+
+Example payload:
+
+```json
+{
+  "type": "email_changed",
+  "data": {
+    "user_id": "14ec6af0-12f8-4bce-a6ab-01ce87fa1812",
+    "email": "john.snow@fractal.id"
+  }
+}
+```
