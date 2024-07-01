@@ -4,7 +4,7 @@ description: Authorize transactions by including a Fractal proof in their payloa
 
 # Fractal Credentials API
 
-Both Credentials API and [DID Registry](fractal-did-registry.md) enable you to verify the credentials associated with a wallet address in your smart contract (on-chain) or in your dApp. With Credentials API, your dApp makes a call to the API with a wallet address.&#x20;
+Both Credentials API enable you to verify the credentials associated with a wallet address in your smart contract (on-chain) or in your dApp. With Credentials API, your dApp makes a call to the API with a wallet address.&#x20;
 
 The API replies with a credential proof if it exists associated with that wallet address. Your dApp includes the proof with the transaction sent to your smart contract which can verify the credential by importing our `CredentialVerifier.sol` contract to inherit its `requiresCredential` modifier. To get more details and examples check our [verifiers](https://github.com/trustfractal/credentials-api-verifiers) documentation.
 
@@ -58,20 +58,19 @@ mainContract.methods.main(proof, validUntil, approvedAt, fractalId).send({ from:
 
 ## Getting a KYC/KYB proof
 
-{% swagger method="get" path="" baseUrl="credentials.fractal.id" summary="Get proof" %}
-{% swagger-description %}
+## Get proof
 
-{% endswagger-description %}
+<mark style="color:blue;">`GET`</mark> `credentials.fractal.id`
 
-{% swagger-parameter in="query" name="message" required="true" %}
-Message that authorizes sharing KYC/KYB data and defines credential requirements
-{% endswagger-parameter %}
+#### Query Parameters
 
-{% swagger-parameter in="query" name="signature" required="true" %}
-Signature of message using `personal_sign`
-{% endswagger-parameter %}
+| Name                                        | Type   | Description                                                                      |
+| ------------------------------------------- | ------ | -------------------------------------------------------------------------------- |
+| message<mark style="color:red;">\*</mark>   | String | Message that authorizes sharing KYC/KYB data and defines credential requirements |
+| signature<mark style="color:red;">\*</mark> | String | Signature of message using `personal_sign`                                       |
 
-{% swagger-response status="200: OK" description="" %}
+{% tabs %}
+{% tab title="200: OK " %}
 ```javascript
 {
     "approvedAt": 1654693829,
@@ -82,34 +81,34 @@ Signature of message using `personal_sign`
     "credential": "level:plus+liveness;citizenship_not:de;residency_not:de"
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="400: Bad Request" description="" %}
+{% tab title="400: Bad Request " %}
 ```javascript
 {
     "error": <error_code>
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="404: Not Found" description="No user with this wallet meets the KYC requirements" %}
+{% tab title="404: Not Found No user with this wallet meets the KYC requirements" %}
 ```javascript
 {
     "address": "0x123",
     "error": "user_not_found"
 }
 ```
-{% endswagger-response %}
+{% endtab %}
 
-{% swagger-response status="404: Not Found" description="A pending user with this wallet meets the KYC requirements" %}
+{% tab title="404: Not Found A pending user with this wallet meets the KYC requirements" %}
 ```javascript
 {
     "address": "0x123",
     "error": "user_pending"
 }
 ```
-{% endswagger-response %}
-{% endswagger %}
+{% endtab %}
+{% endtabs %}
 
 #### JavaScript example&#x20;
 

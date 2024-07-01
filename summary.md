@@ -16,7 +16,7 @@
   * [Delivery](user-integration/webhooks/delivery.md)
   * [Securing webhooks](user-integration/webhooks/securing-webhooks.md)
 * [Mobile app integration](user-integration/mobile-app-integration.md)
-* [Embedded Journey Iframe (BETA)](user-integration/embedded-journey-iframe-beta.md)
+* [Embedded Journey Iframe](user-integration/embedded-journey-iframe.md)
 
 ## Back-office integration
 
@@ -30,7 +30,6 @@
 ## Legacy Integrations
 
 * [Fractal Credentials API](legacy-integrations/fractal-credentials-api.md)
-* [Fractal DID registry](legacy-integrations/fractal-did-registry.md)
 
 ## Troubleshooting
 
