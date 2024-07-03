@@ -4,7 +4,7 @@ description: Authorize transactions by including a Fractal proof in their payloa
 
 # Fractal Credentials API
 
-Both Credentials API enable you to verify the credentials associated with a wallet address in your smart contract (on-chain) or in your dApp. With Credentials API, your dApp makes a call to the API with a wallet address.&#x20;
+Credentials API enable you to verify the credentials associated with a wallet address in your smart contract (on-chain) or in your dApp. With Credentials API, your dApp makes a call to the API with a wallet address.&#x20;
 
 The API replies with a credential proof if it exists associated with that wallet address. Your dApp includes the proof with the transaction sent to your smart contract which can verify the credential by importing our `CredentialVerifier.sol` contract to inherit its `requiresCredential` modifier. To get more details and examples check our [verifiers](https://github.com/trustfractal/credentials-api-verifiers) documentation.
 

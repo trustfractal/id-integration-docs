@@ -2,7 +2,7 @@
 description: Description how can be ID used in Iframe.
 ---
 
-# Embedded Journey Iframe (BETA)
+# Embedded Journey Iframe
 
 ### Basic skeleton and permissions
 

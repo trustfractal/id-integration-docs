@@ -53,21 +53,19 @@ This endpoint returns JSON. The scopes associated with the access token will def
     {
       "details": null,
       "level": "plus+selfie",
-      "status": "pending",
-      "credential": "pending",
+      "status": "pending"
     },
     {
       "details": null,
       "level": "basic+liveness",
-      "status": "done",
-      "credential": "approved",
+      "status": "approved"
     },
     {
       "details": {
-        "wallet_address": "0xa1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
-        "wallet_currency": "ETH"
+         "files": "...",
       },
-      "level": "wallet",
+      "level": "basic+liveness+wallet-eth",
+      "status": "approved",
       "report": {
         "mock_response": true,
         "report_id": "28df4599a4256830a4285af140b00868a0e3566ad79ca058f609e6b7ea151fcb",
@@ -115,6 +113,9 @@ This endpoint returns JSON. The scopes associated with the access token will def
 
 {
   "uid": "b76ab44d-b71e-4d19-b6f9-f6e88cd73946",
+  "wallets": [
+     { "currency": "eth", "address": "0x2003" }
+  ],
   "verification_cases": [
     {
       "details": {
@@ -129,6 +130,7 @@ This endpoint returns JSON. The scopes associated with the access token will def
         "identification_document_number": "123456789"
       },
       "level": "plus",
+      "status": "approved",
       "report": null
     },
     {
@@ -137,14 +139,11 @@ This endpoint returns JSON. The scopes associated with the access token will def
         "identification_document_front_file": "<URL>"
       },
       "level": "selfie",
+      "status": "approved",
       "report": null
     },
     {
-      "details": {
-        "wallet_address": "0xa1eD7e13271bFeB758CB5CB6F3EdcC97A0E5943D",
-        "wallet_currency": "ETH"
-      },
-      "level": "wallet",
+      "level": "basic+liveness+wallet-eth",
       "report": {
         "mock_response": true,
         "report_id": "28df4599a4256830a4285af140b00868a0e3566ad79ca058f609e6b7ea151fcb",
