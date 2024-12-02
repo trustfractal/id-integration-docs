@@ -23,10 +23,6 @@
 * [Client authorization](back-office-integration/client-authorization.md)
 * [Application statistics](back-office-integration/application-statistics.md)
 
-## Example applications
-
-* [Javascript client example](example-applications/javascript-client-example.md)
-
 ## Legacy Integrations
 
 * [Fractal Credentials API](legacy-integrations/fractal-credentials-api.md)

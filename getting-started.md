@@ -4,7 +4,7 @@
 
 We have two environments available for integration:
 
-* Staging environment - used for testing and experimenting with the integration. There are no real verifications happening on it, but you can ask our support to approve/reject users on it. You can create an account on it via [staging client dashboard](https://developer.next.fractal.id/).
+* Staging environment - used for testing and experimenting with the integration. There are no real verifications happening on it, but you can ask our support to approve/reject users on it. You can create an account on it via [staging client dashboard](https://developer.staging.sandbox.fractal.id/).
 * Production environment - real environment. You can create an account on it via [production client dashboard](https://developer.fractal.id/).
 
 Once you open up the client dashboard, press the `Login with Fractal` button. After pressing the button, you will be redirected to our onboarding platform. Fill all the required details on it and authorize client dashboard application.
@@ -23,11 +23,7 @@ Once you are logged in to the client dashboard, press `+ create app` and provide
 * The application display logo (in square format). It will be shown for users authorizing your application and included in the emails Fractal sends to the users.
 * The application description. It will be shown for users authorizing your application
 
-<div align="center">
-
-<img src=".gitbook/assets/screenshot-2019-07-04-at-19.08.35.png" alt="Creating new application via client dashboard">
-
-</div>
+<div align="center"><img src=".gitbook/assets/screenshot-2019-07-04-at-19.08.35.png" alt="Creating new application via client dashboard"></div>
 
 After pressing `Create` button you will see the application listed under `My Apps` section.
 

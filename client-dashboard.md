@@ -3,7 +3,7 @@
 We offer a dashboard in order for you to configure and consult your integrations with Fractal ID. Both our staging and development environments include one of these, and you can access through the following links:
 
 * [Production client dashboard](https://developer.fractal.id)
-* [Staging client dashboard](https://developer.next.fractal.id)
+* [Staging client dashboard](https://developer.staging.sandbox.fractal.id/)
 
 The dashboard will list all integrations owned by you, as well as providing a way to create a new integration via the `Create integration` button at the top right of this page.
 
