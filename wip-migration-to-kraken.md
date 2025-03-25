@@ -31,7 +31,7 @@ The link is the same for redirection or an iframe interaction.
 
 ## 3. Redirection back behavior
 
-When a user is redirected back to your site, or KYC ends in an iframe. You will receive a one-time token, this one-time token needs to be exchanged for user-id:
+When a user is redirected back to your site, or KYC ends in an iframe. You will receive a one-time token, this one-time token needs to be exchanged for user-id: (Endpoints are secured with Bearer API key).
 
 [https://kraken.fractal.id/api-doc#/PublicKyc/PublicKycController\_getSession](https://kraken.fractal.id/api-doc#/PublicKyc/PublicKycController_getSession)
 
