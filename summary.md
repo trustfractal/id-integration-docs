@@ -6,7 +6,7 @@
 * [OAuth 2.0 scopes](oauth-2.0-scopes.md)
 * [Production and staging URLs](production-and-staging-urls.md)
 * [Client dashboard](client-dashboard.md)
-* [Migration to Kraken](migration-to-kraken.md)
+* [(WIP) Migration to Kraken](wip-migration-to-kraken.md)
 
 ## User integration
 

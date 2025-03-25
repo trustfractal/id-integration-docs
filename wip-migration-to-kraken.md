@@ -2,7 +2,7 @@
 description: This page describes step-by-step how a client can migrate co to a new version.
 ---
 
-# Migration to Kraken
+# (WIP) Migration to Kraken
 
 ## 1. Credentials
 
