@@ -71,6 +71,7 @@ const payload = {
 }
 
 // Expiration is max 10min for API tokens
+// this token is private, don't expose it
 const bearerToken = jwt.sign(payload, privateKey, { algorithm: "ES512", expiresIn: "600s" });
 ```
 
