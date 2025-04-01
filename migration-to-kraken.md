@@ -2,7 +2,7 @@
 description: This page describes step-by-step how a client can migrate co to a new version.
 ---
 
-# (WIP) Migration to Kraken
+# Migration to Kraken
 
 ## 1. Account creation
 
@@ -51,11 +51,11 @@ const payload = {
 }
 
 // There is no expiration
-const bearerToken = jwt.sign(payload, privateKey, { algorithm: "ES512" });
+const token = jwt.sign(payload, privateKey, { algorithm: "ES512" });
 ```
 
 ```html
-https://kraken.fractal.id/kyc?token=TOKEN
+https://kraken.fractal.id/kyc?token=token # JWT signed token from previous step
 ```
 
 The link is the same for redirection or an iframe interaction.
