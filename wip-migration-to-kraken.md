@@ -28,9 +28,7 @@ openssl ec -in es512-private.pem -pubout -out es512-public.pem
 You have to request our OPS for the following credentials:
 
 * Client ID
-* API Key
 * Webhook Secret Key
-* Link
 
 ## 2. Update link
 
