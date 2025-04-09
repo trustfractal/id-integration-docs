@@ -122,7 +122,7 @@ export interface ShortUserInfo {
 
 async function getUserId(oneTimeToken: string): Promise<ShortUserInfo> {
   const response = await fetch(
-    `https://kraken.staging.sandbox.fractal.id/public/kyc/token/${oneTimeToken}`,
+    `https://kraken.fractal.id/public/kyc/token/${oneTimeToken}`,
     {
       headers: {
         "Content-Type": "application/json",
