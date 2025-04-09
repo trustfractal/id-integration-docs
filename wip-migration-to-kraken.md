@@ -60,19 +60,6 @@ The link is the same for redirection or an iframe interaction.
 
 ## 3. Redirection back behavior
 
-**3.1. Generate an API token**
-
-```javascript
-const payload = {
-  clientId: "CLIENT_ID",
-  api: true,
-}
-
-// Expiration is max 10min for API tokens
-// This token is private, don't expose it
-const bearerToken = jwt.sign(payload, privateKey, { algorithm: "ES512", expiresIn: "600s" });
-```
-
 When a user is redirected back to your site or KYC ends in an iframe, you will receive a one-time token:
 
 ```javascript
@@ -111,6 +98,47 @@ const messageReceiver = useCallback((message: any) => {
 This one-time token needs to be exchanged for a user ID.&#x20;
 
 [https://kraken.fractal.id/api-doc#/PublicKyc/PublicKycController\_getSession](https://kraken.fractal.id/api-doc#/PublicKyc/PublicKycController_getSession)
+
+Our API is secured by a JWT token, which should be generated on your side:
+
+```javascript
+export async function getAuthToken() {
+  const payload = {
+    api: true,
+    clientId: process.env.CLIENT_ID,
+  };
+
+  return jwt.sign(payload, process.env.PRIVATE_KEY, {
+    algorithm: "ES512",
+    expiresIn: "600s",
+  });
+}
+
+export interface ShortUserInfo {
+  userId: string;
+  state: "approved" | "pending" | "rejected";
+  externalState?: state;
+}
+
+async function getUserId(oneTimeToken: string): Promise<ShortUserInfo> {
+  const response = await fetch(
+    `https://kraken.staging.sandbox.fractal.id/public/kyc/token/${oneTimeToken}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${await getAuthToken()}`,
+      },
+    },
+  );
+  const json = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(`Failed to call KYC service ${JSON.stringify(json)}`);
+  }
+
+  return json as ShortUserInfo;
+}
+```
 
 The user ID should be stored next to your user; later, you can use it to receive a KYC status or user data.
 
