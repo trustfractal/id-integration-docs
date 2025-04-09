@@ -69,11 +69,46 @@ const payload = {
 }
 
 // Expiration is max 10min for API tokens
-// this token is private, don't expose it
+// This token is private, don't expose it
 const bearerToken = jwt.sign(payload, privateKey, { algorithm: "ES512", expiresIn: "600s" });
 ```
 
-When a user is redirected back to your site or KYC ends in an iframe, you will receive a one-time token. This one-time token needs to be exchanged for a user ID.&#x20;
+When a user is redirected back to your site or KYC ends in an iframe, you will receive a one-time token:
+
+```javascript
+// redirect-back url
+https://yourserver.com/redirect_back_url?oneTimeToken=[ONE_TIME_TOKEN]
+
+// Iframe message
+const messageReceiver = useCallback((message: any) => {
+    // React only messages from ID iframe
+    if (message.origin === "https://kraken.fractal.id") {
+      if (message.data.response === "rejected") {
+        setMessage(`KYC process failed with: ${JSON.stringify(message.data.error)}`);
+        // Hide iframe ...
+      } else if (message.data.open) {
+        // If you want to use wallet-sign-in, this is required
+        // since there are security limitations, especially with
+        // opening metamask protocol link in mobile device
+        window.open(message.data.open, message.data.target, message.data.features);
+      } else {
+        setMessage(`KYC process is completed.`);
+        // Hide iframe, load data, etc...
+        // { 
+        //    "oneTimeToken": "MXES5XpDzMRAHyMI3Jx5K3nrxzZjWjEr-Cskq3Jevso",
+        //    "state": "state_arg"
+        // }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("message", messageReceiver);
+    return () => window.removeEventListener("message", messageReceiver);
+  }, []);
+```
+
+This one-time token needs to be exchanged for a user ID.&#x20;
 
 [https://kraken.fractal.id/api-doc#/PublicKyc/PublicKycController\_getSession](https://kraken.fractal.id/api-doc#/PublicKyc/PublicKycController_getSession)
 
